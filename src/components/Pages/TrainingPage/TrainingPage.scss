@@ -1,0 +1,26 @@
+.training-page {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+
+  &__repeat-button {
+    margin-top: 2rem;
+    font-size: 1.2rem;
+    background-color: aquamarine;
+    border: 1px solid #54a78c;
+    height: 50px;
+    border-radius: 20%;
+    transition: 0.2s linear;
+
+    outline: none;
+
+    &:hover {
+      cursor: pointer;
+      background-color: #54a78c;
+    }
+
+    &:focus {
+      background-color: #54a78c;
+    }
+  }
+}

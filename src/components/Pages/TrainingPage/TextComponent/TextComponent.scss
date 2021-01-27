@@ -1,0 +1,24 @@
+.text-container {
+  border: 1px solid black;
+  width: 960px;
+  margin-top: 5rem;
+  font-size: 1.4rem;
+  padding: 0.3rem;
+
+  .current-symbol {
+    background-color: aquamarine;
+  }
+
+  .passed-symbol {
+    background-color: gray;
+  }
+
+  .error-symbol {
+    background-color: red;
+  }
+
+  .end-symbol {
+    background-color: pink;
+    color: white;
+  }
+}
