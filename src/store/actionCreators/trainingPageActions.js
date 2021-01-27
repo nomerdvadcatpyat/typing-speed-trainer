@@ -1,13 +1,4 @@
-import {CHANGE_CURRENT_SYMBOL_INDEX, SET_END_TYPING_STATE, START_NEW_TEXT} from "../actionTypes";
-
-export const changeCurrentSymbolIndex = (index) => {
-	console.log('changeCurrentSymbolIndex ',index)
-
-	return {
-		type: CHANGE_CURRENT_SYMBOL_INDEX,
-		payload: index
-	}
-}
+import { CHANGE_INPUT_TEXT, SET_END_TYPING_STATE, START_NEW_TEXT } from "../actionTypes";
 
 export const setEndTypingState = () => {
 	console.log('setEndTypingState ')
@@ -23,5 +14,14 @@ export const startNewText = (text) => {
 	return {
 		type: START_NEW_TEXT,
 		payload: text
+	}
+}
+
+export const changeInputText = (newInputText) => {
+	console.log('changeInputText');
+
+	return {
+		type: CHANGE_INPUT_TEXT,
+		payload: newInputText
 	}
 }

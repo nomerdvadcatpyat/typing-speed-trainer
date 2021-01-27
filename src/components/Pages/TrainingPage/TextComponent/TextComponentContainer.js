@@ -1,8 +1,7 @@
 import React from 'react';
 import {TextComponent} from './TextComponent';
 import {connect} from 'react-redux'
-import {bindActionCreators} from "redux";
-import {changeCurrentSymbolIndex, setEndTypingState} from "../../../../store/actionCreators/trainingPageActions";
+
 
 
 const TextComponentContainer = (props) => {
@@ -13,17 +12,13 @@ const TextComponentContainer = (props) => {
 
 const mapStateToProps = (state) => {
 	return {
-		text: state.trainingPage.text.replaceAll(/[\r\n\t]/g, '').split(''),
-		currentSymbolIndex: state.trainingPage.currentSymbolIndex,
+		text: state.trainingPage.text,
+		inputTextLength: state.trainingPage.inputText.length,
+		// currentSymbolIndex: state.trainingPage.currentSymbolIndex,
+		lastSymbolError: state.trainingPage.lastSymbolError,
 		endState: state.trainingPage.endState
 	}
 }
 
-const mapDispatchToProps = (dispatch) => {
-	return {
-		changeCurrentSymbolIndex: bindActionCreators(changeCurrentSymbolIndex, dispatch),
-		setEndTypingState: bindActionCreators(setEndTypingState, dispatch)
-	}
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(TextComponentContainer)
+export default connect(mapStateToProps)(TextComponentContainer)
