@@ -1,21 +1,26 @@
 import React, {useEffect, useRef} from "react";
 import TextComponentContainer from "./TextComponent/TextComponentContainer";
 import InputComponentContainer from "./InputComponent/InputComponentContainer";
-import {KeyboardComponent} from "./KeyboardComponent/KeyboardComponent";
+import KeyboardComponentContainer from "./KeyboardComponent/KeyboardComponentContainer";
 import './TrainingPage.scss'
 
 
-export const TrainingPage = ({ endState, startSameText }) => {
+export const TrainingPage = ({ endState, startSameText, clearTraining }) => {
 
 	const keyDownHandler = (e) => {
 		if(e.key === "Backspace") e.preventDefault();
 	}
 
 	useEffect(() => {
+		console.log('train mount')
 		document.addEventListener('keydown', keyDownHandler);
 
-		return () => document.removeEventListener('keydown', keyDownHandler)
-	}, []);
+		return () => {
+			console.log('train unmount')
+			clearTraining();
+			document.removeEventListener('keydown', keyDownHandler);
+		}
+	}, [clearTraining]);
 
 	const inputRef = useRef(null);
 
@@ -40,7 +45,7 @@ export const TrainingPage = ({ endState, startSameText }) => {
 					null
 			}
 
-			<KeyboardComponent />
+			<KeyboardComponentContainer />
 		</div>
 	);
 }

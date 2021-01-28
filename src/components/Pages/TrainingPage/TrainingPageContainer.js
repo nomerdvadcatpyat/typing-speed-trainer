@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux'
 import {TrainingPage} from "./TrainingPage";
 import {bindActionCreators} from "redux";
-import {startNewText} from "../../../store/actionCreators/trainingPageActions";
+import {clearTraining, startNewText} from "../../../store/actionCreators/trainingPageActions";
 import {store} from "../../../store/store";
 
 
@@ -20,8 +20,10 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
 	const sameText = store.getState().trainingPage.text;
+	const sameLang = store.getState().trainingPage.textLang;
 	return {
-		startSameText: bindActionCreators(() => startNewText(sameText), dispatch)
+		startSameText: bindActionCreators(() => startNewText(sameText, sameLang), dispatch),
+		clearTraining: bindActionCreators(clearTraining, dispatch)
 	}
 }
 

@@ -1,0 +1,56 @@
+.keyboard {
+  margin-top: 2rem;
+  display: flex;
+  flex-flow: column nowrap;
+  border: 1px solid black;
+
+  &__char-row {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+  }
+
+  .second-char-row {
+    position: relative;
+    right: 1rem;
+  }
+
+  .fourth-char-row {
+    position: relative;
+    //right: 4rem;
+  }
+
+  &__char-key {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    border: 1px solid black;
+    width: 50px;
+    height: 50px;
+    margin: 2px;
+
+    &_with-shift {
+      font-size: 1.6rem;
+    }
+
+    &_space {
+      width: 20rem;
+    }
+
+    &_shift {
+      width: 5rem;
+      position: absolute;
+      left: 0;
+    }
+  }
+
+  &__next-char {
+    background-color: aquamarine;
+  }
+
+  &__last-char_error {
+    background-color: red;
+  }
+
+}

@@ -17,6 +17,7 @@ export const InputComponent = ({ forwardRef, text, inputText, changeInputText, s
 		<div className="input-wrap">
 			<input
 				ref={forwardRef}
+				autoFocus={true}
 				className="text-input"
 				type="text"
 				value={inputText}
