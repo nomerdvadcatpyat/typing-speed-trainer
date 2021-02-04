@@ -2,7 +2,7 @@ import React from 'react';
 import {InputComponent} from "./InputComponent";
 import {connect} from 'react-redux'
 import {bindActionCreators} from "redux";
-import {changeInputText, setEndTypingState} from "../../../../store/actionCreators/trainingPageActions";
+import {changeInputText, setEndTypingState} from "../../../../store/actionCreators/trainingPageActionCreators";
 
 
 const InputComponentContainer = (props) => {
@@ -20,7 +20,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		changeInputText: bindActionCreators(changeInputText, dispatch),
+		onChange: bindActionCreators(changeInputText, dispatch),
 		setEndTypingState: bindActionCreators(setEndTypingState, dispatch)
 	}
 }

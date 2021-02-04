@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux'
 import {TrainingPage} from "./TrainingPage";
 import {bindActionCreators} from "redux";
-import {clearTraining, startNewText} from "../../../store/actionCreators/trainingPageActions";
+import {clearTraining, startNewText} from "../../../store/actionCreators/trainingPageActionCreators";
 import {store} from "../../../store/store";
 
 

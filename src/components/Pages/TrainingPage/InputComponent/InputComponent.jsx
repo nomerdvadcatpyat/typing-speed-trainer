@@ -1,11 +1,8 @@
 import React, {useEffect} from 'react';
 import './InputComponent.scss'
+import {ControlledInput} from "../../../ControlledInput/ControlledInput";
 
-export const InputComponent = ({ forwardRef, text, inputText, changeInputText, setEndTypingState }) => {
-
-	const inputChangeHandler = (e) => {
-		changeInputText(e.target.value);
-	}
+export const InputComponent = ({ forwardRef, text, inputText, onChange, setEndTypingState }) => {
 
 	useEffect(() => {
 		if(inputText && inputText.length === text.length) {
@@ -15,13 +12,13 @@ export const InputComponent = ({ forwardRef, text, inputText, changeInputText, s
 
 	return (
 		<div className="input-wrap">
-			<input
-				ref={forwardRef}
+			<ControlledInput
+				forwardRef={forwardRef}
 				autoFocus={true}
 				className="text-input"
-				type="text"
 				value={inputText}
-				onChange={inputChangeHandler}
+				onChange={onChange}
+				onPaste={e => e.preventDefault()}
 			/>
 		</div>
 	);

@@ -15,4 +15,13 @@ html, body, #root, .App {
     grid-template:  'header' 10vh
                     'content' 1fr
                     / 1fr;
+
+    position: relative;
+
+    .main-spinner {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
 }

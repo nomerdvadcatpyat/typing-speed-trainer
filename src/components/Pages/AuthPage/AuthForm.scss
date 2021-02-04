@@ -1,0 +1,19 @@
+.auth-form {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  max-width: 600px;
+  width: 80%;
+
+  .link-to-register {
+    margin-top: 1rem;
+  }
+
+  .input-field {
+    width: 80%;
+  }
+
+  button {
+    width: 40%;
+  }
+}

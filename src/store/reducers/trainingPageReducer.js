@@ -1,4 +1,4 @@
-import {CHANGE_INPUT_TEXT, CLEAR_TRAINING, SET_END_TYPING_STATE, START_NEW_TEXT} from "../actionTypes";
+import {TRAINING_CHANGE_INPUT_TEXT, TRAINING_CLEAR, TRAINING_SET_END_TYPING_STATE, TRAINING_START_NEW_TEXT} from "../actionTypes";
 import {keyboardLayouts} from "../keyboardLayouts";
 
 const initialState = {
@@ -14,15 +14,15 @@ const initialState = {
 export const trainingPageReducer = (state = initialState, action) => {
 	switch (action.type) {
 
-		case SET_END_TYPING_STATE: {
+		case TRAINING_SET_END_TYPING_STATE: {
 			return {...state, endState: true}
 		}
 
-		case START_NEW_TEXT: {
+		case TRAINING_START_NEW_TEXT: {
 			return {...state, text: action.payload.text, textLang: action.payload.lang, endState: false, inputText: '' }
 		}
 
-		case CHANGE_INPUT_TEXT: {
+		case TRAINING_CHANGE_INPUT_TEXT: {
 			const newInputText = action.payload;
 			const substrText = state.text.substr(0, newInputText.length);
 			const lastSymbolInput = newInputText.charAt(newInputText.length - 1);
@@ -35,7 +35,7 @@ export const trainingPageReducer = (state = initialState, action) => {
 		}
 
 
-		case CLEAR_TRAINING: {
+		case TRAINING_CLEAR: {
 			return {...initialState}
 		}
 
