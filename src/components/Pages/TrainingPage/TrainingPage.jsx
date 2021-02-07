@@ -12,11 +12,9 @@ export const TrainingPage = ({ endState, startSameText, clearTraining }) => {
 	}
 
 	useEffect(() => {
-		console.log('train mount')
 		document.addEventListener('keydown', keyDownHandler);
 
 		return () => {
-			console.log('train unmount')
 			clearTraining();
 			document.removeEventListener('keydown', keyDownHandler);
 		}
@@ -24,7 +22,7 @@ export const TrainingPage = ({ endState, startSameText, clearTraining }) => {
 
 	const inputRef = useRef(null);
 
-	const buttonClickHandler = (e) => {
+	const buttonClickHandler = () => {
 		startSameText();
 
 		inputRef.current.focus();

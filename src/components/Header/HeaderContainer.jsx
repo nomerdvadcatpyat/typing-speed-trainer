@@ -2,17 +2,18 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Header} from "./Header";
 import {bindActionCreators} from "redux";
-import {logout} from "../../store/actions/auth";
+import {getIsAuth} from "../../store/selectors/userSelectors";
+import {logoutActionCreator} from "../../store/actionCreators/userActionCreators";
 
 function mapStateToProps(state) {
 	return {
-		isAuth: state.user.isAuth
+		isAuth: getIsAuth(state)
 	};
 }
 
 function mapDispatchToProps(dispatch) {
 	return {
-		logout: bindActionCreators(logout, dispatch)
+		logout: bindActionCreators(logoutActionCreator, dispatch)
 	};
 }
 

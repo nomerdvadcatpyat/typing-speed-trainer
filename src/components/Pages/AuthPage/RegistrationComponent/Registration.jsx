@@ -45,7 +45,7 @@ export const Registration = ({ registration }) => {
 
 			<button
 				className="btn waves-effect"
-				onClick={() => registration(email, password, rePassword)}
+				onClick={() => registration({email, password, rePassword})}
 			>
 				Submit
 			</button>

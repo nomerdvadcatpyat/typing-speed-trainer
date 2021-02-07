@@ -8,7 +8,15 @@ export const TRAINING_CHANGE_INPUT_TEXT = "TRAINING/TRAINING_CHANGE_INPUT_TEXT";
 export const TRAINING_CLEAR = "TRAINING/TRAINING_CLEAR";
 
 
+export const TRY_REGISTER = "AUTH/TRY_REGISTER";
+
+export const TRY_LOGIN = "AUTH/TRY_LOGIN";
+
+export const TRY_AUTH = "AUTH/TRY_AUTH";
+
 export const SET_USER = "AUTH/SET_USER";
+
+export const TRY_LOGOUT = "AUTH/TRY_LOGOUT";
 
 export const LOGOUT = "AUTH/LOGOUT";
 

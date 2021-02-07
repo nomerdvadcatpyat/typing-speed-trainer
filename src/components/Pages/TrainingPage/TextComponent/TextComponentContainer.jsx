@@ -1,6 +1,7 @@
 import React from 'react';
 import {TextComponent} from './TextComponent';
 import {connect} from 'react-redux'
+import {getEndState, getInputText, getLastSymbolError, getText} from "../../../../store/selectors/trainingPage";
 
 
 
@@ -12,11 +13,10 @@ const TextComponentContainer = (props) => {
 
 const mapStateToProps = (state) => {
 	return {
-		text: state.trainingPage.text,
-		inputTextLength: state.trainingPage.inputText.length,
-		// currentSymbolIndex: state.trainingPage.currentSymbolIndex,
-		lastSymbolError: state.trainingPage.lastSymbolError,
-		endState: state.trainingPage.endState
+		text: getText(state),
+		inputTextLength: getInputText(state).length,
+		lastSymbolError: getLastSymbolError(state),
+		endState: getEndState(state)
 	}
 }
 

@@ -2,7 +2,9 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {App} from "./App.jsx";
 import {bindActionCreators} from "redux";
-import {auth} from "../../store/actions/auth";
+import {getIsAuth} from "../../store/selectors/userSelectors";
+import {getIsLoading} from "../../store/selectors/appSelectors";
+import {tryAuthActionCreator} from "../../store/actionCreators/userActionCreators";
 
 
 const AppContainer = (props) => {
@@ -13,14 +15,14 @@ const AppContainer = (props) => {
 
 const mapStateToProps = (state) => {
 	return {
-		isAuth: state.user.isAuth,
-		isLoading: state.app.isLoading
+		isAuth: getIsAuth(state),
+		isLoading: getIsLoading(state)
 	};
 }
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		auth: bindActionCreators(auth, dispatch)
+		auth: bindActionCreators(tryAuthActionCreator, dispatch)
 	}
 }
 

@@ -1,12 +1,12 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Registration} from "./Registration";
-import {registration} from "../../../../store/actions/auth";
 import {bindActionCreators} from "redux";
+import {tryRegisterActionCreator} from "../../../../store/actionCreators/userActionCreators";
 
 function mapDispatchToProps(dispatch) {
 	return {
-		registration: bindActionCreators(registration, dispatch)
+		registration: bindActionCreators(tryRegisterActionCreator, dispatch)
 	};
 }
 

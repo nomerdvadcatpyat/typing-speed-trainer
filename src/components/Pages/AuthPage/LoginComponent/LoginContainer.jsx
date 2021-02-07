@@ -2,11 +2,11 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Login} from "./Login";
 import {bindActionCreators} from "redux";
-import {login} from "../../../../store/actions/auth";
+import {tryLoginActionCreator} from "../../../../store/actionCreators/userActionCreators";
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		login: bindActionCreators((email, password) => login(email,password), dispatch)
+		login: bindActionCreators(tryLoginActionCreator, dispatch)
 	};
 }
 

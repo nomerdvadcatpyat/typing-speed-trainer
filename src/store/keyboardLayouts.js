@@ -1,8 +1,8 @@
 
 export const keyboardLayouts = {
 	// ru: [ "й", "ц", "у", "к", "е", "н", "г", "ш", "щ", "з", "х", "ъ", "ф", "ы", "в", "а", "п", "р", "о", "л", "д", "ж", "э", "я", "ч", "с", "м", "и", "т", "ь", "б", "ю" ],
-	en: {
-		firstRow: [
+	en: [
+		[
 			{ withoutShift: "`", withShift: "~" },
 			{ withoutShift: "1", withShift: "!" },
 			{ withoutShift: "2", withShift: "@" },
@@ -17,7 +17,7 @@ export const keyboardLayouts = {
 			{ withoutShift: "-", withShift: "_" },
 			{ withoutShift: "=", withShift: "+" }
 		],
-		secondRow: [
+		[
 			{ withoutShift: "q", withShift: "Q" },
 			{ withoutShift: "w", withShift: "W" },
 			{ withoutShift: "e", withShift: "E" },
@@ -31,7 +31,7 @@ export const keyboardLayouts = {
 			{ withoutShift: "[", withShift: "{" },
 			{ withoutShift: "]", withShift: "}" }
 		],
-		thirdRow: [
+		[
 			{ withoutShift: "a", withShift: "A" },
 			{ withoutShift: "s", withShift: "S" },
 			{ withoutShift: "d", withShift: "D" },
@@ -45,7 +45,7 @@ export const keyboardLayouts = {
 			{ withoutShift: "'", withShift: '"' },
 			{ withoutShift: "\\", withShift: '|' }
 		],
-		fourthRow: [
+		[
 			"Shift",
 			{ withoutShift: "z", withShift: "Z" },
 			{ withoutShift: "x", withShift: "X" },
@@ -57,6 +57,6 @@ export const keyboardLayouts = {
 			{ withoutShift: ",", withShift: "<" },
 			{ withoutShift: ".", withShift: ">" },
 			{ withoutShift: "/", withShift: "?" }],
-		fifthRow: ["Space"]
-	}
+	["Space"]
+	]
 }

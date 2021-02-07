@@ -3,6 +3,7 @@ import {InputComponent} from "./InputComponent";
 import {connect} from 'react-redux'
 import {bindActionCreators} from "redux";
 import {changeInputText, setEndTypingState} from "../../../../store/actionCreators/trainingPageActionCreators";
+import {getInputText, getText} from "../../../../store/selectors/trainingPage";
 
 
 const InputComponentContainer = (props) => {
@@ -13,8 +14,8 @@ const InputComponentContainer = (props) => {
 
 const mapStateToProps = (state) => {
 	return {
-		text: state.trainingPage.text,
-		inputText: state.trainingPage.inputText
+		text: getText(state),
+		inputText: getInputText(state)
 	}
 }
 

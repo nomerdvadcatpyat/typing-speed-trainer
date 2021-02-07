@@ -2,9 +2,8 @@ import {TRAINING_CHANGE_INPUT_TEXT, TRAINING_CLEAR, TRAINING_SET_END_TYPING_STAT
 import {keyboardLayouts} from "../keyboardLayouts";
 
 const initialState = {
-	text: `Lorem ipsum, . ! & * ???? "ASD`.replaceAll(/[\r\n\t]/g, ''),
+	text: `Lorem ipsum, . ! & * ??<><>?BCXZA"?? "ASD`.replaceAll(/[\r\n\t]/g, ''),
 	textLang: 'en',
-	keyboardLayout: keyboardLayouts.en,
 	inputText: '',
 	lastSymbolInput: '',
 	lastSymbolError: false,
