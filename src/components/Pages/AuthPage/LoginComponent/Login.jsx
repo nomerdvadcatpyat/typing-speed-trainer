@@ -1,22 +1,24 @@
 import React, {useState} from 'react';
 import {Link} from "react-router-dom";
 import '../AuthForm.scss'
-// import {maxLengthCreator, requiredField} from "../../../../utils/validators/loginFormValidator";
+import {loginSchema} from "../../../../utils/validators/authValidation";
 
-// const maxLength10 = maxLengthCreator(10);
 
 export function LoginForm(props) {
 
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 
-
-	console.log(props);
-
-	const submitHandler = (e) => {
+	const submitHandler = async (e) => {
 		console.log('onSubmit', email, password)
 		e.preventDefault();
-		props.tryLogin({email, password});
+
+	  const isValid = await loginSchema.isValid({email, password})
+
+		console.log(isValid);
+
+		if(isValid)
+			props.tryLogin({email, password});
 	}
 
 	return (
