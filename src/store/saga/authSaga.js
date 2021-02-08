@@ -1,8 +1,9 @@
-import {takeEvery, put} from "redux-saga/effects";
+import {takeEvery, put, call} from "redux-saga/effects";
 import {TRY_LOGOUT, TRY_AUTH, TRY_LOGIN, TRY_REGISTER} from "../actionTypes";
 import {setLoadedState, setLoadingState} from "../actionCreators/appActionCreators";
-import {auth, login, logout, registration} from "./api/authApi";
+import {auth, login, logout, registration} from "../../utils/api/authApi";
 import {logoutActionCreator, setUserActionCreator} from "../actionCreators/userActionCreators";
+
 
 export function* authWatcher() {
 	yield takeEvery(TRY_AUTH, tryAuthWorker);
@@ -15,7 +16,10 @@ export function* authWatcher() {
 function* tryAuthWorker() {
 	try {
 		yield put(setLoadingState());
-		const user = yield auth();
+		const user = yield call(auth);
+
+		console.log(user);
+
 		yield put(setUserActionCreator(user));
 	}
 	catch (e) {
@@ -28,25 +32,38 @@ function* tryAuthWorker() {
 
 
 function* registerWorker(action) {
-	const formUserData = action.payload;
+	try{
+		const formUserData = action.payload;
 
-	yield registration(formUserData);
+		yield call(registration, formUserData);
 
-	yield put(setUserActionCreator(formUserData));
+		yield put(setUserActionCreator(formUserData));
+	}
+	catch (e) {
+		console.log('register catch', e.response.data);
+	}
 }
 
 
 function* loginWorker(action) {
-	const formUserData = action.payload;
-	yield login(formUserData);
+	try {
 
-	console.log('saga user ', formUserData);
+		const formUserData = action.payload;
+		yield call(login, formUserData);
 
-	yield put(setUserActionCreator(formUserData));
+		console.log('saga login user ', formUserData);
+
+		yield put(setUserActionCreator(formUserData));
+
+	}
+	catch (e) {
+		console.log('login catch', e.response.data.message);
+		// Кинуть ошибку валидации
+	}
 }
 
 
 function* logoutWorker() {
-	logout();
+	yield call(logout);
 	yield put(logoutActionCreator());
 }

@@ -1,46 +1,68 @@
 import React, {useState} from 'react';
-import {ControlledInput} from "../../../ControlledInput/ControlledInput";
 import {Link} from "react-router-dom";
 import '../AuthForm.scss'
+// import {maxLengthCreator, requiredField} from "../../../../utils/validators/loginFormValidator";
 
-export const Login = ({ login }) => {
+// const maxLength10 = maxLengthCreator(10);
+
+export function LoginForm(props) {
+
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 
-	return (
-		<div className="auth-form login">
 
-			<div className="input-field">
+	console.log(props);
+
+	const submitHandler = (e) => {
+		console.log('onSubmit', email, password)
+		e.preventDefault();
+		props.tryLogin({email, password});
+	}
+
+	return (
+		<form onSubmit={submitHandler} className="auth-form login">
+
+			<div className="input-field form-control">
 				<i className="material-icons prefix">email</i>
-				<ControlledInput
+				<input
 					id="login-email-input"
+					name="email"
+					onChange={e => setEmail(e.target.value)}
 					value={email}
-					onChange={setEmail}
 					type="text"
 				/>
 				<label htmlFor="login-email-input">Email</label>
 			</div>
 
-			<div className="input-field">
+			<div className="input-field form-control">
 				<i className="material-icons prefix">lock_outline</i>
-				<ControlledInput
+				<input
 					id="login-password-input"
+					name="password"
+					onChange={e => setPassword(e.target.value)}
 					value={password}
-					onChange={setPassword}
 					type="password"
 				/>
 				<label htmlFor="login-password-input">Password</label>
 			</div>
 
 
-			<button
-				className="btn waves-effect"
-				onClick={() => login({email, password})}
-			>
+			<button className="btn waves-effect">
 				Submit
 			</button>
 
 			<Link to="/auth/registration" className="link-to-register"> Нет аккаунта? Зарегистрироваться </Link>
-		</div>
+
+		</form>
 	);
 }
+
+
+// export const LoginReduxForm = ({ tryLogin }) => {
+// 	const handleSubmit = (inputUser) => {
+// 		console.log(inputUser);
+// 		tryLogin(inputUser);
+// 	}
+//
+// 	return withReduxForm(LoginForm, 'login', handleSubmit)
+// }

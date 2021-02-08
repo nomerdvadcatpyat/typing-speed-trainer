@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {Header} from "./Header";
 import {bindActionCreators} from "redux";
 import {getIsAuth} from "../../store/selectors/userSelectors";
-import {logoutActionCreator} from "../../store/actionCreators/userActionCreators";
+import {tryLogoutActionCreator} from "../../store/actionCreators/userActionCreators";
 
 function mapStateToProps(state) {
 	return {
@@ -13,7 +13,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
 	return {
-		logout: bindActionCreators(logoutActionCreator, dispatch)
+		logout: bindActionCreators(tryLogoutActionCreator, dispatch)
 	};
 }
 

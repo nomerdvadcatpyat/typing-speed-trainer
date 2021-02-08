@@ -1,55 +1,70 @@
 import React, {useState} from 'react';
-import {ControlledInput} from "../../../ControlledInput/ControlledInput";
 import '../AuthForm.scss'
 
-export const Registration = ({ registration }) => {
+
+export const RegistrationForm = (props) => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [rePassword, setRePassword] = useState("");
 
+	const submitHandler = (e) => {
+		e.preventDefault();
+		props.tryRegister({email, password, rePassword});
+	}
+
 	return (
-		<div className="auth-form registration">
+		<form onSubmit={submitHandler} className="auth-form registration">
 
 			<div className="input-field">
 				<i className="material-icons prefix">email</i>
-				<ControlledInput
+				<input
 					id="register-email-input"
+					name={'email'}
 					type="text"
 					value={email}
-					onChange={setEmail}
+					onChange={e => setEmail(e.target.value)}
 				/>
 				<label htmlFor="register-email-input">Email</label>
 			</div>
 
 			<div className="input-field">
 				<i className="material-icons prefix">lock</i>
-				<ControlledInput
+				<input
 					id="register-password-input"
+					name={'password'}
 					type="password"
 					value={password}
-					onChange={setPassword}
+					onChange={e => setPassword(e.target.value)}
 				/>
 				<label htmlFor="register-password-input">Password</label>
 			</div>
 
 			<div className="input-field">
 				<i className="material-icons prefix">lock_outline</i>
-				<ControlledInput
+				<input
 					id="register-re-password-input"
+					name={'rePassword'}
 					type="password"
 					value={rePassword}
-					onChange={setRePassword}
+					onChange={e => setRePassword(e.target.value)}
 				/>
 				<label htmlFor="register-re-password-input">Confirm password</label>
 			</div>
 
-			<button
-				className="btn waves-effect"
-				onClick={() => registration({email, password, rePassword})}
-			>
+			<button className="btn waves-effect">
 				Submit
 			</button>
 
-		</div>
+		</form>
 	);
 }
+
+
+
+// export const RegistrationReduxForm =  ({registration}) => {
+// 	const handleSubmit = (user) => {
+// 		registration(user);
+// 	}
+//
+// 	return withReduxForm(RegistrationForm, 'registration', handleSubmit);
+// }

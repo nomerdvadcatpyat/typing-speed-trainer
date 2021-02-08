@@ -1,18 +1,19 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Login} from "./Login";
 import {bindActionCreators} from "redux";
 import {tryLoginActionCreator} from "../../../../store/actionCreators/userActionCreators";
+import {LoginForm} from "./Login";
+
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		login: bindActionCreators(tryLoginActionCreator, dispatch)
+		tryLogin: bindActionCreators(tryLoginActionCreator, dispatch)
 	};
 }
 
 const LoginContainer = (props) => {
 	return (
-		<Login {...props} />
+		<LoginForm {...props} />
 	);
 }
 
