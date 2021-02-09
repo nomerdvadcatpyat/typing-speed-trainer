@@ -7,5 +7,5 @@ export const rootReducer = combineReducers(
 	{
 		app: appReducer,
 		trainingPage: trainingPageReducer,
-		user: userReducer
+		user: userReducer,
 	});

@@ -9,13 +9,11 @@ export const registration = async ({email, password, rePassword}) => {
 		});
 
 		localStorage.setItem('token', response.data.token);
-		document.location = '/';
 
 		return response.data.user;
 
 	} catch (e) {
-		console.log(e);
-		// throw e;
+		throw e;
 	}
 }
 
@@ -28,19 +26,17 @@ export const login = async ({email, password}) => {
 		});
 
 		localStorage.setItem('token', response.data.token);
-		document.location = '/';
 
 		return response.data.user;
 
 	} catch (e) {
-		console.log(e);
-		// throw e;
+		throw e;
 	}
 }
 
 
 export const logout = () => {
-		localStorage.removeItem('token');
+	localStorage.removeItem('token');
 }
 
 
@@ -48,12 +44,11 @@ export const auth = async () => {
 	try {
 		const response = await axios.get(`http://localhost:3001/api/auth/auth`,
 			{headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}});
-
 		localStorage.setItem('token', response.data.token);
 		return response.data.user;
-
-	} catch (e) {
-		console.log(e.response.data.message);
+	}
+	catch (e) {
 		localStorage.removeItem('token');
+		throw e;
 	}
 }

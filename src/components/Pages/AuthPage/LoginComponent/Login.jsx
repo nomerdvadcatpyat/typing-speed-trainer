@@ -1,46 +1,71 @@
-import React, {useState} from 'react';
-import {ControlledInput} from "../../../ControlledInput/ControlledInput";
+import React from 'react';
 import {Link} from "react-router-dom";
 import '../AuthForm.scss'
+import {loginSchema} from "../../../../utils/validators/authValidation";
+import {Form, Formik} from "formik";
+import {AuthInput} from "../../../FormCustomComponents/AuthInput/AuthInput";
 
-export const Login = ({ login }) => {
-	const [email, setEmail] = useState('');
-	const [password, setPassword] = useState('');
+export function LoginForm(props) {
 
 	return (
-		<div className="auth-form login">
+		<Formik
+			initialValues={{
+				email: "",
+				password: ""
+			}}
+			validationSchema={loginSchema}
+      onSubmit={props.onSubmit}
+		>
+			{({
+				  values,
+				  errors,
+				  touched ,
+				  isSubmitting,
+				  isValid
+			}) => (
 
-			<div className="input-field">
-				<i className="material-icons prefix">email</i>
-				<ControlledInput
-					id="login-email-input"
-					value={email}
-					onChange={setEmail}
-					type="text"
-				/>
-				<label htmlFor="login-email-input">Email</label>
-			</div>
+				<Form className="auth-form login">
+					<AuthInput
+						className={`${touched.email && errors.email ? 'invalid' : ''}`}
+						id="login-email-input"
+						name="email"
+						type="text"
+						labelText="Email"
+						icon="email"
+						errors={touched.email && errors.email}
+					/>
 
-			<div className="input-field">
-				<i className="material-icons prefix">lock_outline</i>
-				<ControlledInput
-					id="login-password-input"
-					value={password}
-					onChange={setPassword}
-					type="password"
-				/>
-				<label htmlFor="login-password-input">Password</label>
-			</div>
+					<AuthInput
+						className={`${touched.password && errors.password ? 'invalid' : ''}`}
+						id="login-password-input"
+						name="password"
+						type="password"
+						labelText="Password"
+						icon="lock"
+						errors={touched.password && errors.password}
+					/>
 
+					{
+						props.formError ? (
+							<span className="auth-form__error-message"> {props.formError} </span>
+						) : null
+					}
 
-			<button
-				className="btn waves-effect"
-				onClick={() => login({email, password})}
-			>
-				Submit
-			</button>
+					<button
+						className="btn waves-effect auth-form__submit"
+						type="submit"
+						disabled={
+							values.email.length === 0 ||
+							values.password.length === 0 ||
+							!isValid ||
+							isSubmitting
+						}>
+						Submit
+					</button>
 
-			<Link to="/auth/registration" className="link-to-register"> Нет аккаунта? Зарегистрироваться </Link>
-		</div>
+					<Link to="/auth/registration" className="auth-form__link-to-register"> Нет аккаунта? Зарегистрироваться </Link>
+				</Form>
+			)}
+		</Formik>
 	);
 }

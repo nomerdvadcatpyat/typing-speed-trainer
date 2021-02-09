@@ -1,19 +1,24 @@
 .auth-form {
   display: flex;
   flex-flow: column nowrap;
-  align-items: center;
   max-width: 600px;
   width: 80%;
 
-  .link-to-register {
-    margin-top: 1rem;
+  &__link-to-register {
+    display: block;
+    margin: 1rem auto 0;
   }
 
-  .input-field {
-    width: 80%;
-  }
-
-  button {
+  &__submit {
+    margin: 3rem auto 0;
     width: 40%;
   }
+
+  &__error-message {
+    color: #F44336;
+    display: block;
+    width: max-content;
+    margin: 0 auto;
+  }
 }
+

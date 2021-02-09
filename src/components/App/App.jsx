@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import './App.scss'
 import { Route, Switch } from 'react-router-dom';
 import TrainingPageContainer from "../Pages/TrainingPage/TrainingPageContainer";
@@ -6,13 +6,7 @@ import {AuthPage} from "../Pages/AuthPage/AuthPage";
 import HeaderContainer from "../Header/HeaderContainer";
 import {Ring} from "react-spinners-css";
 
-export function App({ isLoading, isAuth, auth}) {
-  useEffect(() => {
-    auth();
-  }, []);
-
-  console.log('isAuth isLoading', isAuth, isLoading);
-
+export function App({ isLoading, isAuth}) {
 
   return (
       <div className="App">

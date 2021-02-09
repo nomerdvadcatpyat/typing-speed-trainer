@@ -1,6 +1,5 @@
 import React, {useEffect} from 'react';
 import './InputComponent.scss'
-import {ControlledInput} from "../../../ControlledInput/ControlledInput";
 
 export const InputComponent = ({ forwardRef, text, inputText, onChange, setEndTypingState }) => {
 
@@ -12,12 +11,12 @@ export const InputComponent = ({ forwardRef, text, inputText, onChange, setEndTy
 
 	return (
 		<div className="input-wrap">
-			<ControlledInput
-				forwardRef={forwardRef}
+			<input
+				ref={forwardRef}
 				autoFocus={true}
 				className="text-input"
 				value={inputText}
-				onChange={onChange}
+				onChange={e => onChange(e.target.value)}
 				onPaste={e => e.preventDefault()}
 			/>
 		</div>

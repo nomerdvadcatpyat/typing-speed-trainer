@@ -1,55 +1,80 @@
-import React, {useState} from 'react';
-import {ControlledInput} from "../../../ControlledInput/ControlledInput";
+import React from 'react';
 import '../AuthForm.scss'
+import {Formik, Form} from "formik";
+import {registrationSchema} from "../../../../utils/validators/authValidation";
+import {AuthInput} from "../../../FormCustomComponents/AuthInput/AuthInput";
 
-export const Registration = ({ registration }) => {
-	const [email, setEmail] = useState("");
-	const [password, setPassword] = useState("");
-	const [rePassword, setRePassword] = useState("");
+export const RegistrationForm = ({isFormValid, onSubmit, formError}) => {
 
 	return (
-		<div className="auth-form registration">
-
-			<div className="input-field">
-				<i className="material-icons prefix">email</i>
-				<ControlledInput
-					id="register-email-input"
-					type="text"
-					value={email}
-					onChange={setEmail}
-				/>
-				<label htmlFor="register-email-input">Email</label>
-			</div>
-
-			<div className="input-field">
-				<i className="material-icons prefix">lock</i>
-				<ControlledInput
-					id="register-password-input"
-					type="password"
-					value={password}
-					onChange={setPassword}
-				/>
-				<label htmlFor="register-password-input">Password</label>
-			</div>
-
-			<div className="input-field">
-				<i className="material-icons prefix">lock_outline</i>
-				<ControlledInput
-					id="register-re-password-input"
-					type="password"
-					value={rePassword}
-					onChange={setRePassword}
-				/>
-				<label htmlFor="register-re-password-input">Confirm password</label>
-			</div>
-
-			<button
-				className="btn waves-effect"
-				onClick={() => registration({email, password, rePassword})}
+		<Formik
+			initialValues={{
+				email: "",
+				password: "",
+				rePassword: ""
+			}}
+			validationSchema={registrationSchema}
+			onSubmit={onSubmit}
 			>
-				Submit
-			</button>
+			{({
+			  values,
+			  touched,
+				errors,
+				isValid,
+				isSubmitting
+			}) => (
+				<Form className="auth-form registration">
 
-		</div>
+					<AuthInput
+						className={`${touched.email && errors.email ? 'invalid' : ''}`}
+						icon="email"
+						id="register-email-input"
+						name="email"
+						type="text"
+						labelText="Email"
+						errors={touched.email && errors.email}
+					/>
+
+					<AuthInput
+						className={`${touched.password && errors.password ? 'invalid' : ''}`}
+						icon="lock"
+						id="register-password-input"
+						name="password"
+						type="password"
+						labelText="Password"
+						errors={touched.password && errors.password}
+					/>
+
+					<AuthInput
+						className={`${touched.rePassword && errors.rePassword ? 'invalid' : ''}`}
+						icon="lock_outline"
+						id="register-re-password-input"
+						name={'rePassword'}
+						type="password"
+						labelText="Confirm password"
+						errors={touched.rePassword && errors.rePassword}
+					/>
+
+					{
+						formError ? (
+							<span className="auth-form__error-message"> {formError} </span>
+						) : null
+					}
+
+					<button
+						className="btn waves-effect auth-form__submit"
+						disabled={
+							values.email.length === 0 ||
+							values.password.length === 0 ||
+							values.rePassword.length === 0 ||
+							!isValid ||
+							isSubmitting
+						}>
+						Submit
+					</button>
+				</Form>
+			)}
+		</Formik>
+
 	);
 }
