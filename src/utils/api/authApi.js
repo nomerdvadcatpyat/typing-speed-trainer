@@ -9,7 +9,6 @@ export const registration = async ({email, password, rePassword}) => {
 		});
 
 		localStorage.setItem('token', response.data.token);
-		document.location = '/';
 
 		return response.data.user;
 
@@ -27,7 +26,6 @@ export const login = async ({email, password}) => {
 		});
 
 		localStorage.setItem('token', response.data.token);
-		document.location = '/';
 
 		return response.data.user;
 
@@ -39,7 +37,6 @@ export const login = async ({email, password}) => {
 
 export const logout = () => {
 	localStorage.removeItem('token');
-	console.log('logout ls', localStorage);
 }
 
 
@@ -47,15 +44,11 @@ export const auth = async () => {
 	try {
 		const response = await axios.get(`http://localhost:3001/api/auth/auth`,
 			{headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}});
-
 		localStorage.setItem('token', response.data.token);
-
-		console.log('set token')
-
 		return response.data.user;
-
-	} catch (e) {
-		console.log(e.response.data.message);
+	}
+	catch (e) {
 		localStorage.removeItem('token');
+		throw e;
 	}
 }

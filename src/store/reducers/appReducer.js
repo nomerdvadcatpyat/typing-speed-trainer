@@ -1,7 +1,7 @@
 import {SET_LOADING_STATE, SET_LOADED_STATE} from "../actionTypes";
 
 const initialState = {
-	isLoading: false
+	isLoading: true
 }
 
 export const appReducer = (state = initialState, action) => {

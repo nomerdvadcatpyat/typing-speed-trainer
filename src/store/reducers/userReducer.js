@@ -1,13 +1,15 @@
 import {SET_USER, LOGOUT} from "../actionTypes";
 
-export const userReducer = (state = {}, action) => {
+export const userReducer = (state = {
+	currentUser: null,
+	isAuth: false
+}, action) => {
 	switch (action.type) {
 
 		case SET_USER:
-			console.log('set user');
 			return {
 				...state,
-				currentUser: action.payload.user,
+				currentUser: action.payload,
 				isAuth: true
 			}
 

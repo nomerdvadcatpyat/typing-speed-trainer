@@ -1,70 +1,80 @@
-import React, {useState} from 'react';
+import React from 'react';
 import '../AuthForm.scss'
+import {Formik, Form} from "formik";
+import {registrationSchema} from "../../../../utils/validators/authValidation";
+import {AuthInput} from "../../../FormCustomComponents/AuthInput/AuthInput";
 
-
-export const RegistrationForm = (props) => {
-	const [email, setEmail] = useState("");
-	const [password, setPassword] = useState("");
-	const [rePassword, setRePassword] = useState("");
-
-	const submitHandler = (e) => {
-		e.preventDefault();
-		props.tryRegister({email, password, rePassword});
-	}
+export const RegistrationForm = ({isFormValid, onSubmit, formError}) => {
 
 	return (
-		<form onSubmit={submitHandler} className="auth-form registration">
+		<Formik
+			initialValues={{
+				email: "",
+				password: "",
+				rePassword: ""
+			}}
+			validationSchema={registrationSchema}
+			onSubmit={onSubmit}
+			>
+			{({
+			  values,
+			  touched,
+				errors,
+				isValid,
+				isSubmitting
+			}) => (
+				<Form className="auth-form registration">
 
-			<div className="input-field">
-				<i className="material-icons prefix">email</i>
-				<input
-					id="register-email-input"
-					name={'email'}
-					type="text"
-					value={email}
-					onChange={e => setEmail(e.target.value)}
-				/>
-				<label htmlFor="register-email-input">Email</label>
-			</div>
+					<AuthInput
+						className={`${touched.email && errors.email ? 'invalid' : ''}`}
+						icon="email"
+						id="register-email-input"
+						name="email"
+						type="text"
+						labelText="Email"
+						errors={touched.email && errors.email}
+					/>
 
-			<div className="input-field">
-				<i className="material-icons prefix">lock</i>
-				<input
-					id="register-password-input"
-					name={'password'}
-					type="password"
-					value={password}
-					onChange={e => setPassword(e.target.value)}
-				/>
-				<label htmlFor="register-password-input">Password</label>
-			</div>
+					<AuthInput
+						className={`${touched.password && errors.password ? 'invalid' : ''}`}
+						icon="lock"
+						id="register-password-input"
+						name="password"
+						type="password"
+						labelText="Password"
+						errors={touched.password && errors.password}
+					/>
 
-			<div className="input-field">
-				<i className="material-icons prefix">lock_outline</i>
-				<input
-					id="register-re-password-input"
-					name={'rePassword'}
-					type="password"
-					value={rePassword}
-					onChange={e => setRePassword(e.target.value)}
-				/>
-				<label htmlFor="register-re-password-input">Confirm password</label>
-			</div>
+					<AuthInput
+						className={`${touched.rePassword && errors.rePassword ? 'invalid' : ''}`}
+						icon="lock_outline"
+						id="register-re-password-input"
+						name={'rePassword'}
+						type="password"
+						labelText="Confirm password"
+						errors={touched.rePassword && errors.rePassword}
+					/>
 
-			<button className="btn waves-effect">
-				Submit
-			</button>
+					{
+						formError ? (
+							<span className="auth-form__error-message"> {formError} </span>
+						) : null
+					}
 
-		</form>
+					<button
+						className="btn waves-effect auth-form__submit"
+						disabled={
+							values.email.length === 0 ||
+							values.password.length === 0 ||
+							values.rePassword.length === 0 ||
+							!isValid ||
+							isSubmitting
+						}>
+						Submit
+					</button>
+				</Form>
+			)}
+		</Formik>
+
 	);
 }
-
-
-
-// export const RegistrationReduxForm =  ({registration}) => {
-// 	const handleSubmit = (user) => {
-// 		registration(user);
-// 	}
-//
-// 	return withReduxForm(RegistrationForm, 'registration', handleSubmit);
-// }
