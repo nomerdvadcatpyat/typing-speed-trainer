@@ -5,9 +5,10 @@ import {bindActionCreators} from "redux";
 import {clearTraining, startNewText} from "../../../store/actionCreators/trainingPageActionCreators";
 import {store} from "../../../store/store";
 import {getEndState} from "../../../store/selectors/trainingPage";
+import PropTypes from "prop-types";
 
 
-const TextComponentContainer = (props) => {
+const TrainingPageContainer = (props) => {
 	return (
 		<TrainingPage {...props}/>
 	);
@@ -29,4 +30,12 @@ const mapDispatchToProps = (dispatch) => {
 	}
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(TextComponentContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(TrainingPageContainer);
+
+
+TrainingPageContainer.propTypes = {
+	startSameText: PropTypes.func,
+	clearTraining: PropTypes.func,
+	endState: PropTypes.bool
+}
+

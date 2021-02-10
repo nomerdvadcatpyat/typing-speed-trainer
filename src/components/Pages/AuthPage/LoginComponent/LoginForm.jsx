@@ -4,6 +4,7 @@ import '../AuthForm.scss'
 import {loginSchema} from "../../../../utils/validators/authValidation";
 import {Form, Formik} from "formik";
 import {AuthInput} from "../../../FormCustomComponents/AuthInput/AuthInput";
+import PropTypes from "prop-types";
 
 export function LoginForm(props) {
 
@@ -68,4 +69,10 @@ export function LoginForm(props) {
 			)}
 		</Formik>
 	);
+}
+
+
+LoginForm.propTypes = {
+	onSubmit: PropTypes.func,
+	formError: PropTypes.string
 }

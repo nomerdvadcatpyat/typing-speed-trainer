@@ -3,6 +3,7 @@ import TextComponentContainer from "./TextComponent/TextComponentContainer";
 import InputComponentContainer from "./InputComponent/InputComponentContainer";
 import KeyboardComponentContainer from "./KeyboardComponent/KeyboardComponentContainer";
 import './TrainingPage.scss'
+import PropTypes from "prop-types";
 
 
 export const TrainingPage = ({ endState, startSameText, clearTraining }) => {
@@ -46,4 +47,11 @@ export const TrainingPage = ({ endState, startSameText, clearTraining }) => {
 			<KeyboardComponentContainer />
 		</div>
 	);
+}
+
+
+TrainingPage.propTypes = {
+	startSameText: PropTypes.func,
+	clearTraining: PropTypes.func,
+	endState: PropTypes.bool
 }

@@ -5,6 +5,7 @@ import TrainingPageContainer from "../Pages/TrainingPage/TrainingPageContainer";
 import {AuthPage} from "../Pages/AuthPage/AuthPage";
 import HeaderContainer from "../Header/HeaderContainer";
 import {Ring} from "react-spinners-css";
+import PropTypes from "prop-types";
 
 export function App({ isLoading, isAuth}) {
 
@@ -23,5 +24,11 @@ export function App({ isLoading, isAuth}) {
         </> }
       </div>
   );
+}
+
+
+App.propTypes = {
+  isLoading: PropTypes.bool,
+  isAuth: PropTypes.bool
 }
 
