@@ -1,57 +1,68 @@
-import React, {useEffect, useRef} from "react";
-import TextComponentContainer from "./TextComponent/TextComponentContainer";
-import InputComponentContainer from "./InputComponent/InputComponentContainer";
-import KeyboardComponentContainer from "./KeyboardComponent/KeyboardComponentContainer";
-import './TrainingPage.scss'
+import React from "react";
+import {TextComponentContainer} from "./TextComponent/TextComponentContainer";
+import {InputComponent} from "./InputComponent/InputComponent";
+import {KeyboardComponentContainer} from "./KeyboardComponent/KeyboardComponentContainer";
+import './TrainingPage.scss';
 import PropTypes from "prop-types";
 
 
-export const TrainingPage = ({ endState, startSameText, clearTraining }) => {
 
-	const keyDownHandler = (e) => {
-		if(e.key === "Backspace") e.preventDefault();
-	}
-
-	useEffect(() => {
-		document.addEventListener('keydown', keyDownHandler);
-
-		return () => {
-			clearTraining();
-			document.removeEventListener('keydown', keyDownHandler);
-		}
-	}, [clearTraining]);
-
-	const inputRef = useRef(null);
-
-	const buttonClickHandler = () => {
-		startSameText();
-
-		inputRef.current.focus();
-	}
+export const TrainingPage = ({
+															text,
+															inputText,
+															setInputText,
+															endState,
+															keyboardLayout,
+															hasError,
+															forwardInputRef,
+															startSameTextButtonClickHandler
+                             }) => {
 
 	return (
 		<div className="training-page">
-			<TextComponentContainer />
-			<InputComponentContainer forwardRef={inputRef}/>
+			<TextComponentContainer
+				text={text}
+				inputText={inputText}
+				endState={endState}
+				hasError={hasError}
+			/>
+
+
+			<InputComponent
+				forwardRef={forwardInputRef}
+				inputText={inputText}
+				setInputText={setInputText}
+				hasError={hasError}
+			/>
+
 
 			{
 				endState ?
 					(
-						<button autoFocus={true} className="training-page__repeat-button" onClick={buttonClickHandler}>
+						<button autoFocus={true} className="training-page__repeat-button" onClick={startSameTextButtonClickHandler}>
 							Заново
 						</button>
-					) :
-					null
+					) : null
 			}
 
-			<KeyboardComponentContainer />
+			<KeyboardComponentContainer
+				text={text}
+				inputText={inputText}
+				keyboardLayout={keyboardLayout}
+				hasError={hasError}
+			/>
 		</div>
 	);
 }
 
 
 TrainingPage.propTypes = {
-	startSameText: PropTypes.func,
-	clearTraining: PropTypes.func,
-	endState: PropTypes.bool
+	text: PropTypes.string,
+	inputText: PropTypes.string,
+	setInputText: PropTypes.func,
+	endState: PropTypes.bool,
+	keyboardLayout: PropTypes.array,
+	hasError: PropTypes.bool,
+	forwardInputRef: PropTypes.object,
+	startSameTextButtonClickHandler: PropTypes.func
 }

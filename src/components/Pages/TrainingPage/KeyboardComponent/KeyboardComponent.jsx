@@ -2,36 +2,46 @@ import React from "react";
 import './KeyboardComponent.scss'
 import PropTypes from "prop-types";
 
-const isWithShift = (nextChar, keyboardLayout) => {
-	for(let row of keyboardLayout) {
-		for(let char of row) {
-			if (char.withShift === nextChar) {
-				return true;
+
+export const KeyboardComponent = ({ keyboardLayout, nextChar, withShift, hasError }) => {
+
+	const resolveSpecialKey = (key) => {
+		const classes = ["keyboard__char-key"];
+
+		switch (key.specialKey) {
+			case "Backspace": {
+				classes.push("keyboard__char-key_backspace");
+				if(hasError) classes.push("keyboard__next-char");
+				break;
 			}
+			case "LeftShift": {
+				classes.push("keyboard__char-key_left-shift");
+				if(withShift && !hasError) classes.push("keyboard__next-char");
+				break;
+			}
+			case "RightShift": {
+				classes.push("keyboard__char-key_right-shift");
+				if(withShift && !hasError) classes.push("keyboard__next-char");
+				break;
+			}
+			case "Space": {
+				classes.push("keyboard__char-key_space");
+				if(nextChar === ' ' && !hasError) classes.push("keyboard__next-char");
+				break;
+			}
+			default: break;
 		}
+
+		return <span key={key.specialKey} className={classes.join(' ')}> {key.specialKey} </span>
 	}
 
-	return false;
-}
-
-export const KeyboardComponent = ({ keyboardLayout, text, inputText, lastSymbolInput, lastSymbolError }) => {
-	const nextChar = text.charAt(inputText.length);
-
-	const withShift = isWithShift(nextChar, keyboardLayout);
 
 	const generateKeyboardRow = (chars) => {
 		return chars.map(char => {
 			const classes = ["keyboard__char-key"];
 
-			if(char === "Shift") {
-				classes.push("keyboard__char-key_shift");
-				if(withShift) classes.push("keyboard__next-char");
-				return <span key={char} className={classes.join(' ')}> {char} </span>;
-			}
-			if(char === "Space") {
-				classes.push("keyboard__char-key_space");
-				if(nextChar === ' ') classes.push("keyboard__next-char");
-				return <span key={char} className={classes.join(' ')}> {char} </span>
+			if(char.specialKey) {
+				return resolveSpecialKey(char);
 			}
 
 			let resChar;
@@ -43,10 +53,7 @@ export const KeyboardComponent = ({ keyboardLayout, text, inputText, lastSymbolI
 				classes.push("keyboard__char-key_with-shift");
 			}
 
-			if(lastSymbolError && (char.withoutShift === lastSymbolInput || char.withShift === lastSymbolInput)) {
-				classes.push("keyboard__last-char_error");
-			}
-			else if(char.withoutShift === nextChar || char.withShift === nextChar) {
+			if(!hasError && (char.withoutShift === nextChar || char.withShift === nextChar)) {
 				classes.push("keyboard__next-char");
 			}
 
@@ -91,8 +98,7 @@ export const KeyboardComponent = ({ keyboardLayout, text, inputText, lastSymbolI
 
 KeyboardComponent.propTypes = {
 	keyboardLayout: PropTypes.array,
-	text: PropTypes.string,
-	inputText: PropTypes.string,
-	lastSymbolInput: PropTypes.string,
-	lastSymbolError: PropTypes.bool,
+	nextChar: PropTypes.string,
+	withShift: PropTypes.bool,
+	hasError: PropTypes.bool
 }

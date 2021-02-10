@@ -15,7 +15,8 @@ export const keyboardLayouts = {
 			{ withoutShift: "9", withShift: "(" },
 			{ withoutShift: "0", withShift: ")" },
 			{ withoutShift: "-", withShift: "_" },
-			{ withoutShift: "=", withShift: "+" }
+			{ withoutShift: "=", withShift: "+" },
+			{ specialKey: "Backspace"}
 		],
 		[
 			{ withoutShift: "q", withShift: "Q" },
@@ -46,7 +47,7 @@ export const keyboardLayouts = {
 			{ withoutShift: "\\", withShift: '|' }
 		],
 		[
-			"Shift",
+			{ specialKey: "LeftShift"},
 			{ withoutShift: "z", withShift: "Z" },
 			{ withoutShift: "x", withShift: "X" },
 			{ withoutShift: "c", withShift: "C" },
@@ -56,7 +57,9 @@ export const keyboardLayouts = {
 			{ withoutShift: "m", withShift: "M" },
 			{ withoutShift: ",", withShift: "<" },
 			{ withoutShift: ".", withShift: ">" },
-			{ withoutShift: "/", withShift: "?" }],
-	["Space"]
+			{ withoutShift: "/", withShift: "?" },
+			{ specialKey: "RightShift"}
+		],
+	[{ specialKey: "Space"}]
 	]
 }

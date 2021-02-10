@@ -1,39 +1,33 @@
 import React from "react";
 import {KeyboardComponent} from "./KeyboardComponent";
-import {connect} from 'react-redux'
-import {
-	getInputText,
-	getLastSymbolError,
-	getLastSymbolInput,
-	getText, getTextLang
-} from "../../../../store/selectors/trainingPage";
-import {keyboardLayouts} from "../../../../store/keyboardLayouts";
 import PropTypes from "prop-types";
 
-const KeyboardComponentContainer = (props) => {
-	return <KeyboardComponent {...props} />
-}
-
-
-const mapStateToProps = (state) => {
-	const textLang = getTextLang(state);
-	const keyboardLayout = keyboardLayouts[textLang];
-	return {
-		keyboardLayout,
-		text: getText(state),
-		inputText: getInputText(state),
-		lastSymbolInput: getLastSymbolInput(state),
-		lastSymbolError: getLastSymbolError(state)
+const isWithShift = (nextChar, keyboardLayout) => {
+	for(let row of keyboardLayout) {
+		for(let char of row) {
+			if (char.withShift === nextChar) {
+				return true;
+			}
+		}
 	}
+	return false;
 }
 
-export default connect(mapStateToProps)(KeyboardComponentContainer)
+export const KeyboardComponentContainer = ({text, inputText, keyboardLayout, ...otherProps}) => {
+	const nextChar = text.charAt(inputText.length);
+	const withShift = isWithShift(nextChar, keyboardLayout);
+
+	return <KeyboardComponent
+		nextChar={nextChar}
+		withShift={withShift}
+		keyboardLayout={keyboardLayout}
+		{...otherProps} />
+}
 
 
 KeyboardComponentContainer.propTypes = {
 	keyboardLayout: PropTypes.array,
 	text: PropTypes.string,
 	inputText: PropTypes.string,
-	lastSymbolInput: PropTypes.string,
-	lastSymbolError: PropTypes.bool,
+	otherProps: PropTypes.array
 }

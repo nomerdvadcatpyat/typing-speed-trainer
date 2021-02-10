@@ -1,41 +1,63 @@
-import React from 'react';
-import {connect} from 'react-redux'
+import React, {useState, useEffect, useRef} from 'react';
 import {TrainingPage} from "./TrainingPage";
-import {bindActionCreators} from "redux";
-import {clearTraining, startNewText} from "../../../store/actionCreators/trainingPageActionCreators";
-import {store} from "../../../store/store";
-import {getEndState} from "../../../store/selectors/trainingPage";
-import PropTypes from "prop-types";
+import {texts} from "../../../utils/texts";
+import {keyboardLayouts} from "../../../utils/keyboardLayouts";
 
 
-const TrainingPageContainer = (props) => {
+export const TrainingPageContainer = () => {
+
+	const [text, setText] = useState(texts["Lorem ipsum"]);
+	const [inputText, setInputText] = useState('');
+	const [endState, setEndState] = useState(false);
+	const [keyboardLayout, setKeyboardLayout] = useState(keyboardLayouts.en);
+
+	const hasError = !text.startsWith(inputText);
+
+	if(!endState && text === inputText) {
+		if(!endState) setEndState(true);
+		console.log('set end state true', true);
+	}
+
+	const clearTraining = () => {
+		console.log('clear training');
+		setText(texts["Lorem ipsum"]);
+		setInputText('');
+		setEndState(false);
+		setKeyboardLayout(keyboardLayouts.en);
+	}
+
+	const startSameText = () => {
+		console.log('start same text');
+		setText(text);
+		setInputText('');
+		setEndState(false);
+		setKeyboardLayout(keyboardLayouts.en);
+	}
+
+	const inputRef = useRef(null);
+
+	const startSameTextButtonClickHandler = () => {
+		startSameText();
+		inputRef.current.focus();
+	}
+
+
+	useEffect(() => {
+		return () => {
+			clearTraining();
+		}
+	}, []);
+
 	return (
-		<TrainingPage {...props}/>
+		<TrainingPage
+			text={text}
+			inputText={inputText}
+			setInputText={setInputText}
+			endState={endState}
+			keyboardLayout={keyboardLayout}
+			hasError={hasError}
+			forwardInputRef={inputRef}
+			startSameTextButtonClickHandler={startSameTextButtonClickHandler}
+		/>
 	);
 }
-
-const mapStateToProps = (state) => {
-	return {
-		endState: getEndState(state)
-	}
-}
-
-const mapDispatchToProps = (dispatch) => {
-	const sameText = store.getState().trainingPage.text;
-	const sameLang = store.getState().trainingPage.textLang;
-	const startSameText = () => startNewText(sameText, sameLang);
-	return {
-		startSameText: bindActionCreators(startSameText, dispatch),
-		clearTraining: bindActionCreators(clearTraining, dispatch)
-	}
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(TrainingPageContainer);
-
-
-TrainingPageContainer.propTypes = {
-	startSameText: PropTypes.func,
-	clearTraining: PropTypes.func,
-	endState: PropTypes.bool
-}
-
