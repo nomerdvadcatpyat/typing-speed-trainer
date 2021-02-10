@@ -1,5 +1,6 @@
 import React from "react";
 import './KeyboardComponent.scss'
+import PropTypes from "prop-types";
 
 const isWithShift = (nextChar, keyboardLayout) => {
 	for(let row of keyboardLayout) {
@@ -85,4 +86,13 @@ export const KeyboardComponent = ({ keyboardLayout, text, inputText, lastSymbolI
 			{generateKeyboardRows(keyboardLayout)}
 		</div>
 	);
+}
+
+
+KeyboardComponent.propTypes = {
+	keyboardLayout: PropTypes.array,
+	text: PropTypes.string,
+	inputText: PropTypes.string,
+	lastSymbolInput: PropTypes.string,
+	lastSymbolError: PropTypes.bool,
 }

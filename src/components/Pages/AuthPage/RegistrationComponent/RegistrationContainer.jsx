@@ -1,19 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import {connect} from 'react-redux';
-import {RegistrationForm} from "./Registration";
+import {RegistrationForm} from "./RegistrationForm";
 import {bindActionCreators} from "redux";
 import {setUserActionCreator} from "../../../../store/actionCreators/userActionCreators";
 import {registration} from "../../../../utils/api/authApi";
 import {Redirect} from "react-router-dom";
-
-function mapDispatchToProps(dispatch) {
-	return {
-		setUser: bindActionCreators(setUserActionCreator, dispatch)
-	};
-}
+import PropTypes from "prop-types";
 
 const RegistrationContainer = (props) => {
-
 	const [error, setError] = useState(null);
 	const [isFormValid, setValidate] = useState(false);
 
@@ -29,11 +23,22 @@ const RegistrationContainer = (props) => {
 	}
 
 	return isFormValid ? (<Redirect to="/" />) : (
-		<RegistrationForm onSubmit={handleSubmit} isFormValid={isFormValid} formError={error} {...props} />
+		<RegistrationForm onSubmit={handleSubmit} formError={error} {...props} />
 	);
+}
+
+function mapDispatchToProps(dispatch) {
+	return {
+		setUser: bindActionCreators(setUserActionCreator, dispatch)
+	};
 }
 
 export default connect(
 	null,
 	mapDispatchToProps
 )(RegistrationContainer);
+
+
+RegistrationContainer.propTypes = {
+	setUser: PropTypes.func
+}

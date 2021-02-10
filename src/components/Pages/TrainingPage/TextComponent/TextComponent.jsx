@@ -1,7 +1,9 @@
 import React from "react";
 import './TextComponent.scss';
+import PropTypes from "prop-types";
 
-export function TextComponent({ text, inputTextLength, lastSymbolError, endState }) {
+export function TextComponent({ text, inputText, lastSymbolError, endState }) {
+	const inputTextLength = inputText.length;
 
 	const renderText = (text) => {
 		return text.split('').map((char, index) => {
@@ -42,4 +44,12 @@ export function TextComponent({ text, inputTextLength, lastSymbolError, endState
 			}
 		</div>
 	);
+}
+
+
+TextComponent.propTypes = {
+	text: PropTypes.string,
+	inputText: PropTypes.string,
+	lastSymbolError: PropTypes.bool,
+	endState: PropTypes.bool
 }

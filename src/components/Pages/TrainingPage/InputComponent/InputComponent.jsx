@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react';
 import './InputComponent.scss'
+import PropTypes from "prop-types";
 
 export const InputComponent = ({ forwardRef, text, inputText, onChange, setEndTypingState }) => {
 
@@ -21,4 +22,13 @@ export const InputComponent = ({ forwardRef, text, inputText, onChange, setEndTy
 			/>
 		</div>
 	);
+}
+
+
+InputComponent.propTypes = {
+	text: PropTypes.string,
+	inputText: PropTypes.string,
+	onChange: PropTypes.func,
+	setEndTypingState: PropTypes.func,
+	forwardRef: PropTypes.object
 }

@@ -3,9 +3,9 @@ import {Route, Switch} from "react-router-dom";
 import LoginContainer from "./LoginComponent/LoginContainer";
 import RegistrationContainer from "./RegistrationComponent/RegistrationContainer";
 import './AuthPage.scss'
+import PropTypes from "prop-types";
 
 export const AuthPage = ({match})  => {
-
 	return (
 		<div className="auth">
 			<Switch>
@@ -14,5 +14,10 @@ export const AuthPage = ({match})  => {
 			</Switch>
 		</div>
 	);
+}
+
+
+AuthPage.propTypes = {
+	match: PropTypes.object
 }
 
