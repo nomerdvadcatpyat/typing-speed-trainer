@@ -5,6 +5,17 @@ import {bindActionCreators} from "redux";
 import {getIsAuth} from "../../store/selectors/userSelectors";
 import {logoutActionCreator} from "../../store/actionCreators/userActionCreators";
 import {logout as logoutApi} from "../../utils/api/authApi";
+import PropTypes from "prop-types";
+
+const HeaderContainer = (props) => {
+	const logout = () => {
+		logoutApi();
+		props.logoutActionCreate();
+	}
+	return (
+		<Header {...props} onLogout={logout} />
+	);
+}
 
 function mapStateToProps(state) {
 	return {
@@ -18,19 +29,13 @@ function mapDispatchToProps(dispatch) {
 	};
 }
 
-const HeaderContainer = (props) => {
-
-	const logout = () => {
-		logoutApi();
-		props.logoutActionCreate();
-	}
-
-	return (
-		<Header {...props} onLogout={logout} />
-	);
-}
-
 export default connect(
 	mapStateToProps,
 	mapDispatchToProps
 )(HeaderContainer);
+
+
+HeaderContainer.propTypes = {
+	isAuth: PropTypes.bool,
+	logoutActionCreate: PropTypes.func
+}

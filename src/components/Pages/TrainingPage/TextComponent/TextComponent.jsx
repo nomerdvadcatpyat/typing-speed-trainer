@@ -1,26 +1,22 @@
 import React from "react";
 import './TextComponent.scss';
+import PropTypes from "prop-types";
 
-export function TextComponent({ text, inputTextLength, lastSymbolError, endState }) {
+export function TextComponent({ text, inputText, endState, firstErrorSymbolIndex }) {
 
 	const renderText = (text) => {
 		return text.split('').map((char, index) => {
-			if(index < inputTextLength) {
-				return(
-					<span key={index} className="passed-symbol">{char}</span>
-				);
-			}
-			else if(index === inputTextLength) {
-				if(lastSymbolError) {
-					return <span key={index} className="error-symbol">{char}</span>
-				}
-				else {
-					return <span key={index} className="current-symbol">{char}</span>
-				}
-			}
-			else {
+			if(index < firstErrorSymbolIndex)
+				return <span key={index} className="passed-symbol">{char}</span>
+
+			else if(index >= firstErrorSymbolIndex && index < inputText.length)
+				return <span key={index} className="error-symbol">{char}</span>
+
+			else if(firstErrorSymbolIndex === inputText.length && index === inputText.length)
+				return <span key={index} className="current-symbol">{char}</span>
+
+			else
 				return <span key={index}>{char}</span>
-			}
 		});
 	}
 
@@ -42,4 +38,12 @@ export function TextComponent({ text, inputTextLength, lastSymbolError, endState
 			}
 		</div>
 	);
+}
+
+
+TextComponent.propTypes = {
+	text: PropTypes.string,
+	inputText: PropTypes.string,
+	endState: PropTypes.bool,
+	firstErrorSymbolIndex: PropTypes.number
 }

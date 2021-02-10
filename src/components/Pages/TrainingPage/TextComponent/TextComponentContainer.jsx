@@ -1,24 +1,33 @@
 import React from 'react';
 import {TextComponent} from './TextComponent';
-import {connect} from 'react-redux'
-import {getEndState, getInputText, getLastSymbolError, getText} from "../../../../store/selectors/trainingPage";
+import PropTypes from "prop-types";
 
 
+export const TextComponentContainer = ({inputText, hasError, text, ...otherProps}) => {
 
-const TextComponentContainer = (props) => {
+	let firstErrorSymbolIndex = inputText.length;
+	if(hasError) {
+		for(let i = 0; i < inputText.length; i++) {
+			if(inputText[i] !== text[i]) {
+				firstErrorSymbolIndex = i;
+				break;
+			}
+		}
+	}
+
 	return (
-		<TextComponent {...props}/>
+		<TextComponent
+			firstErrorSymbolIndex={firstErrorSymbolIndex}
+			text={text}
+			inputText={inputText}
+			{...otherProps}/>
 	);
 }
 
-const mapStateToProps = (state) => {
-	return {
-		text: getText(state),
-		inputTextLength: getInputText(state).length,
-		lastSymbolError: getLastSymbolError(state),
-		endState: getEndState(state)
-	}
+
+TextComponentContainer.propTypes = {
+	text: PropTypes.string,
+	inputText: PropTypes.string,
+	hasError: PropTypes.bool,
+	otherProps: PropTypes.array
 }
-
-
-export default connect(mapStateToProps)(TextComponentContainer)

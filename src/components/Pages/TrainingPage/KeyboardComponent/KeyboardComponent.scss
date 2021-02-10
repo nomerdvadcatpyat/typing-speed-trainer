@@ -17,7 +17,6 @@
 
   .fourth-char-row {
     position: relative;
-    //right: 4rem;
   }
 
   &__char-key {
@@ -38,10 +37,21 @@
       width: 20rem;
     }
 
-    &_shift {
-      width: 5rem;
+    &_left-shift, &_right-shift {
+      width: 10rem;
       position: absolute;
+    }
+
+    &_left-shift {
       left: 0;
+    }
+
+    &_right-shift {
+      right: 0;
+    }
+
+    &_backspace {
+      width: 10rem;
     }
   }
 
