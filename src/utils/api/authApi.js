@@ -7,11 +7,8 @@ export const registration = async ({email, password, rePassword}) => {
 			password,
 			rePassword
 		});
-
 		localStorage.setItem('token', response.data.token);
-
 		return response.data.user;
-
 	} catch (e) {
 		throw e;
 	}
@@ -24,11 +21,8 @@ export const login = async ({email, password}) => {
 			email,
 			password
 		});
-
 		localStorage.setItem('token', response.data.token);
-
 		return response.data.user;
-
 	} catch (e) {
 		throw e;
 	}

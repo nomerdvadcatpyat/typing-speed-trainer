@@ -9,7 +9,8 @@ export function Header({ isAuth, onLogout }) {
 			<nav>
 				<Link to="/rating"> Рейтинг </Link>
 				<Link to="/training"> Тренировка </Link>
-				{ isAuth? <Link onClick={onLogout}> Выход </Link> : <Link to="/auth/login"> Вход </Link> }
+				{ isAuth? <span className="header__logout-button" onClick={onLogout}> Выход </span> :
+					<Link className="header__login-button" to="/auth/login"> Вход </Link> }
 			</nav>
 		</header>
 	);

@@ -1,0 +1,376 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<LoginForm /> should be mounted 1`] = `
+<FormWithFormik
+  InnerForm={[Function]}
+  values={
+    Object {
+      "email": "test@test.com",
+      "password": "111",
+    }
+  }
+>
+  <BrowserRouter>
+    <Router
+      history={
+        Object {
+          "action": "POP",
+          "block": [Function],
+          "createHref": [Function],
+          "go": [Function],
+          "goBack": [Function],
+          "goForward": [Function],
+          "length": 1,
+          "listen": [Function],
+          "location": Object {
+            "hash": "",
+            "pathname": "/",
+            "search": "",
+            "state": undefined,
+          },
+          "push": [Function],
+          "replace": [Function],
+        }
+      }
+    >
+      <LoginForm
+        errors={Object {}}
+        handleBlur={[Function]}
+        handleChange={[Function]}
+        handleSubmit={[MockFunction]}
+        isSubmitting={false}
+        touched={Object {}}
+        values={
+          Object {
+            "email": "test@test.com",
+            "password": "111",
+          }
+        }
+      >
+        <form
+          className="auth-form login"
+          onSubmit={[MockFunction]}
+        >
+          <AuthInput
+            className=""
+            icon="email"
+            id="login-email-input"
+            labelText="Email"
+            name="email"
+            onBlur={[Function]}
+            onChange={[Function]}
+            type="text"
+            value="test@test.com"
+          >
+            <div
+              className="auth-input input-field"
+            >
+              <i
+                className="auth-input__icon small material-icons"
+              >
+                email
+              </i>
+              <Field
+                className=""
+                id="login-email-input"
+                name="email"
+                onBlur={[Function]}
+                onChange={[Function]}
+                type="text"
+                value="test@test.com"
+              >
+                <input
+                  className=""
+                  id="login-email-input"
+                  name="email"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  type="text"
+                  value="test@test.com"
+                />
+              </Field>
+              <label
+                htmlFor="login-email-input"
+              >
+                Email
+              </label>
+            </div>
+          </AuthInput>
+          <AuthInput
+            className=""
+            icon="lock"
+            id="login-password-input"
+            labelText="Password"
+            name="password"
+            onBlur={[Function]}
+            onChange={[Function]}
+            type="password"
+            value="111"
+          >
+            <div
+              className="auth-input input-field"
+            >
+              <i
+                className="auth-input__icon small material-icons"
+              >
+                lock
+              </i>
+              <Field
+                className=""
+                id="login-password-input"
+                name="password"
+                onBlur={[Function]}
+                onChange={[Function]}
+                type="password"
+                value="111"
+              >
+                <input
+                  className=""
+                  id="login-password-input"
+                  name="password"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  type="password"
+                  value="111"
+                />
+              </Field>
+              <label
+                htmlFor="login-password-input"
+              >
+                Password
+              </label>
+            </div>
+          </AuthInput>
+          <button
+            className="btn waves-effect auth-form__submit"
+            disabled={false}
+            type="submit"
+          >
+            Submit
+          </button>
+          <Link
+            className="auth-form__link-to-register"
+            to="/auth/registration"
+          >
+            <LinkAnchor
+              className="auth-form__link-to-register"
+              href="/auth/registration"
+              navigate={[Function]}
+            >
+              <a
+                className="auth-form__link-to-register"
+                href="/auth/registration"
+                onClick={[Function]}
+              >
+                 Нет аккаунта? Зарегистрироваться 
+              </a>
+            </LinkAnchor>
+          </Link>
+        </form>
+      </LoginForm>
+    </Router>
+  </BrowserRouter>
+</FormWithFormik>
+`;
+
+exports[`<RegistrationForm /> should be mounted 1`] = `
+<FormWithFormik
+  InnerForm={[Function]}
+  values={
+    Object {
+      "email": "test@test.com",
+      "password": "111",
+      "rePassword": "111",
+    }
+  }
+>
+  <BrowserRouter>
+    <Router
+      history={
+        Object {
+          "action": "POP",
+          "block": [Function],
+          "createHref": [Function],
+          "go": [Function],
+          "goBack": [Function],
+          "goForward": [Function],
+          "length": 1,
+          "listen": [Function],
+          "location": Object {
+            "hash": "",
+            "pathname": "/",
+            "search": "",
+            "state": undefined,
+          },
+          "push": [Function],
+          "replace": [Function],
+        }
+      }
+    >
+      <RegistrationForm
+        errors={Object {}}
+        handleBlur={[Function]}
+        handleChange={[Function]}
+        handleSubmit={[MockFunction]}
+        isSubmitting={false}
+        touched={Object {}}
+        values={
+          Object {
+            "email": "test@test.com",
+            "password": "111",
+            "rePassword": "111",
+          }
+        }
+      >
+        <form
+          className="auth-form registration"
+          onSubmit={[MockFunction]}
+        >
+          <AuthInput
+            className=""
+            icon="email"
+            id="register-email-input"
+            labelText="Email"
+            name="email"
+            onBlur={[Function]}
+            onChange={[Function]}
+            type="text"
+            value="test@test.com"
+          >
+            <div
+              className="auth-input input-field"
+            >
+              <i
+                className="auth-input__icon small material-icons"
+              >
+                email
+              </i>
+              <Field
+                className=""
+                id="register-email-input"
+                name="email"
+                onBlur={[Function]}
+                onChange={[Function]}
+                type="text"
+                value="test@test.com"
+              >
+                <input
+                  className=""
+                  id="register-email-input"
+                  name="email"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  type="text"
+                  value="test@test.com"
+                />
+              </Field>
+              <label
+                htmlFor="register-email-input"
+              >
+                Email
+              </label>
+            </div>
+          </AuthInput>
+          <AuthInput
+            className=""
+            icon="lock"
+            id="register-password-input"
+            labelText="Password"
+            name="password"
+            onBlur={[Function]}
+            onChange={[Function]}
+            type="password"
+            value="111"
+          >
+            <div
+              className="auth-input input-field"
+            >
+              <i
+                className="auth-input__icon small material-icons"
+              >
+                lock
+              </i>
+              <Field
+                className=""
+                id="register-password-input"
+                name="password"
+                onBlur={[Function]}
+                onChange={[Function]}
+                type="password"
+                value="111"
+              >
+                <input
+                  className=""
+                  id="register-password-input"
+                  name="password"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  type="password"
+                  value="111"
+                />
+              </Field>
+              <label
+                htmlFor="register-password-input"
+              >
+                Password
+              </label>
+            </div>
+          </AuthInput>
+          <AuthInput
+            className=""
+            icon="lock_outline"
+            id="register-re-password-input"
+            labelText="Confirm password"
+            name="rePassword"
+            onBlur={[Function]}
+            onChange={[Function]}
+            type="password"
+            value="111"
+          >
+            <div
+              className="auth-input input-field"
+            >
+              <i
+                className="auth-input__icon small material-icons"
+              >
+                lock_outline
+              </i>
+              <Field
+                className=""
+                id="register-re-password-input"
+                name="rePassword"
+                onBlur={[Function]}
+                onChange={[Function]}
+                type="password"
+                value="111"
+              >
+                <input
+                  className=""
+                  id="register-re-password-input"
+                  name="rePassword"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  type="password"
+                  value="111"
+                />
+              </Field>
+              <label
+                htmlFor="register-re-password-input"
+              >
+                Confirm password
+              </label>
+            </div>
+          </AuthInput>
+          <button
+            className="btn waves-effect auth-form__submit"
+            disabled={false}
+            type="submit"
+          >
+            Submit
+          </button>
+        </form>
+      </RegistrationForm>
+    </Router>
+  </BrowserRouter>
+</FormWithFormik>
+`;
