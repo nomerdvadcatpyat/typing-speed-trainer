@@ -13,6 +13,7 @@ const HeaderContainer = (props) => {
 		props.logoutActionCreate();
 	}
 
+  
 	return (
 		<Header {...props} onLogout={logout} />
 	);
