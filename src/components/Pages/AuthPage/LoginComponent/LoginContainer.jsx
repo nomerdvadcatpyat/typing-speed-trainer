@@ -1,32 +1,19 @@
 import React, {useState} from 'react';
 import {connect} from 'react-redux';
-import {bindActionCreators} from "redux";
+import {bindActionCreators, compose} from "redux";
 import {setUserActionCreator} from "../../../../store/actionCreators/userActionCreators";
 import {LoginForm} from "./LoginForm";
 import {login} from "../../../../utils/api/authApi";
 import {Redirect} from "react-router-dom";
 import PropTypes from "prop-types";
+import {Formik, withFormik} from "formik";
+import {loginSchema} from "../../../../utils/validators/authValidation";
 
 
 const LoginContainer = (props) => {
-	const [error, setError] = useState(null);
-	const [isFormValid, setValidate] = useState(false);
-
-	const submitHandler = async (user) => {
-		try {
-			await login(user);
-			setValidate(true);
-			props.setUser(user);
-		} catch (e) {
-			setError(e.response.data.error);
-			setValidate(false);
-		}
-	}
-
-	return isFormValid ? (<Redirect to="/" />) :
-				(<LoginForm onSubmit={submitHandler} formError={error} {...props} />)
+	return props.status && props.status.success ? (<Redirect to="/" />) :
+				(<LoginForm {...props} />)
 }
-
 
 
 const mapDispatchToProps = (dispatch) => {
@@ -35,9 +22,27 @@ const mapDispatchToProps = (dispatch) => {
 	};
 }
 
-export default connect(
-	null,
-	mapDispatchToProps
+async function handleSubmit(values, { props, setErrors, setStatus }) {
+	try {
+		await login(values);
+		setStatus({ success: true});
+		props.setUser(values);
+	} catch (e) {
+		setErrors({ all: e.response.data.error });
+	}
+}
+
+
+export default compose(
+	connect(null, mapDispatchToProps),
+	withFormik({
+		mapPropsToValues: () => ({
+			email: "",
+			password: ""
+		}),
+		handleSubmit,
+		validationSchema: loginSchema
+	})
 )(LoginContainer);
 
 

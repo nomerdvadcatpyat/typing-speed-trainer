@@ -1,41 +1,50 @@
 import React, {useEffect, useState} from 'react';
 import {connect} from 'react-redux';
 import {RegistrationForm} from "./RegistrationForm";
-import {bindActionCreators} from "redux";
+import {bindActionCreators, compose} from "redux";
 import {setUserActionCreator} from "../../../../store/actionCreators/userActionCreators";
-import {registration} from "../../../../utils/api/authApi";
+import {login, registration} from "../../../../utils/api/authApi";
 import {Redirect} from "react-router-dom";
 import PropTypes from "prop-types";
 
+import {withFormik} from "formik";
+import {loginSchema, registrationSchema} from "../../../../utils/validators/authValidation";
+
+
 const RegistrationContainer = (props) => {
-	const [error, setError] = useState(null);
-	const [isFormValid, setValidate] = useState(false);
-
-	const handleSubmit = async (user) => {
-		try {
-			await registration(user);
-			setValidate(true);
-			props.setUser(user);
-		} catch (e) {
-			setError(e.response.data.error)
-			setValidate(false);
-		}
-	}
-
-	return isFormValid ? (<Redirect to="/" />) : (
-		<RegistrationForm onSubmit={handleSubmit} formError={error} {...props} />
+	return props.status && props.status.success ? (<Redirect to="/" />) : (
+		<RegistrationForm {...props} />
 	);
 }
 
-function mapDispatchToProps(dispatch) {
+const mapDispatchToProps = dispatch => {
 	return {
 		setUser: bindActionCreators(setUserActionCreator, dispatch)
 	};
 }
 
-export default connect(
-	null,
-	mapDispatchToProps
+async function handleSubmit(values, { props, setErrors, setStatus }) {
+	try {
+		await registration(values);
+		setStatus({ success: true});
+		props.setUser(values);
+	} catch (e) {
+		setErrors({ all: e.response.data.error });
+	}
+}
+
+
+export default compose(
+	connect(null, mapDispatchToProps),
+	withFormik({
+		mapPropsToValues: () => ({
+			email: "",
+			password: "",
+			rePassword: ""
+		}),
+		handleSubmit,
+		validationSchema: registrationSchema
+	})
 )(RegistrationContainer);
 
 

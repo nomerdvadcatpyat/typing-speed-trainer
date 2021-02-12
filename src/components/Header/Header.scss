@@ -10,16 +10,19 @@
     justify-content: space-around;
     align-items: center;
 
-    a {
+    a, span {
       color: black;
       text-decoration: none;
-      :active {
+      &:active {
         color: black;
       }
-
-      .current {
+      &.current {
         color: gray;
       }
+    }
+
+    span:hover {
+      cursor: pointer;
     }
   }
 

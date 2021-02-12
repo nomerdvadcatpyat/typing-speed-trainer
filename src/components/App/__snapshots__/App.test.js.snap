@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<App /> App should be render with auth 1`] = `
+<div
+  className="App"
+>
+  <Connect(HeaderContainer) />
+  <Switch>
+    <Route
+      component={[Function]}
+      path="/training"
+    />
+  </Switch>
+</div>
+`;
+
+exports[`<App /> Should be render with loading 1`] = `
+<div
+  className="App"
+>
+  <Ring
+    className="main-spinner"
+    color="#7f58af"
+    size={80}
+    style={Object {}}
+  />
+</div>
+`;
