@@ -1,9 +1,11 @@
 import React from 'react';
 import {TextComponent} from './TextComponent';
 import PropTypes from "prop-types";
+import {connect} from "react-redux";
+import {getInputText, getText, getTypingState} from "../../../../store/selectors/trainingSpeedSelectors";
 
 
-export const TextComponentContainer = ({inputText, hasError, text, ...otherProps}) => {
+export const TextComponentContainer = ({inputText, text, hasError, ...otherProps}) => {
 
 	let firstErrorSymbolIndex = inputText.length;
 	if(hasError) {
@@ -23,6 +25,16 @@ export const TextComponentContainer = ({inputText, hasError, text, ...otherProps
 			{...otherProps}/>
 	);
 }
+
+const mapStateToProps = state => {
+	return {
+		text: getText(state),
+		inputText: getInputText(state),
+		endState: getTypingState(state).END
+	}
+}
+
+export default connect(mapStateToProps)(TextComponentContainer)
 
 
 TextComponentContainer.propTypes = {

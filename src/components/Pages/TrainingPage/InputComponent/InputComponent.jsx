@@ -1,12 +1,11 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import './InputComponent.scss'
 import PropTypes from "prop-types";
 
-export const InputComponent = ({ forwardRef, inputText, setInputText, hasError }) => {
+export const InputComponent = ({ inputText, setInputText, hasError }) => {
 	return (
 		<div className="input-wrap">
 			<input
-				ref={forwardRef}
 				autoFocus={true}
 				className={`text-input ${hasError ? 'error-input' : ''}`}
 				value={inputText}

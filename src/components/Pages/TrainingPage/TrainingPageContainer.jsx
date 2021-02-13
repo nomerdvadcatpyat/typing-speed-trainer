@@ -1,63 +1,49 @@
-import React, {useState, useEffect, useRef} from 'react';
+import React, {useEffect} from 'react';
 import {TrainingPage} from "./TrainingPage";
-import {texts} from "../../../utils/texts";
-import {keyboardLayouts} from "../../../utils/keyboardLayouts";
+import {connect} from "react-redux";
+import {
+	getInputText,
+	getText, getTypingState
+} from "../../../store/selectors/trainingSpeedSelectors";
+import {bindActionCreators} from "redux";
+import {setEndState, setIdleState} from "../../../store/actionCreators/trainingSpeedActionCreators";
 
 
-export const TrainingPageContainer = () => {
 
-	const [text, setText] = useState(texts["Lorem ipsum"]);
-	const [inputText, setInputText] = useState('');
-	const [endState, setEndState] = useState(false);
-	const [keyboardLayout, setKeyboardLayout] = useState(keyboardLayouts.en);
+const TrainingPageContainer = (props) => {
 
-	const hasError = !text.startsWith(inputText);
+	const hasError = !props.text.startsWith(props.inputText);
 
-	if(!endState && text === inputText) {
-		if(!endState) setEndState(true);
-		console.log('set end state true', true);
+	if(props.state.TYPING && props.text === props.inputText) {
+		props.setEndState();
 	}
-
-	const clearTraining = () => {
-		console.log('clear training');
-		setText(texts["Lorem ipsum"]);
-		setInputText('');
-		setEndState(false);
-		setKeyboardLayout(keyboardLayouts.en);
-	}
-
-	const startSameText = () => {
-		console.log('start same text');
-		setText(text);
-		setInputText('');
-		setEndState(false);
-		setKeyboardLayout(keyboardLayouts.en);
-	}
-
-	const inputRef = useRef(null);
-
-	const startSameTextButtonClickHandler = () => {
-		startSameText();
-		inputRef.current.focus();
-	}
-
 
 	useEffect(() => {
-		return () => {
-			clearTraining();
-		}
+		return () => props.setIdleState();
 	}, []);
 
 	return (
 		<TrainingPage
-			text={text}
-			inputText={inputText}
-			setInputText={setInputText}
-			endState={endState}
-			keyboardLayout={keyboardLayout}
 			hasError={hasError}
-			forwardInputRef={inputRef}
-			startSameTextButtonClickHandler={startSameTextButtonClickHandler}
+			state={props.state}
 		/>
 	);
 }
+
+
+const mapStateToProps = state => {
+	return {
+		text: getText(state),
+		inputText: getInputText(state),
+		state: getTypingState(state)
+	}
+}
+
+const mapDispatchToProps = dispatch => {
+	return {
+		setEndState: bindActionCreators(setEndState, dispatch),
+		setIdleState: bindActionCreators(setIdleState, dispatch)
+	}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(TrainingPageContainer);

@@ -28,7 +28,6 @@ export function TextComponent({ text, inputText, endState, firstErrorSymbolIndex
 		});
 	}
 
-
 	return (
 		<div className="text-container">
 			{

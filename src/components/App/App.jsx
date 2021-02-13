@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.scss'
 import { Route, Switch } from 'react-router-dom';
-import {TrainingPageContainer} from "../Pages/TrainingPage/TrainingPageContainer";
+import TrainingPageContainer from "../Pages/TrainingPage/TrainingPageContainer";
 import {AuthPage} from "../Pages/AuthPage/AuthPage";
 import HeaderContainer from "../Header/HeaderContainer";
 import {Ring} from "react-spinners-css";

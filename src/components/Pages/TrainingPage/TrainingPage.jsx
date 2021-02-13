@@ -1,56 +1,50 @@
 import React from "react";
-import {TextComponentContainer} from "./TextComponent/TextComponentContainer";
-import {InputComponent} from "./InputComponent/InputComponent";
-import {KeyboardComponentContainer} from "./KeyboardComponent/KeyboardComponentContainer";
+import TextComponentContainer from "./TextComponent/TextComponentContainer";
+import InputComponent from "./InputComponent/InputComponentContainer";
+import KeyboardComponentContainer from "./KeyboardComponent/KeyboardComponentContainer";
 import './TrainingPage.scss';
 import PropTypes from "prop-types";
-
+import CountUpTimerContainer from "./Timers/CountUpTimer/CountUpTimerContainer";
+import StartSameTextButtonContainer from "./Buttons/StartSameTextButtonComponent/StartSameTextButtonContainer";
+import StartNewTextButtonContainer from "./Buttons/StartNewTextButton/StartNewTextButtonContainer";
+import CountDownTimerContainer from "./Timers/CountDownTimer/CountDownTimerContainer";
 
 
 export const TrainingPage = ({
-															text,
-															inputText,
-															setInputText,
-															endState,
-															keyboardLayout,
-															hasError,
-															forwardInputRef,
-															startSameTextButtonClickHandler
+	                             state,
+	                             hasError
                              }) => {
 
 	return (
 		<div className="training-page">
-			<TextComponentContainer
-				text={text}
-				inputText={inputText}
-				endState={endState}
-				hasError={hasError}
-			/>
 
-
-			<InputComponent
-				forwardRef={forwardInputRef}
-				inputText={inputText}
-				setInputText={setInputText}
-				hasError={hasError}
-			/>
-
+			<TextComponentContainer hasError={hasError} />
 
 			{
-				endState ?
-					(
-						<button autoFocus={true} className="training-page__repeat-button" onClick={startSameTextButtonClickHandler}>
-							Заново
-						</button>
-					) : null
+				state.PREPARE ?
+					<CountDownTimerContainer /> :
+						state.TYPING ? (
+							<>
+								<CountUpTimerContainer />
+								<InputComponent hasError={hasError} />
+								<KeyboardComponentContainer hasError={hasError} />
+							</>
+						) :
+						state.END ?
+							(
+								<>
+									<StartSameTextButtonContainer />
+									{/*<button className="training-page_switch-text-button">*/}
+									{/*	Выбрать другой текст*/}
+									{/*</button>*/}
+								</>
+							) :
+							state.IDLE ?
+							(
+								<StartNewTextButtonContainer />
+							) : null
 			}
 
-			<KeyboardComponentContainer
-				text={text}
-				inputText={inputText}
-				keyboardLayout={keyboardLayout}
-				hasError={hasError}
-			/>
 		</div>
 	);
 }
