@@ -44,7 +44,6 @@ export const TrainingPage = ({
 								<StartNewTextButtonContainer />
 							) : null
 			}
-
 		</div>
 	);
 }

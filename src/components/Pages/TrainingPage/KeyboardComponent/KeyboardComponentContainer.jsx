@@ -37,7 +37,6 @@ const mapStateToProps = state => {
 export default connect(mapStateToProps)(KeyboardComponentContainer)
 
 
-
 KeyboardComponentContainer.propTypes = {
 	keyboardLayout: PropTypes.array,
 	text: PropTypes.string,
