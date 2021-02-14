@@ -6,6 +6,7 @@ import {AuthInput} from "../../../FormCustomComponents/AuthInput/AuthInput";
 import PropTypes from "prop-types";
 import {bool} from "yup";
 
+
 export const RegistrationForm = (props) => {
 	const {
 		handleSubmit,

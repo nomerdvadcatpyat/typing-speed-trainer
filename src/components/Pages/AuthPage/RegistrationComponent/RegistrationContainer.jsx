@@ -6,6 +6,7 @@ import {setUserActionCreator} from "../../../../store/actionCreators/userActionC
 import {login, registration} from "../../../../utils/api/authApi";
 import {Redirect} from "react-router-dom";
 import PropTypes from "prop-types";
+
 import {withFormik} from "formik";
 import {loginSchema, registrationSchema} from "../../../../utils/validators/authValidation";
 
