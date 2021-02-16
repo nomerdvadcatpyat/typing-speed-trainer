@@ -7,7 +7,7 @@ import {
 } from "../../../store/selectors/trainingSpeedSelectors";
 import {bindActionCreators} from "redux";
 import {setEndState, setIdleState} from "../../../store/actionCreators/trainingSpeedActionCreators";
-
+import io from 'socket.io-client'
 
 
 const TrainingPageContainer = (props) => {
@@ -19,6 +19,9 @@ const TrainingPageContainer = (props) => {
 	}
 
 	useEffect(() => {
+		const socket = io("ws://localhost:3001", {
+		});
+
 		return () => props.setIdleState();
 	}, []);
 
