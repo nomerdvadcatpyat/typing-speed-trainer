@@ -1,11 +1,10 @@
 import {
 	SET_END_STATE, SET_ERROR_TYPING, SET_IDLE_STATE,
 	SET_INPUT_TEXT,
-	SET_KEYBOARD_LAYOUT, SET_NO_ERROR_TYPING, SET_PREPARE_STATE, SET_SAME_TEXT,
-	SET_TEXT, SET_TYPING_STATE, UPDATE_TIMER
+	SET_NO_ERROR_TYPING, SET_PREPARE_STATE,
+	SET_TYPING_STATE, UPDATE_TIMER
 } from "../actionTypes";
-import {texts} from "../../utils/texts";
-import {keyboardLayouts} from "../../utils/keyboardLayouts";
+
 
 const initialTypingState = {
 	IDLE: false,
@@ -20,9 +19,9 @@ const initialTimerState = {
 }
 
 const initialState = {
-	text: texts["Lorem ipsum"],
+	text: '',
 	inputText: '',
-	keyboardLayout: keyboardLayouts.en,
+	keyboardLayout: null,
 	state: initialTypingState,
 	timer: initialTimerState,
 }
@@ -40,6 +39,9 @@ export const trainingSpeedReducer = (state = initialState, action) => {
 		case SET_PREPARE_STATE: {
 			return {
 				...state,
+				inputText: '',
+				text: action.payload.text,
+				keyboardLayout: action.payload.keyboardLayout,
 				state: {
 					...initialTypingState,
 					IDLE: false,
@@ -83,31 +85,10 @@ export const trainingSpeedReducer = (state = initialState, action) => {
 			}
 		}
 
-		case SET_TEXT: {
-			return {
-				...state,
-				text: action.payload
-			}
-		}
-
-		case SET_SAME_TEXT: {
-			return {
-				...state,
-				inputText: ''
-			}
-		}
-
 		case SET_INPUT_TEXT: {
 			return {
 				...state,
 				inputText: action.payload
-			}
-		}
-
-		case SET_KEYBOARD_LAYOUT: {
-			return {
-				...state,
-				keyboardLayout: action.payload
 			}
 		}
 

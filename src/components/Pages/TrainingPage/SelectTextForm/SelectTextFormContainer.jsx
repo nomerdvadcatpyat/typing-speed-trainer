@@ -2,18 +2,17 @@ import React, {useState, useEffect} from 'react';
 import {SelectTextForm} from "./SelectTextForm";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
-import {setPrepareState, setText, setTypingState} from "../../../../store/actionCreators/trainingSpeedActionCreators";
-import {getSelectTextPageData, prepareToTyping} from "../../../../utils/api/trainingSpeedApi";
-import {setLoadedState, setLoadingState} from "../../../../store/actionCreators/appActionCreators";
-import {getIsLoading} from "../../../../store/selectors/appSelectors";
+import {setPrepareState, setTypingState} from "../../../../store/actionCreators/trainingSpeedActionCreators";
+import {getSelectedTextData, getSelectTextPageData, prepareToTyping} from "../../../../utils/api/trainingSpeedApi";
 
 
 const SelectTextFormContainer = props => {
 
 	const [values, setValues] = useState({ textTitles: null, lengths: null });
 
-	const [length, setLength] = useState(null);
-	const [textTitle, setTextTitle] = useState(null);
+	const [selectedValues, setSelectedValues] = useState({ textTitle: null, length: null });
+
+	const [isLoading, setIsLoading] = useState(true);
 
 	useEffect(() => {
 		getSelectTextPageData()
@@ -23,21 +22,22 @@ const SelectTextFormContainer = props => {
 				setValues({ textTitles, lengths });
 			})
 			.catch(console.log)
-			.finally();
+			.finally(() => setIsLoading(false));
 	}, []);
 
 
 	useEffect(() => {
 		if(values.textTitles && values.lengths) {
-			setLength(values.lengths[0]);
-			setTextTitle(values.textTitles[0]);
+			setSelectedValues({ textTitle: values.textTitles[0].title, length: values.lengths[0].title });
 		}
 	}, [values])
 
 
-	const handleSubmit = () => {
-		console.log(values);
-		props.setPrepareState();
+	const handleSubmit = async (e) => {
+		e.preventDefault();
+		console.log(selectedValues);
+		const data = await getSelectedTextData(selectedValues);
+		props.setPrepareState(data);
 		prepareToTyping()
 			.then(props.setTypingState)
 			.catch(console.log);
@@ -45,31 +45,22 @@ const SelectTextFormContainer = props => {
 
 	return <SelectTextForm
 		{...props}
-		isLoading={props.isLoading}
+		isLoading={isLoading}
 		texts={values.textTitles}
 		lengths={values.lengths}
 		handleSubmit={handleSubmit}
-		handleLengthChange={e => setLength(e.target.value)}
-		handleTextTitleChange={e => setTextTitle(e.target.value)}
-		length={length}
-		textTitle={textTitle}
+		handleLengthChange={e => setSelectedValues(prev => ({...prev,  length: e.target.value }))}
+		handleTextTitleChange={e => setSelectedValues(prev => ({...prev,  textTitle: e.target.value }))}
+		length={selectedValues.length}
+		textTitle={selectedValues.textTitle}
 	/>
 }
 
 const mapDispatchToProps = dispatch => {
 	return {
-		setLoadingState: bindActionCreators(setLoadingState, dispatch),
-		setLoadedState: bindActionCreators(setLoadedState, dispatch),
 		setPrepareState: bindActionCreators(setPrepareState, dispatch),
-		setTypingState: bindActionCreators(setTypingState, dispatch),
-		setText: bindActionCreators(setText, dispatch)
+		setTypingState: bindActionCreators(setTypingState, dispatch)
 	}
 }
 
-const mapStateToProps = state => {
-	return {
-		isLoading: getIsLoading(state)
-	}
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(SelectTextFormContainer)
+export default connect(null, mapDispatchToProps)(SelectTextFormContainer)

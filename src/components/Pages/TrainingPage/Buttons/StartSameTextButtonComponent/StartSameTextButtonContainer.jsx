@@ -3,17 +3,16 @@ import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import {
 	setPrepareState,
-	setSameText, setTypingState,
+	setTypingState,
 } from "../../../../../store/actionCreators/trainingSpeedActionCreators";
-import {getKeyboardLayout} from "../../../../../store/selectors/trainingSpeedSelectors";
+import {getKeyboardLayout, getText} from "../../../../../store/selectors/trainingSpeedSelectors";
 import {prepareToTyping} from "../../../../../utils/api/trainingSpeedApi";
 
 
 const StartSameTextButtonContainer = props => {
 
 	const startSameTextButtonClickHandler = () => {
-		props.setSameText();
-		props.setPrepareState();
+		props.setPrepareState({ text: props.text, keyboardLayout: props.keyboardLayout });
 		prepareToTyping()
 			.then(props.setTypingState)
 			.catch(console.log);
@@ -25,7 +24,6 @@ const StartSameTextButtonContainer = props => {
 
 const mapDispatchToProps = dispatch => {
 	return {
-		setSameText: bindActionCreators(setSameText, dispatch),
 		setTypingState: bindActionCreators(setTypingState, dispatch),
 		setPrepareState: bindActionCreators(setPrepareState, dispatch)
 	}
@@ -33,7 +31,8 @@ const mapDispatchToProps = dispatch => {
 
 const mapStateToProps = state => {
 	return {
-		keyboardLayout: getKeyboardLayout(state)
+		keyboardLayout: getKeyboardLayout(state),
+		text: getText(state)
 	}
 }
 

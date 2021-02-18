@@ -1,5 +1,7 @@
 import './SelectTextForm.scss';
 import {Select} from "../Selects/Select";
+import {Ring} from "react-spinners-css";
+import React from "react";
 
 export const SelectTextForm = props => {
 	const {
@@ -9,10 +11,11 @@ export const SelectTextForm = props => {
 		length,
 		textTitle,
 		texts,
-		lengths
+		lengths,
+		isLoading
 	} = props;
 
-	return (
+	return isLoading ? <Ring className="main-spinner" /> : (
 		<form onSubmit={handleSubmit}>
 			<Select
 				name="length"
