@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators, compose} from "redux";
 import {setUserActionCreator} from "../../../../store/actionCreators/userActionCreators";
@@ -6,7 +6,7 @@ import {LoginForm} from "./LoginForm";
 import {login} from "../../../../utils/api/authApi";
 import {Redirect} from "react-router-dom";
 import PropTypes from "prop-types";
-import {Formik, withFormik} from "formik";
+import {withFormik} from "formik";
 import {loginSchema} from "../../../../utils/validators/authValidation";
 
 
