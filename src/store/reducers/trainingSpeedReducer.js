@@ -8,7 +8,7 @@ import {texts} from "../../utils/texts";
 import {keyboardLayouts} from "../../utils/keyboardLayouts";
 
 const initialTypingState = {
-	IDLE: true,
+	IDLE: false,
 	PREPARE: false,
 	TYPING: false,
 	END: false
@@ -32,7 +32,7 @@ export const trainingSpeedReducer = (state = initialState, action) => {
 		case SET_IDLE_STATE: {
 			return {
 				...state,
-				state: {...initialTypingState},
+				state: {...initialTypingState, IDLE: true },
 				timer: {...initialTimerState}
 			}
 		}

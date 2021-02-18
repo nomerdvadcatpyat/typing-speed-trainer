@@ -1,8 +1,6 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 import '../AuthForm.scss'
-import {loginSchema} from "../../../../utils/validators/authValidation";
-import {Form, Formik} from "formik";
 import {AuthInput} from "../../../FormCustomComponents/AuthInput/AuthInput";
 import PropTypes from "prop-types";
 

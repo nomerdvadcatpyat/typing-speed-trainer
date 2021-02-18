@@ -19,7 +19,9 @@ const TrainingPageContainer = (props) => {
 	}
 
 	useEffect(() => {
+		props.setIdleState();
 		const socket = io("ws://localhost:3001", {
+
 		});
 
 		return () => props.setIdleState();
