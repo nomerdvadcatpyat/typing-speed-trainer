@@ -1,9 +1,9 @@
 import {
 	SET_END_STATE, SET_ERROR_TYPING, SET_IDLE_STATE,
 	SET_INPUT_TEXT,
-	SET_NO_ERROR_TYPING, SET_PREPARE_STATE,
+	SET_NO_ERROR_TYPING, SET_PREPARE_STATE, SET_ROOM_ID,
 	SET_TYPING_STATE, UPDATE_TIMER
-} from "../actionTypes";
+} from "../actionTypes/trainingPageActionTypes";
 
 
 const initialTypingState = {
@@ -19,19 +19,21 @@ const initialTimerState = {
 }
 
 const initialState = {
+	roomId: null,
 	text: '',
 	inputText: '',
 	keyboardLayout: null,
-	state: initialTypingState,
+	typingState: initialTypingState,
 	timer: initialTimerState,
 }
 
 export const trainingSpeedReducer = (state = initialState, action) => {
 	switch (action.type) {
+
 		case SET_IDLE_STATE: {
 			return {
-				...state,
-				state: {...initialTypingState, IDLE: true },
+				...initialState,
+				typingState: {...initialTypingState, IDLE: true },
 				timer: {...initialTimerState}
 			}
 		}
@@ -42,7 +44,7 @@ export const trainingSpeedReducer = (state = initialState, action) => {
 				inputText: '',
 				text: action.payload.text,
 				keyboardLayout: action.payload.keyboardLayout,
-				state: {
+				typingState: {
 					...initialTypingState,
 					IDLE: false,
 					PREPARE: true
@@ -54,7 +56,7 @@ export const trainingSpeedReducer = (state = initialState, action) => {
 		case SET_TYPING_STATE: {
 			return {
 				...state,
-				state: {
+				typingState: {
 					...initialTypingState,
 					TYPING: true
 				}
@@ -64,7 +66,7 @@ export const trainingSpeedReducer = (state = initialState, action) => {
 		case SET_END_STATE: {
 			return {
 				...state,
-				state: {
+				typingState: {
 					...initialTypingState,
 					END: true
 				}
@@ -96,6 +98,13 @@ export const trainingSpeedReducer = (state = initialState, action) => {
 			return {
 				...state,
 				timer: action.payload
+			}
+		}
+
+		case SET_ROOM_ID: {
+			return {
+				...state,
+				roomId: action.payload
 			}
 		}
 

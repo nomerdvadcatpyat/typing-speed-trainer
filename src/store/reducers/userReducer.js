@@ -1,4 +1,4 @@
-import {SET_USER, LOGOUT} from "../actionTypes";
+import {SET_USER, LOGOUT} from "../actionTypes/userActionTypes";
 
 export const userReducer = (state = {
 	currentUser: null,

@@ -1,4 +1,4 @@
-import {SET_LOADING_STATE, SET_LOADED_STATE} from "../actionTypes";
+import {SET_LOADING_STATE, SET_LOADED_STATE} from "../actionTypes/appActionTypes";
 
 const initialState = {
 	isLoading: true

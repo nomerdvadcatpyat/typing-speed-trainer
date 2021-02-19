@@ -7,15 +7,15 @@ import {
 } from "../../../../../store/actionCreators/trainingSpeedActionCreators";
 import {getKeyboardLayout, getText} from "../../../../../store/selectors/trainingSpeedSelectors";
 import {prepareToTyping} from "../../../../../utils/api/trainingSpeedApi";
+import {initSocket} from "../../../../../store/actionCreators/socketActionCreators";
 
 
 const StartSameTextButtonContainer = props => {
 
-	const startSameTextButtonClickHandler = () => {
+	const startSameTextButtonClickHandler = (e) => {
+		e.preventDefault();
 		props.setPrepareState({ text: props.text, keyboardLayout: props.keyboardLayout });
-		prepareToTyping()
-			.then(props.setTypingState)
-			.catch(console.log);
+		props.initSocket();
 	}
 
 	return <StartSameTextButton {...props} startSameText={startSameTextButtonClickHandler}/>
@@ -25,7 +25,8 @@ const StartSameTextButtonContainer = props => {
 const mapDispatchToProps = dispatch => {
 	return {
 		setTypingState: bindActionCreators(setTypingState, dispatch),
-		setPrepareState: bindActionCreators(setPrepareState, dispatch)
+		setPrepareState: bindActionCreators(setPrepareState, dispatch),
+		initSocket: bindActionCreators(initSocket, dispatch)
 	}
 }
 

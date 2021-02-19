@@ -1,7 +1,7 @@
 
 
 export const getTypingState = state => {
-	return state.trainingSpeed.state
+	return state.trainingSpeed.typingState;
 }
 
 export const getText = state => {

@@ -1,0 +1,4 @@
+
+export const SET_LOADING_STATE = "APP/SET_LOADING_STATE";
+
+export const SET_LOADED_STATE = "APP/SET_LOADED_STATE";

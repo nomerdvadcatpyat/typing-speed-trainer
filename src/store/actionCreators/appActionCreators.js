@@ -1,4 +1,4 @@
-import {SET_LOADED_STATE, SET_LOADING_STATE} from "../actionTypes";
+import {SET_LOADED_STATE, SET_LOADING_STATE} from "../actionTypes/appActionTypes";
 
 export const setLoadingState = () => {
 	return {

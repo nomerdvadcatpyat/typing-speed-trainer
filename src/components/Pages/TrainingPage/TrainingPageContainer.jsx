@@ -8,6 +8,7 @@ import {
 import {bindActionCreators} from "redux";
 import {setEndState, setIdleState} from "../../../store/actionCreators/trainingSpeedActionCreators";
 import io from 'socket.io-client'
+import {disconnectSocket} from "../../../store/actionCreators/socketActionCreators";
 
 
 const TrainingPageContainer = (props) => {
@@ -18,13 +19,13 @@ const TrainingPageContainer = (props) => {
 		props.setEndState();
 	}
 
+
 	useEffect(() => {
 		props.setIdleState();
-		const socket = io("ws://localhost:3001", {
-
-		});
-
-		return () => props.setIdleState();
+		return () => {
+			props.disconnectSocket();
+			props.setIdleState();
+		}
 	}, []);
 
 	return (
@@ -46,6 +47,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
 	return {
+		disconnectSocket: bindActionCreators(disconnectSocket, dispatch),
 		setEndState: bindActionCreators(setEndState, dispatch),
 		setIdleState: bindActionCreators(setIdleState, dispatch)
 	}

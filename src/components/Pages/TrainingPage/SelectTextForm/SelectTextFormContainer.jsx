@@ -4,44 +4,39 @@ import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import {setPrepareState, setTypingState} from "../../../../store/actionCreators/trainingSpeedActionCreators";
 import {getSelectedTextData, getSelectTextPageData, prepareToTyping} from "../../../../utils/api/trainingSpeedApi";
+import {getTypingState} from "../../../../store/selectors/trainingSpeedSelectors";
+import {initSocket} from "../../../../store/actionCreators/socketActionCreators";
 
 
 const SelectTextFormContainer = props => {
 
 	const [values, setValues] = useState({ textTitles: null, lengths: null });
-
 	const [selectedValues, setSelectedValues] = useState({ textTitle: null, length: null });
-
 	const [isLoading, setIsLoading] = useState(true);
 
 	useEffect(() => {
 		getSelectTextPageData()
 			.then(data => {
-				const lengths = data.lengths.map(str => ({title: str}));
-				const textTitles = data.textTitles;
-				setValues({ textTitles, lengths });
+				setValues({ textTitles: data.textTitles, lengths: data.lengths });
 			})
 			.catch(console.log)
 			.finally(() => setIsLoading(false));
 	}, []);
 
-
 	useEffect(() => {
 		if(values.textTitles && values.lengths) {
-			setSelectedValues({ textTitle: values.textTitles[0].title, length: values.lengths[0].title });
+			setSelectedValues({ textTitle: values.textTitles[0], length: values.lengths[0] });
 		}
-	}, [values])
+	}, [values]);
 
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		console.log(selectedValues);
 		const data = await getSelectedTextData(selectedValues);
+		props.initSocket();
 		props.setPrepareState(data);
-		prepareToTyping()
-			.then(props.setTypingState)
-			.catch(console.log);
 	}
+
 
 	return <SelectTextForm
 		{...props}
@@ -58,9 +53,16 @@ const SelectTextFormContainer = props => {
 
 const mapDispatchToProps = dispatch => {
 	return {
+		initSocket: bindActionCreators(initSocket, dispatch),
 		setPrepareState: bindActionCreators(setPrepareState, dispatch),
 		setTypingState: bindActionCreators(setTypingState, dispatch)
 	}
 }
 
-export default connect(null, mapDispatchToProps)(SelectTextFormContainer)
+const mapStateToProps = state => {
+	return {
+		typingState: getTypingState(state)
+	}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SelectTextFormContainer)

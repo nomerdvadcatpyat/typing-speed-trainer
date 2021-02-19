@@ -1,4 +1,4 @@
-import {LOGOUT, SET_USER} from "../actionTypes";
+import {LOGOUT, SET_USER} from "../actionTypes/userActionTypes";
 
 
 export const setUserActionCreator = user => ({type: SET_USER, payload: user});

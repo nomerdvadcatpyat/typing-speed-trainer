@@ -5,7 +5,7 @@ import KeyboardComponentContainer from "./KeyboardComponent/KeyboardComponentCon
 import './TrainingPage.scss';
 import PropTypes from "prop-types";
 import CountUpTimerContainer from "./Timers/CountUpTimer/CountUpTimerContainer";
-import StartSameTextButtonContainer from "./Buttons/StartSameTextButtonComponent/StartSameTextButtonContainer";
+import StartSameTextButtonContainer from "./Buttons/StartSameTextButton/StartSameTextButtonContainer";
 import CountDownTimerContainer from "./Timers/CountDownTimer/CountDownTimerContainer";
 import SelectTextFormContainer from "./SelectTextForm/SelectTextFormContainer";
 
