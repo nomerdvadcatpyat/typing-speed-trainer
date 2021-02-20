@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 import '../AuthForm.scss'
-import {AuthInput} from "../../../FormCustomComponents/AuthInput/AuthInput";
+import {AuthInput} from "../../../UtilComponents/AuthInput/AuthInput";
 import PropTypes from "prop-types";
 
 

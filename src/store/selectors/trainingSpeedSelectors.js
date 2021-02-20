@@ -23,3 +23,5 @@ export const getIsErrorTyping = state => {
 export const getTimer = state => {
 	return state.trainingSpeed.timer
 }
+
+export const isUserKicked = state => state.trainingSpeed.isUserKicked;

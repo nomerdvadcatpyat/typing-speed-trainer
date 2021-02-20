@@ -2,7 +2,7 @@ import React from "react";
 import {KeyboardComponent} from "./KeyboardComponent";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
-import {getInputText, getKeyboardLayout, getText} from "../../../../store/selectors/trainingSpeedSelectors";
+import {getInputText, getKeyboardLayout, getText} from "../../../../../store/selectors/trainingSpeedSelectors";
 
 const isWithShift = (nextChar, keyboardLayout) => {
 	for(let row of keyboardLayout) {

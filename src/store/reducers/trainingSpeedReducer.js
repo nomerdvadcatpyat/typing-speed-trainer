@@ -1,4 +1,5 @@
 import {
+	KICK_USER,
 	SET_END_STATE, SET_ERROR_TYPING, SET_IDLE_STATE,
 	SET_INPUT_TEXT,
 	SET_NO_ERROR_TYPING, SET_PREPARE_STATE, SET_ROOM_ID,
@@ -20,6 +21,7 @@ const initialTimerState = {
 
 const initialState = {
 	roomId: null,
+	isUserKicked: false,
 	text: '',
 	inputText: '',
 	keyboardLayout: null,
@@ -40,7 +42,7 @@ export const trainingSpeedReducer = (state = initialState, action) => {
 
 		case SET_PREPARE_STATE: {
 			return {
-				...state,
+				...initialState,
 				inputText: '',
 				text: action.payload.text,
 				keyboardLayout: action.payload.keyboardLayout,
@@ -105,6 +107,17 @@ export const trainingSpeedReducer = (state = initialState, action) => {
 			return {
 				...state,
 				roomId: action.payload
+			}
+		}
+
+		case KICK_USER: {
+			return {
+				...initialState,
+				typingState: {
+					...initialTypingState,
+					IDLE: true
+				},
+				isUserKicked: true
 			}
 		}
 

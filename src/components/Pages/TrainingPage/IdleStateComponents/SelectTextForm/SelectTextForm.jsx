@@ -1,5 +1,5 @@
 import './SelectTextForm.scss';
-import {Select} from "../Selects/Select";
+import {Select} from "../../../../UtilComponents/Select/Select";
 import {Ring} from "react-spinners-css";
 import React from "react";
 

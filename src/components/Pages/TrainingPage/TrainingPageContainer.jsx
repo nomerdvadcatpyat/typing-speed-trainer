@@ -3,11 +3,10 @@ import {TrainingPage} from "./TrainingPage";
 import {connect} from "react-redux";
 import {
 	getInputText,
-	getText, getTypingState
+	getText, getTypingState, isUserKicked
 } from "../../../store/selectors/trainingSpeedSelectors";
 import {bindActionCreators} from "redux";
 import {setEndState, setIdleState} from "../../../store/actionCreators/trainingSpeedActionCreators";
-import io from 'socket.io-client'
 import {disconnectSocket} from "../../../store/actionCreators/socketActionCreators";
 
 
@@ -32,6 +31,7 @@ const TrainingPageContainer = (props) => {
 		<TrainingPage
 			hasError={hasError}
 			state={props.state}
+			isUserKicked={props.isUserKicked}
 		/>
 	);
 }
@@ -41,7 +41,8 @@ const mapStateToProps = state => {
 	return {
 		text: getText(state),
 		inputText: getInputText(state),
-		state: getTypingState(state)
+		state: getTypingState(state),
+		isUserKicked: isUserKicked(state)
 	}
 }
 

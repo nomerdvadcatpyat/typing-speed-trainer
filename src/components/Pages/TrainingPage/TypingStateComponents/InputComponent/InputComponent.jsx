@@ -10,7 +10,7 @@ export const InputComponent = ({ inputText, setInputText, hasError }) => {
 				className={`text-input ${hasError ? 'error-input' : ''}`}
 				value={inputText}
 				onChange={e => setInputText(e.target.value)}
-				onPaste={e => e.preventDefault()}
+				// onPaste={e => e.preventDefault()}
 			/>
 		</div>
 	);

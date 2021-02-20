@@ -2,7 +2,7 @@ import React from 'react';
 import {TextComponent} from './TextComponent';
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
-import {getInputText, getText, getTypingState} from "../../../../store/selectors/trainingSpeedSelectors";
+import {getInputText, getText, getTypingState} from "../../../../../store/selectors/trainingSpeedSelectors";
 
 
 export const TextComponentContainer = ({inputText, text, hasError, ...otherProps}) => {

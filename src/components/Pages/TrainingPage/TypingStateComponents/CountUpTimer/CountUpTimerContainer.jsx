@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {TimerComponent} from "../TimerComponent";
+import {TimerComponent} from "../../../../UtilComponents/Timer/TimerComponent";
 import {connect} from "react-redux";
 import {getTimer, getTypingState} from "../../../../../store/selectors/trainingSpeedSelectors";
 import {bindActionCreators} from "redux";

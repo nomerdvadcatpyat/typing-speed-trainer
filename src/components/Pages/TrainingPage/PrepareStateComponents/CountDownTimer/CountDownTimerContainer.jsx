@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {TimerComponent} from "../TimerComponent";
+import {TimerComponent} from "../../../../UtilComponents/Timer/TimerComponent";
 
 
 const CountDownTimerContainer = () => {

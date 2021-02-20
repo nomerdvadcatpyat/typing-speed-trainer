@@ -1,6 +1,6 @@
 import React from 'react';
 import './TimerComponent.scss';
-import {addLeadingZero} from "../../../../utils/time/timeUtils";
+import {addLeadingZero} from "../../../utils/time/timeUtils";
 
 
 

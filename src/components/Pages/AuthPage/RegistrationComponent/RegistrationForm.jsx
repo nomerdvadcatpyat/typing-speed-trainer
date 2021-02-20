@@ -2,7 +2,7 @@ import React from 'react';
 import '../AuthForm.scss'
 import {Formik, Form} from "formik";
 import {registrationSchema} from "../../../../utils/validators/authValidation";
-import {AuthInput} from "../../../FormCustomComponents/AuthInput/AuthInput";
+import {AuthInput} from "../../../UtilComponents/AuthInput/AuthInput";
 import PropTypes from "prop-types";
 import {bool} from "yup";
 

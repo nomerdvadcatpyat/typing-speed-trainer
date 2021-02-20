@@ -1,4 +1,5 @@
 import {
+	KICK_USER,
 	SET_END_STATE,
 	SET_IDLE_STATE,
 	SET_INPUT_TEXT,
@@ -21,3 +22,5 @@ export const setInputText = inputText => ({ type: SET_INPUT_TEXT, payload: input
 export const updateTimer = timer => ({ type: UPDATE_TIMER, payload: timer });
 
 export const setRoomId = roomId => ({ type: SET_ROOM_ID, payload: roomId });
+
+export const kickUser = () => ({ type: KICK_USER });

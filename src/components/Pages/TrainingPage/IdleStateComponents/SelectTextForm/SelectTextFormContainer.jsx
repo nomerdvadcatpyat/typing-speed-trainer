@@ -2,10 +2,10 @@ import React, {useState, useEffect} from 'react';
 import {SelectTextForm} from "./SelectTextForm";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
-import {setPrepareState, setTypingState} from "../../../../store/actionCreators/trainingSpeedActionCreators";
-import {getSelectedTextData, getSelectTextPageData, prepareToTyping} from "../../../../utils/api/trainingSpeedApi";
-import {getTypingState} from "../../../../store/selectors/trainingSpeedSelectors";
-import {initSocket} from "../../../../store/actionCreators/socketActionCreators";
+import {setPrepareState, setTypingState} from "../../../../../store/actionCreators/trainingSpeedActionCreators";
+import {getSelectedTextData, getSelectTextPageData} from "../../../../../utils/api/trainingSpeedApi";
+import {getTypingState} from "../../../../../store/selectors/trainingSpeedSelectors";
+import {initSocket} from "../../../../../store/actionCreators/socketActionCreators";
 
 
 const SelectTextFormContainer = props => {
