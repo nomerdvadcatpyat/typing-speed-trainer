@@ -5,9 +5,10 @@ import {bindActionCreators} from "redux";
 import {getIsAuth} from "../../store/selectors/userSelectors";
 import {getIsLoading} from "../../store/selectors/appSelectors";
 import {setUserActionCreator} from "../../store/actionCreators/userActionCreators";
-import {setLoadedState, setLoadingState} from "../../store/actionCreators/appActionCreators";
+import {initSocket, setLoadedState, setLoadingState} from "../../store/actionCreators/appActionCreators";
 import {auth} from "../../utils/api/authApi";
 import PropTypes from "prop-types";
+import {getRoomId} from "../../store/selectors/gameSelectors";
 
 
 const AppContainer = (props) => {
@@ -30,7 +31,8 @@ const AppContainer = (props) => {
 const mapStateToProps = (state) => {
 	return {
 		isAuth: getIsAuth(state),
-		isLoading: getIsLoading(state)
+		isLoading: getIsLoading(state),
+		roomId: getRoomId(state)
 	};
 }
 
@@ -38,7 +40,8 @@ const mapDispatchToProps = (dispatch) => {
 	return {
 		setLoadingState: bindActionCreators(setLoadingState, dispatch),
 		setUser: bindActionCreators(setUserActionCreator, dispatch),
-		setLoadedState: bindActionCreators(setLoadedState, dispatch)
+		setLoadedState: bindActionCreators(setLoadedState, dispatch),
+		initSocket: bindActionCreators(initSocket, dispatch)
 	}
 }
 

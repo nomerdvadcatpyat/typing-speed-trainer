@@ -1,3 +1,5 @@
+@import "./src/utils/scss-variables/variables";
+
 * {
     box-sizing: border-box;
 }
@@ -9,10 +11,9 @@ html, body, #root, .App {
     font-family: 'Roboto', sans-serif;
 }
 
-
 .App {
     display: grid;
-    grid-template:  'header' 10vh
+    grid-template:  'header' $header-height
                     'content' 1fr
                     / 1fr;
 

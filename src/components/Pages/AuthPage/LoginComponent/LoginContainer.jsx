@@ -24,9 +24,9 @@ const mapDispatchToProps = (dispatch) => {
 
 async function handleSubmit(values, { props, setErrors, setStatus }) {
 	try {
-		await login(values);
+		const data = await login(values);
 		setStatus({ success: true});
-		props.setUser(values);
+		props.setUser(data);
 	} catch (e) {
 		setErrors({ all: e.response.data.error });
 	}

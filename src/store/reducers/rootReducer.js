@@ -1,13 +1,11 @@
 import {combineReducers} from "redux";
 import {userReducer} from "./userReducer";
 import {appReducer} from "./appReducer";
-import {trainingSpeedReducer} from "./trainingSpeedReducer";
-import {socketReducer} from "./socketReducer";
+import {gameReducer} from "./gameReducer";
 
 export const rootReducer = combineReducers(
 	{
 		app: appReducer,
 		user: userReducer,
-		socket: socketReducer,
-		trainingSpeed: trainingSpeedReducer
+		game: gameReducer
 	});

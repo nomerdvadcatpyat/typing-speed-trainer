@@ -1,0 +1,41 @@
+
+
+export const CREATE_ROOM = "GAME/CREATE_ROOM";
+
+export const LEAVE_ROOM = "GAME/LEAVE_ROOM";
+
+export const JOIN_TO_ROOM = "GAME/JOIN_TO_ROOM";
+
+export const SET_GAME_DATA = "GAME/SET_GAME_DATA";
+
+export const START_GAME = "GAME/START_GAME";
+
+export const START_SINGLE_GAME = "GAME/START_SINGLE_GAME";
+
+export const SET_IDLE_STATE = "GAME/SET_IDLE_STATE";
+
+export const SET_PREPARE_STATE = "GAME/SET_PREPARE_STATE";
+
+export const SET_TYPING_STATE = "GAME/SET_TYPING_STATE";
+
+export const SET_END_STATE = "GAME/SET_END_STATE";
+
+export const SET_END_TIME = "GAME/SET_END_TIME";
+
+export const SET_ERROR_TYPING = "GAME/SET_ERROR_TYPING";
+
+export const SET_NO_ERROR_TYPING = "GAME/SET_ERROR_TYPING";
+
+export const SET_INPUT_TEXT = "GAME/SET_INPUT_TEXT";
+
+export const UPDATE_TIMER = "GAME/UPDATE_TIMER";
+
+export const SET_USER_KICKED = "GAME/SET_USER_KICKED";
+
+export const SET_ROOM_ID = "GAME/SET_ROOM_ID";
+
+export const SET_ROOM_ERROR = "ROOM/SET_ROOM_ERROR";
+
+export const UPDATE_ROOM_MEMBERS = "ROOM/UPDATE_ROOM_MEMBERS";
+
+export const SET_ROOM_OWNER = "ROOM/SET_ROOM_OWNER";

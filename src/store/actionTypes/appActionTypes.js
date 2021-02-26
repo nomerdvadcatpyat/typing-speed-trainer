@@ -1,4 +1,10 @@
 
 export const SET_LOADING_STATE = "APP/SET_LOADING_STATE";
 
-export const SET_LOADED_STATE = "APP/SET_LOADED_STATE";
+export const SET_LOADED_STATE = "APP/SET_LOADED_STATE"
+
+export const INIT_SOCKET = "APP/INIT_SOCKET";
+
+export const FETCH_ROOMS = "GAME/GET_ROOMS";
+
+export const SET_ROOMS = "GAME/SET_ROOMS";

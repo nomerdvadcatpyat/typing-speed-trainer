@@ -1,0 +1,46 @@
+@import "./src/utils/scss-variables/variables";
+
+.search-room {
+  position: relative;
+  
+  &__rooms {
+    height: 100%;
+    width: 70%;
+    padding: 0.5rem 0;
+
+    .rooms__room {
+      margin: 1rem auto;
+      width: 68%;
+      height: 5rem;
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-between;
+      align-items: center;
+      border: 1px solid black;
+
+      .room__element {
+        width: 20%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        border-right: 1px solid black;
+
+        &:last-of-type {
+          border-right: none;
+        }
+      }
+    }
+  }
+
+  &__create-own-room {
+    position: fixed;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
