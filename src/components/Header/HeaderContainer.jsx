@@ -8,8 +8,8 @@ import {logout as logoutApi} from "../../utils/api/authApi";
 import PropTypes from "prop-types";
 
 const HeaderContainer = (props) => {
-	const logout = () => {
-		logoutApi();
+	const logout = async () => {
+		await logoutApi();
 		props.logoutActionCreate();
 	}
 

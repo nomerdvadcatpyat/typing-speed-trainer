@@ -2,12 +2,16 @@ import axios from 'axios';
 
 export const registration = async ({email, password, rePassword}) => {
 	try {
-		const response = await axios.post(`http://localhost:3001/api/auth/registration`, {
-			email,
-			password,
-			rePassword
+		const response = await axios({
+			method: 'POST',
+			url: `http://localhost:3001/api/auth/registration`,
+			data: {
+				email,
+				password,
+				rePassword
+			},
+			withCredentials: true
 		});
-		localStorage.setItem('token', response.data.token);
 		return response.data.user;
 	} catch (e) {
 		throw e;
@@ -17,11 +21,16 @@ export const registration = async ({email, password, rePassword}) => {
 
 export const login = async ({email, password}) => {
 	try {
-		const response = await axios.post(`http://localhost:3001/api/auth/login`, {
-			email,
-			password
+		const response = await axios({
+			method: 'POST',
+			url: `http://localhost:3001/api/auth/login`,
+			data: {
+				email,
+				password
+			},
+			withCredentials: true
 		});
-		localStorage.setItem('token', response.data.token);
+		// localStorage.setItem('token', response.data.token);
 		return response.data.user;
 	} catch (e) {
 		throw e;
@@ -29,20 +38,21 @@ export const login = async ({email, password}) => {
 }
 
 
-export const logout = () => {
-	localStorage.removeItem('token');
+export const logout = async () => {
+	await axios({
+		method: 'GET',
+		url: "http://localhost:3001/api/auth/logout",
+		withCredentials: true
+	});
 }
 
 
 export const auth = async () => {
-	try {
-		const response = await axios.get(`http://localhost:3001/api/auth/auth`,
-			{headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}});
-		localStorage.setItem('token', response.data.token);
-		return response.data.user;
-	}
-	catch (e) {
-		localStorage.removeItem('token');
-		throw e;
-	}
+	const response = await axios({
+		method: 'GET',
+		url: "http://localhost:3001/api/auth/auth",
+		withCredentials: true
+	});
+
+	return response.data;
 }

@@ -10,6 +10,7 @@ import GamePageContainer from "../Pages/RoomPages/GamePage/GamePageContainer";
 import WaitingRoomPageContainer from "../Pages/RoomPages/WaitingRoomPage/WaitingRoomPageContainer";
 import {RoomPages} from "../Pages/RoomPages/RoomPages";
 import RoomPagesContainer from "../Pages/RoomPages/RoomPagesContainer";
+import {RatingPageContainer} from "../Pages/RatingPage/RatingPageContainer";
 
 export function App({ isLoading, roomId }) {
   return (
@@ -24,6 +25,7 @@ export function App({ isLoading, roomId }) {
                   <Route path="/searchRoom" component={SearchRoomPageContainer} />
                   <Route path="/createRoom" component={CreateRoomPageContainer} />
                   <Route path="/room" component={RoomPagesContainer} />
+                  <Route path="/rating" component={RatingPageContainer} />
               </Switch>
             </Switch>
           </>

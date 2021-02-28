@@ -6,7 +6,7 @@ import {getIsAuth} from "../../store/selectors/userSelectors";
 import {getIsLoading} from "../../store/selectors/appSelectors";
 import {setUserActionCreator} from "../../store/actionCreators/userActionCreators";
 import {initSocket, setLoadedState, setLoadingState} from "../../store/actionCreators/appActionCreators";
-import {auth} from "../../utils/api/authApi";
+import {auth, getUser} from "../../utils/api/authApi";
 import PropTypes from "prop-types";
 import {getRoomId} from "../../store/selectors/gameSelectors";
 
@@ -15,8 +15,9 @@ const AppContainer = (props) => {
 		useEffect(() => {
 			props.setLoadingState();
 			auth()
-				.then(user => {
-					props.setUser(user);
+				.then(json => {
+					if(json.ok)
+						props.setUser(json.user)
 				})
 				.catch(console.log)
 				.finally(props.setLoadedState)
