@@ -1,7 +1,6 @@
 import io from "socket.io-client";
 import {
 	setUserKicked,
-	setEndState,
 	setEndTime,
 	setGameData, setPrepareState, setRoomError, setRoomId,
 	setTypingState, updateRoomMembers, setRoomOwner
@@ -49,15 +48,7 @@ export const socketMiddleware = store => next => action => {
 		socket.on('update room members', members => {
 			console.log('update members', members);
 			store.dispatch(updateRoomMembers(members));
-			const owner = members.find(member => member.isRoomOwner);
-			if(owner.id === getUser(store.getState()).id)
-				store.dispatch(setRoomOwner(true));
 		});
-
-		// socket.on('update room info', info => {
-		// 	console.log('update room info', info);
-		// 	store.dispatch(updateRoomInfo(info));
-		// });
 
 		socket.on('set prepare state', () => {
 			store.dispatch(setPrepareState());
@@ -115,6 +106,11 @@ export const socketMiddleware = store => next => action => {
 
 		socket.on('reject start game', error => {
 			store.dispatch(setRoomError(error));
+		});
+
+		socket.on('set room owner', () => {
+			console.log('set room owner')
+			store.dispatch(setRoomOwner(true));
 		});
 	}
 

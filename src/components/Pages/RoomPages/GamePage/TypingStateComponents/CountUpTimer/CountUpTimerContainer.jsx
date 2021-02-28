@@ -1,15 +1,13 @@
 import React, {useState, useEffect} from 'react';
 import {TimerComponent} from "../../../../../UtilComponents/Timer/TimerComponent";
 import {connect} from "react-redux";
-import {getTimer, getTypingState} from "../../../../../../store/selectors/gameSelectors";
-import {bindActionCreators} from "redux";
-import {updateTimer} from "../../../../../../store/actionCreators/gameActionCreators";
+import {getTypingState} from "../../../../../../store/selectors/gameSelectors";
 
 
-
-const CountUpTimerContainer = ({ endState, timer, updateTimer }) => {
+const CountUpTimerContainer = ({ endState }) => {
 
 	const [timerId, setTimerId] = useState(-1);
+	const [timer, setTimer] = useState({ minutes: 0, seconds: 0 });
 
 	console.log('END STATE', endState, timerId)
 
@@ -24,16 +22,13 @@ const CountUpTimerContainer = ({ endState, timer, updateTimer }) => {
 	}
 
 	useEffect(() => {
-		let timerID
+		let timerID;
 		if(!endState) {
-			timerID = setInterval(() => updateTimer(calculateUpdate(timer)), 1000);
+			timerID = setInterval(() => setTimer(calculateUpdate(timer)), 1000);
 			console.log(timerID);
 			setTimerId(timerID);
 		}
-		else {
-			console.log('timer ID', timerId);
-			clearInterval(timerId);
-		}
+		else clearInterval(timerId);
 
 		return () => {
 			clearInterval(timerID);
@@ -56,14 +51,7 @@ const CountUpTimerContainer = ({ endState, timer, updateTimer }) => {
 const mapStateToProps = state => {
 	return {
 		endState: getTypingState(state).END,
-		timer: getTimer(state)
 	}
 }
 
-const mapDispatchToProps = dispatch => {
-	return {
-		updateTimer: bindActionCreators(updateTimer, dispatch)
-	}
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(CountUpTimerContainer)
+export default connect(mapStateToProps)(CountUpTimerContainer)

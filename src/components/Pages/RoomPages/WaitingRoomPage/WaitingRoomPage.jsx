@@ -16,7 +16,7 @@ export const WaitingRoomPage = props => {
     const getJSXUsersInfo = () => {
         console.log(props.members);
         return props.members.map((member, index) => {
-            return <div key={member.id} className="waiting-room__user"> {member.userName} </div>
+            return <div key={index} className="waiting-room__user"> {member.userName} </div>
         });
     }
 
