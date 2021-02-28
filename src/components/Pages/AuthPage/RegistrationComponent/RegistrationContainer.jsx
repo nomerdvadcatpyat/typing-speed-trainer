@@ -25,6 +25,7 @@ const mapDispatchToProps = dispatch => {
 
 async function handleSubmit(values, { props, setErrors, setStatus }) {
 	try {
+		console.log(values);
 		const data = await registration(values);
 		setStatus({ success: true});
 		props.setUser(data);
@@ -38,7 +39,7 @@ export default compose(
 	connect(null, mapDispatchToProps),
 	withFormik({
 		mapPropsToValues: () => ({
-			email: "",
+			login: "",
 			password: "",
 			rePassword: ""
 		}),

@@ -6,7 +6,7 @@ import {getIsAuth} from "../../store/selectors/userSelectors";
 import {getIsLoading} from "../../store/selectors/appSelectors";
 import {setUserActionCreator} from "../../store/actionCreators/userActionCreators";
 import {initSocket, setLoadedState, setLoadingState} from "../../store/actionCreators/appActionCreators";
-import {auth, getUser} from "../../utils/api/authApi";
+import {auth} from "../../utils/api/authApi";
 import PropTypes from "prop-types";
 import {getRoomId} from "../../store/selectors/gameSelectors";
 

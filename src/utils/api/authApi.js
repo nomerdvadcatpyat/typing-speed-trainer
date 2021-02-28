@@ -1,12 +1,12 @@
 import axios from 'axios';
 
-export const registration = async ({email, password, rePassword}) => {
+export const registration = async ({login, password, rePassword}) => {
 	try {
 		const response = await axios({
 			method: 'POST',
 			url: `http://localhost:3001/api/auth/registration`,
 			data: {
-				email,
+				login,
 				password,
 				rePassword
 			},
@@ -19,18 +19,17 @@ export const registration = async ({email, password, rePassword}) => {
 }
 
 
-export const login = async ({email, password}) => {
+export const login = async ({login, password}) => {
 	try {
 		const response = await axios({
 			method: 'POST',
 			url: `http://localhost:3001/api/auth/login`,
 			data: {
-				email,
+				login,
 				password
 			},
 			withCredentials: true
 		});
-		// localStorage.setItem('token', response.data.token);
 		return response.data.user;
 	} catch (e) {
 		throw e;

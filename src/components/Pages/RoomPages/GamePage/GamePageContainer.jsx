@@ -33,8 +33,7 @@ const mapStateToProps = state => {
 	return {
 		text: getText(state),
 		inputText: getInputText(state),
-		state: getTypingState(state),
-		user: getUser(state)
+		state: getTypingState(state)
 	}
 }
 

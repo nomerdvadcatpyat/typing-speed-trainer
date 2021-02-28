@@ -36,7 +36,7 @@ export default compose(
 	connect(null, mapDispatchToProps),
 	withFormik({
 		mapPropsToValues: () => ({
-			email: "",
+			login: "",
 			password: ""
 		}),
 		handleSubmit,

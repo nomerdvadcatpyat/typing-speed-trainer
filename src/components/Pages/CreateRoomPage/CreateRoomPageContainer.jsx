@@ -55,8 +55,6 @@ const CreateRoomPageContainer = props => {
 
 		history.push(`/room`);
 		if(usersCount === 1) {
-			// history.push("/game");
-			// props.startGame({userId: props.user.id, roomId: props.roomId });
 			props.startSingleGame(parsedData);
 		}
 		else {

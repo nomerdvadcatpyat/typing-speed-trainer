@@ -20,16 +20,16 @@ export function LoginForm(props) {
 	return (
 			<form className="auth-form login" onSubmit={handleSubmit}>
 				<AuthInput
-					className={`${touched.email && errors.email ? 'invalid' : ''}`}
-					id="login-email-input"
-					name="email"
+					className={`${touched.login && errors.login ? 'invalid' : ''}`}
+					id="login-login-input"
+					name="login"
 					type="text"
-					labelText="Email"
-					icon="email"
-					errors={touched.email && errors.email}
+					labelText="login"
+					icon="login"
+					errors={touched.login && errors.login}
 					onChange={handleChange}
 					onBlur={handleBlur}
-					value={values.email}
+					value={values.login}
 				/>
 
 				<AuthInput
@@ -55,7 +55,7 @@ export function LoginForm(props) {
 					className="btn waves-effect auth-form__submit"
 					type="submit"
 					disabled={
-						values.email.length === 0 ||
+						values.login.length === 0 ||
 						values.password.length === 0 ||
 						(status && !status.success) ||
 						isSubmitting
