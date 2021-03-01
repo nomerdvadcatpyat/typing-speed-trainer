@@ -1,0 +1,33 @@
+.user-profile-page {
+  display: grid;
+  grid-template:  'info' 40vh
+                  'graphic' 1fr
+                  / 1fr;
+
+  &__first-line {
+    margin: 3rem 0;
+    display: flex;
+    flex-flow: row nowrap;
+    font-size: 1.5rem;
+
+    .profile-pic {
+      width: 200px;
+    }
+
+    .user-profile-info {
+      margin-left: 5rem;
+    }
+
+    .user-profile-wins {
+      width: 10rem;
+      margin-right: 5rem;
+      margin-left: auto;
+    }
+  }
+
+  &__graphic-wrapper {
+    margin: auto;
+    width: 70%;
+    height: 20rem;
+  }
+}
