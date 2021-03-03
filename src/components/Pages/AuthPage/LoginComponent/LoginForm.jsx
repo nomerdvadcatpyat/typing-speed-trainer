@@ -1,8 +1,9 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 import '../AuthForm.scss'
-import {AuthInput} from "../../../UtilComponents/AuthInput/AuthInput";
+import {AuthInput} from "../AuthInput/AuthInput";
 import PropTypes from "prop-types";
+import {Button, Form} from "react-bootstrap";
 
 
 export function LoginForm(props) {
@@ -18,14 +19,12 @@ export function LoginForm(props) {
 	} = props;
 
 	return (
-			<form className="auth-form login" onSubmit={handleSubmit}>
+			<Form className="auth-form login" onSubmit={handleSubmit}>
 				<AuthInput
-					className={`${touched.login && errors.login ? 'invalid' : ''}`}
-					id="login-login-input"
+					className={`auth-form__input ${touched.login && errors.login ? 'invalid' : ''}`}
 					name="login"
 					type="text"
-					labelText="login"
-					icon="login"
+					placeholder="Login"
 					errors={touched.login && errors.login}
 					onChange={handleChange}
 					onBlur={handleBlur}
@@ -33,12 +32,10 @@ export function LoginForm(props) {
 				/>
 
 				<AuthInput
-					className={`${touched.password && errors.password ? 'invalid' : ''}`}
-					id="login-password-input"
+					className={`auth-form__input ${touched.password && errors.password ? 'invalid' : ''}`}
 					name="password"
 					type="password"
-					labelText="Password"
-					icon="lock"
+					placeholder="Password"
 					errors={touched.password && errors.password}
 					onChange={handleChange}
 					onBlur={handleBlur}
@@ -51,9 +48,10 @@ export function LoginForm(props) {
 					) : null
 				}
 
-				<button
-					className="btn waves-effect auth-form__submit"
+				<Button
+					className="auth-form__submit"
 					type="submit"
+					variant="secondary"
 					disabled={
 						values.login.length === 0 ||
 						values.password.length === 0 ||
@@ -61,10 +59,10 @@ export function LoginForm(props) {
 						isSubmitting
 					}>
 					Submit
-				</button>
+				</Button>
 
 				<Link to="/auth/registration" className="auth-form__link-to-register"> Нет аккаунта? Зарегистрироваться </Link>
-			</form>
+			</Form>
 	);
 }
 

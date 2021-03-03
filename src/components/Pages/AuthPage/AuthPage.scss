@@ -1,4 +1,7 @@
+@import "src/utils/scss-variables/variables";
+
 .auth {
+  height: $content-min-height;
   display: flex;
   align-items: center;
   justify-content: center;

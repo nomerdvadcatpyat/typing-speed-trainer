@@ -1,4 +1,5 @@
 .auth-form {
+  position: relative;
   display: flex;
   flex-flow: column nowrap;
   max-width: 600px;
@@ -7,6 +8,7 @@
   &__link-to-register {
     display: block;
     margin: 1rem auto 0;
+
   }
 
   &__submit {
@@ -14,11 +16,25 @@
     width: 40%;
   }
 
-  &__error-message {
+  &__error-message, .auth-input__error-message {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
     color: #F44336;
     display: block;
     width: max-content;
-    margin: 0 auto;
+  }
+
+  &__error-message {
+    bottom: 7rem;
+  }
+
+  .auth-input__error-message {
+    bottom: 0;
+  }
+
+  &__input {
+    margin-bottom: 2rem;
   }
 }
 

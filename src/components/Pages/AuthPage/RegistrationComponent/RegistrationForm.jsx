@@ -1,10 +1,8 @@
 import React from 'react';
 import '../AuthForm.scss'
-import {Formik, Form} from "formik";
-import {registrationSchema} from "../../../../utils/validators/authValidation";
-import {AuthInput} from "../../../UtilComponents/AuthInput/AuthInput";
+import {AuthInput} from "../AuthInput/AuthInput";
 import PropTypes from "prop-types";
-import {bool} from "yup";
+import {Button} from "react-bootstrap";
 
 
 export const RegistrationForm = (props) => {
@@ -22,12 +20,10 @@ export const RegistrationForm = (props) => {
 	return (
 			<form className="auth-form registration" onSubmit={handleSubmit}>
 				<AuthInput
-					className={`${touched.login && errors.login ? 'invalid' : ''}`}
-					icon="login"
-					id="register-login-input"
+					className={`auth-form__input ${touched.login && errors.login ? 'invalid' : ''}`}
 					name="login"
 					type="text"
-					labelText="login"
+					placeholder="Login"
 					errors={touched.login && errors.login}
 					onChange={handleChange}
 					onBlur={handleBlur}
@@ -35,12 +31,10 @@ export const RegistrationForm = (props) => {
 				/>
 
 				<AuthInput
-					className={`${touched.password && errors.password ? 'invalid' : ''}`}
-					icon="lock"
-					id="register-password-input"
+					className={`auth-form__input ${touched.password && errors.password ? 'invalid' : ''}`}
 					name="password"
 					type="password"
-					labelText="Password"
+					placeholder="Password"
 					errors={touched.password && errors.password}
 					onChange={handleChange}
 					onBlur={handleBlur}
@@ -48,12 +42,10 @@ export const RegistrationForm = (props) => {
 				/>
 
 				<AuthInput
-					className={`${touched.rePassword && errors.rePassword ? 'invalid' : ''}`}
-					icon="lock_outline"
-					id="register-re-password-input"
-					name={'rePassword'}
+					className={`auth-form__input ${touched.rePassword && errors.rePassword ? 'invalid' : ''}`}
+					name="rePassword"
 					type="password"
-					labelText="Confirm password"
+					placeholder="Confirm password"
 					errors={touched.rePassword && errors.rePassword}
 					onChange={handleChange}
 					onBlur={handleBlur}
@@ -66,8 +58,9 @@ export const RegistrationForm = (props) => {
 					) : null
 				}
 
-				<button
-					className="btn waves-effect auth-form__submit"
+				<Button
+					className="auth-form__submit"
+					variant="secondary"
 					disabled={
 						values.login.length === 0 ||
 						values.password.length === 0 ||
@@ -78,7 +71,7 @@ export const RegistrationForm = (props) => {
 					type="submit"
 				>
 					Submit
-				</button>
+				</Button>
 			</form>
 	);
 }
