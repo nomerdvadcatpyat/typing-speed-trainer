@@ -1,31 +1,35 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 import './Header.scss';
-import PropTypes from "prop-types";
+import {Nav, Navbar} from "react-bootstrap";
+import {HeaderLink} from "./HeaderLink/HeaderLink";
 
 export function Header({ isAuth, user, onLogout }) {
 	return (
-		<header className="header">
-			<nav>
-				<Link to="/rating"> Рейтинг </Link>
-				<Link to="/searchRoom"> Играть </Link>
-				{ isAuth ? (
-					<div className="profile-or-logout-wrapper">
-						<p className="profile-or-logout-wrapper__username"> {user.login} </p>
-						<div className="profile-or-logout">
-							<Link className="header__profile-link" to={`/user?user=${user.login}`}> Профиль </Link>
-							<span className="header__logout-button" onClick={onLogout}> Выход </span>
-						</div>
-					</div>
-					) :
-					<Link className="header__login-button" to="/auth/login"> Вход </Link>
-				}
-			</nav>
-		</header>
-	);
-}
+			<Navbar className="header" collapseOnSelect expand="sm" bg="dark" variant="dark">
+				<Navbar.Brand> SomeApp </Navbar.Brand>
+				<Navbar.Toggle aria-controls="responsive-navbar-nav" />
 
-Header.propTypes = {
-	onLogout: PropTypes.func,
-	isAuth: PropTypes.bool
+				<Navbar.Collapse id="responsive-navbar-nav">
+					<Nav className="w-100">
+
+						<div className="header__left-side">
+							<HeaderLink to="/rating" text="Рейтинг" />
+							<HeaderLink to="/searchRoom" text="Играть" />
+						</div>
+
+						<div className="header__right-side">
+							{ isAuth ? (
+								<>
+									<HeaderLink to={`/user?user=${user.login}`} text={user.login} />
+									<Nav.Link href="#"> <span onClick={onLogout}> Выход </span> </Nav.Link>
+								</>
+							) : (
+								<HeaderLink to="/auth/login" text="Вход" />
+							)}
+						</div>
+					</Nav>
+				</Navbar.Collapse>
+			</Navbar>
+	);
 }

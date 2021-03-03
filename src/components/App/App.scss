@@ -12,13 +12,6 @@ html, body, #root, .App {
 }
 
 .App {
-    display: grid;
-    grid-template:  'header' $header-height
-                    'content' 1fr
-                    / 1fr;
-
-    position: relative;
-
     .main-spinner {
         position: absolute;
         left: 50%;
