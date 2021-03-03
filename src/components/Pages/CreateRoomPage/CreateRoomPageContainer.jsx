@@ -9,7 +9,7 @@ import {
 	setTypingState,
 	startGame, startSingleGame
 } from "../../../store/actionCreators/gameActionCreators";
-import {getSelectedTextData, getSelectTextPageData} from "../../../utils/api/trainingSpeedApi";
+import {getSelectedTextData, getSelectTextPageData} from "../../../utils/api/roomApi";
 import {getRoomId, getTypingState} from "../../../store/selectors/gameSelectors";
 import {useHistory} from "react-router-dom";
 import {getUser} from "../../../store/selectors/userSelectors";
@@ -55,8 +55,6 @@ const CreateRoomPageContainer = props => {
 
 		history.push(`/room`);
 		if(usersCount === 1) {
-			// history.push("/game");
-			// props.startGame({userId: props.user.id, roomId: props.roomId });
 			props.startSingleGame(parsedData);
 		}
 		else {

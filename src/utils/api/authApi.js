@@ -1,13 +1,17 @@
 import axios from 'axios';
 
-export const registration = async ({email, password, rePassword}) => {
+export const registration = async ({login, password, rePassword}) => {
 	try {
-		const response = await axios.post(`http://localhost:3001/api/auth/registration`, {
-			email,
-			password,
-			rePassword
+		const response = await axios({
+			method: 'POST',
+			url: `${process.env.REACT_APP_BACKEND_SERVER_URL}/api/auth/registration`,
+			data: {
+				login,
+				password,
+				rePassword
+			},
+			withCredentials: true
 		});
-		localStorage.setItem('token', response.data.token);
 		return response.data.user;
 	} catch (e) {
 		throw e;
@@ -15,13 +19,17 @@ export const registration = async ({email, password, rePassword}) => {
 }
 
 
-export const login = async ({email, password}) => {
+export const login = async ({login, password}) => {
 	try {
-		const response = await axios.post(`http://localhost:3001/api/auth/login`, {
-			email,
-			password
+		const response = await axios({
+			method: 'POST',
+			url: `${process.env.REACT_APP_BACKEND_SERVER_URL}/api/auth/login`,
+			data: {
+				login,
+				password
+			},
+			withCredentials: true
 		});
-		localStorage.setItem('token', response.data.token);
 		return response.data.user;
 	} catch (e) {
 		throw e;
@@ -29,20 +37,21 @@ export const login = async ({email, password}) => {
 }
 
 
-export const logout = () => {
-	localStorage.removeItem('token');
+export const logout = async () => {
+	await axios({
+		method: 'GET',
+		url: `${process.env.REACT_APP_BACKEND_SERVER_URL}/api/auth/logout`,
+		withCredentials: true
+	});
 }
 
 
 export const auth = async () => {
-	try {
-		const response = await axios.get(`http://localhost:3001/api/auth/auth`,
-			{headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}});
-		localStorage.setItem('token', response.data.token);
-		return response.data.user;
-	}
-	catch (e) {
-		localStorage.removeItem('token');
-		throw e;
-	}
+	const response = await axios({
+		method: 'GET',
+		url: `${process.env.REACT_APP_BACKEND_SERVER_URL}/api/auth/auth`,
+		withCredentials: true
+	});
+
+	return response.data;
 }

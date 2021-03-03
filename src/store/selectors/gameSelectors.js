@@ -1,28 +1,14 @@
 
 
-export const getTypingState = state => {
-	return state.game.typingState;
-}
+export const getTypingState = state => state.game.typingState;
 
-export const getText = state => {
-	return state.game.text;
-}
+export const getText = state => state.game.text;
 
-export const getInputText = state => {
-	return state.game.inputText;
-}
+export const getInputText = state => state.game.inputText;
 
-export const getKeyboardLayout = state => {
-	return state.game.keyboardLayout;
-}
+export const getKeyboardLayout = state => state.game.keyboardLayout;
 
-export const getIsErrorTyping = state => {
-	return state.game.isErrorTyping;
-}
-
-export const getTimer = state => {
-	return state.game.timer
-}
+export const getIsErrorTyping = state => state.game.isErrorTyping;
 
 export const getEndTime = state => state.game.endTime;
 

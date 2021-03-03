@@ -12,7 +12,6 @@ import {
 	SET_TYPING_STATE,
 	START_GAME,
 	START_SINGLE_GAME,
-	UPDATE_TIMER,
 	SET_ROOM_ID,
 	SET_ROOM_ERROR,
 	UPDATE_ROOM_MEMBERS, SET_ROOM_OWNER
@@ -41,8 +40,6 @@ export const setEndState = () => ({ type: SET_END_STATE });
 export const setEndTime = time => ({type: SET_END_TIME, payload: time});
 
 export const setInputText = inputText => ({ type: SET_INPUT_TEXT, payload: inputText });
-
-export const updateTimer = timer => ({ type: UPDATE_TIMER, payload: timer });
 
 export const setUserKicked = payload => ({ type: SET_USER_KICKED, payload });
 

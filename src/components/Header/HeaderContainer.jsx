@@ -2,14 +2,14 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Header} from "./Header";
 import {bindActionCreators} from "redux";
-import {getIsAuth} from "../../store/selectors/userSelectors";
+import {getIsAuth, getUser} from "../../store/selectors/userSelectors";
 import {logoutActionCreator} from "../../store/actionCreators/userActionCreators";
 import {logout as logoutApi} from "../../utils/api/authApi";
 import PropTypes from "prop-types";
 
 const HeaderContainer = (props) => {
-	const logout = () => {
-		logoutApi();
+	const logout = async () => {
+		await logoutApi();
 		props.logoutActionCreate();
 	}
 
@@ -20,7 +20,8 @@ const HeaderContainer = (props) => {
 
 function mapStateToProps(state) {
 	return {
-		isAuth: getIsAuth(state)
+		isAuth: getIsAuth(state),
+		user: getUser(state)
 	};
 }
 

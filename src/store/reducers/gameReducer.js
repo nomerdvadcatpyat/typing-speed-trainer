@@ -3,7 +3,7 @@ import {
 	SET_END_STATE, SET_END_TIME, SET_ERROR_TYPING, SET_GAME_DATA, SET_IDLE_STATE,
 	SET_INPUT_TEXT,
 	SET_NO_ERROR_TYPING, SET_PREPARE_STATE, SET_ROOM_ERROR, SET_ROOM_ID,
-	SET_TYPING_STATE, UPDATE_ROOM_MEMBERS, UPDATE_TIMER, SET_ROOM_OWNER
+	SET_TYPING_STATE, UPDATE_ROOM_MEMBERS, SET_ROOM_OWNER
 } from "../actionTypes/gameActionTypes";
 
 
@@ -14,24 +14,18 @@ const initialTypingState = {
 	END: false,
 }
 
-const initialTimerState = {
-	minutes: 0,
-	seconds: 0
-}
-
 const initialState = {
 	roomId: null,
-	isRoomOwner: null,
 	maxUsersCount: null,
 	members: [],
 	text: '',
 	keyboardLayout: null,
 	error: null,
-	isUserKicked: null,
 
+	isUserKicked: null,
+	isRoomOwner: null,
 	inputText: '',
 	typingState: initialTypingState,
-	timer: initialTimerState,
 	endTime: null
 }
 
@@ -44,8 +38,7 @@ export const gameReducer = (state = initialState, action) => {
 				inputText: '',
 				text: action.payload.text,
 				keyboardLayout: action.payload.keyboardLayout,
-				typingState: {...initialTypingState},
-				timer: {...initialTimerState}
+				typingState: {...initialTypingState}
 			}
 		}
 
@@ -64,8 +57,7 @@ export const gameReducer = (state = initialState, action) => {
 					...initialTypingState,
 					IDLE: false,
 					PREPARE: true
-				},
-				timer: {...initialTimerState}
+				}
 			}
 		}
 
@@ -81,7 +73,6 @@ export const gameReducer = (state = initialState, action) => {
 		}
 
 		case SET_END_STATE: {
-			console.log('set end state in reducer');
 			return {
 				...state,
 				typingState: {
@@ -117,13 +108,6 @@ export const gameReducer = (state = initialState, action) => {
 			return {
 				...state,
 				inputText: action.payload
-			}
-		}
-
-		case UPDATE_TIMER: {
-			return {
-				...state,
-				timer: action.payload
 			}
 		}
 

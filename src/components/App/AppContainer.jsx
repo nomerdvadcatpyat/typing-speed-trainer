@@ -15,8 +15,9 @@ const AppContainer = (props) => {
 		useEffect(() => {
 			props.setLoadingState();
 			auth()
-				.then(user => {
-					props.setUser(user);
+				.then(json => {
+					if(json.ok)
+						props.setUser(json.user)
 				})
 				.catch(console.log)
 				.finally(props.setLoadedState)

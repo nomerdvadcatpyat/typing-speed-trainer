@@ -22,16 +22,16 @@ export const RegistrationForm = (props) => {
 	return (
 			<form className="auth-form registration" onSubmit={handleSubmit}>
 				<AuthInput
-					className={`${touched.email && errors.email ? 'invalid' : ''}`}
-					icon="email"
-					id="register-email-input"
-					name="email"
+					className={`${touched.login && errors.login ? 'invalid' : ''}`}
+					icon="login"
+					id="register-login-input"
+					name="login"
 					type="text"
-					labelText="Email"
-					errors={touched.email && errors.email}
+					labelText="login"
+					errors={touched.login && errors.login}
 					onChange={handleChange}
 					onBlur={handleBlur}
-					value={values.email}
+					value={values.login}
 				/>
 
 				<AuthInput
@@ -69,7 +69,7 @@ export const RegistrationForm = (props) => {
 				<button
 					className="btn waves-effect auth-form__submit"
 					disabled={
-						values.email.length === 0 ||
+						values.login.length === 0 ||
 						values.password.length === 0 ||
 						values.rePassword.length === 0 ||
 						(status && !status.success) ||

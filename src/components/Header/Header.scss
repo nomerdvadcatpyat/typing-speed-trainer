@@ -25,6 +25,39 @@
     span:hover {
       cursor: pointer;
     }
-  }
 
+
+    .profile-or-logout-wrapper {
+      width: 25%;
+      position: relative;
+
+      &__username {
+        transition: opacity .4s;
+        text-align: center;
+      }
+    }
+
+    .profile-or-logout {
+      width: 100%;
+      opacity: 0;
+      transition: opacity .4s;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-between;
+    }
+
+    .profile-or-logout-wrapper:hover {
+      .profile-or-logout-wrapper__username {
+        opacity: 0;
+      }
+
+      .profile-or-logout {
+        opacity: 1;
+      }
+    }
+  }
 }
