@@ -1,9 +1,12 @@
 import './ProfilePage.scss';
 import {PlaceInfo} from "./PlaceInfo/PlaceInfo";
 import {Graphic} from "./Graphic/Graphic";
+import {Ring} from "react-spinners-css";
+import React from "react";
+import {Select} from "../../UtilComponents/Select/Select";
 
 export const ProfilePage = props => {
-    return (
+    return props.isLoading ? <Ring className="main-spinner" /> : (
       <div className="user-profile-page">
           <div className="user-profile-page__first-line">
               <img
@@ -13,7 +16,7 @@ export const ProfilePage = props => {
               />
 
               <div className="user-profile-info">
-                  <p> {props.userInfo.username} </p>
+                  <p> {props.userInfo.login} </p>
                   <p> Points: {props.userInfo.points} </p>
                   <p> Average typing speed: {props.userInfo.averageSpeed} ch/min </p>
               </div>
@@ -37,9 +40,16 @@ export const ProfilePage = props => {
               </div>
           </div>
 
-          <div className="user-profile-page__graphic-wrapper">
-              <Graphic data={props.graphicData} XAxisName="date" YAxisName="averageSpeed" />
+          <div className="user-profile-page__second-line">
+              <Select className="user-profile-page__y-axis-selector"
+                      options={props.selectOptions}
+                      onChange={props.setYAxisName}
+              />
+              <div className="user-profile-page__graphic-wrapper">
+                  <Graphic data={props.graphicData} XAxisName="date" YAxisName={props.YAxisName} />
+              </div>
           </div>
+
       </div>
     );
 }

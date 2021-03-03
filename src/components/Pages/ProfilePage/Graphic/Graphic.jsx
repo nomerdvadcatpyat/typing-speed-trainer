@@ -8,7 +8,7 @@ export const Graphic = ({data, XAxisName, YAxisName}) => {
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey={XAxisName} />
                 <YAxis />
-                <Tooltip />
+                <Tooltip isAnimationActive={false} />
                 <Legend />
                 <Line type="monotone" dataKey={YAxisName} stroke="#82ca9d" />
             </LineChart>
