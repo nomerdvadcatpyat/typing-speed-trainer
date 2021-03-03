@@ -1,46 +1,49 @@
 @import "./src/utils/scss-variables/variables";
+@import "~bootstrap/scss/bootstrap";
 
 .search-room {
-  position: relative;
-  
+  min-height: $content-min-height;
+
   &__rooms {
-    height: 100%;
-    width: 70%;
     padding: 0.5rem 0;
-
-    .rooms__room {
-      margin: 1rem auto;
-      width: 68%;
-      height: 5rem;
-      display: flex;
-      flex-flow: row nowrap;
-      justify-content: space-between;
-      align-items: center;
-      border: 1px solid black;
-
-      .room__element {
-        width: 20%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 100%;
-        border-right: 1px solid black;
-
-        &:last-of-type {
-          border-right: none;
-        }
-      }
-    }
   }
 
   &__create-own-room {
-    position: fixed;
-    right: 0;
-    top: 0;
-    height: 100%;
-    width: 30%;
     display: flex;
     align-items: center;
     justify-content: center;
   }
 }
+
+
+@media screen and (max-width: map-get($grid-breakpoints, "sm")) {
+  .search-room {
+    &__create-own-room {
+      width: 100% - 5;
+      margin: auto;
+      padding: 1rem 0;
+      border-bottom: 1px solid $dark;
+    }
+  }
+}
+
+@media screen and (min-width: map-get($grid-breakpoints, "sm")) {
+  .search-room {
+    position: relative;
+
+    &__rooms {
+      width: 70%;
+    }
+
+    &__create-own-room {
+      height: $content-min-height - 5;
+      border-left: 1px solid $dark;
+      position: fixed;
+      right: 0;
+      top: $header-height + 2.5;
+      width: 30%;
+    }
+  }
+}
+
+

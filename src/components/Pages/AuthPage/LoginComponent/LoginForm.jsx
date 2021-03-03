@@ -51,7 +51,7 @@ export function LoginForm(props) {
 				<Button
 					className="auth-form__submit"
 					type="submit"
-					variant="secondary"
+					variant="dark"
 					disabled={
 						values.login.length === 0 ||
 						values.password.length === 0 ||
@@ -64,10 +64,4 @@ export function LoginForm(props) {
 				<Link to="/auth/registration" className="auth-form__link-to-register"> Нет аккаунта? Зарегистрироваться </Link>
 			</Form>
 	);
-}
-
-
-LoginForm.propTypes = {
-	onSubmit: PropTypes.func,
-	formError: PropTypes.string
 }

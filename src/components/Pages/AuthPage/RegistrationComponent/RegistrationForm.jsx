@@ -60,7 +60,7 @@ export const RegistrationForm = (props) => {
 
 				<Button
 					className="auth-form__submit"
-					variant="secondary"
+					variant="dark"
 					disabled={
 						values.login.length === 0 ||
 						values.password.length === 0 ||
@@ -74,9 +74,4 @@ export const RegistrationForm = (props) => {
 				</Button>
 			</form>
 	);
-}
-
-RegistrationForm.propTypes = {
-	onSubmit: PropTypes.func,
-	formError: PropTypes.string
 }

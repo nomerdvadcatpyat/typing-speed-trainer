@@ -2,12 +2,22 @@
 @import "src/utils/scss-variables/variables";
 
 
-.header {
-  display: flex;
-  text-align: center;
+.header-buffer {
+  height: $header-height
+}
+
+.header-wrapper {
+  position: fixed;
+  top: 0;
+  width: 100%;
   z-index: 100;
-  min-height: $header-height;
-  font-size: 1.3rem;
+
+  .header {
+    display: flex;
+    text-align: center;
+    min-height: $header-height;
+    font-size: 1.3rem;
+  }
 }
 
 @media screen and (max-width: map-get($grid-breakpoints, 'sm')) {
