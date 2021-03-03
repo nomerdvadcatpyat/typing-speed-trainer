@@ -1,42 +1,48 @@
 import './CreateRoomPage.scss';
-import {Select} from "../../UtilComponents/Select/Select";
+import {Select} from "./Select/Select";
 import {Ring} from "react-spinners-css";
 import React from "react";
+import {Button, Form} from "react-bootstrap";
 
-export const CreateRoomPage = props => {
-	const {
-		handleSubmit,
-		handleLengthChange,
-		handleTextTitleChange,
-		handleUsersCountChange,
-		length,
-		textTitle,
-		usersCount,
-		texts,
-		lengths,
-		isLoading,
-		roomId
-	} = props;
+export const CreateRoomPage = ({
+	                               handleSubmit,
+	                               handleLengthChange,
+	                               handleTextTitleChange,
+	                               handleUsersCountChange,
+	                               length,
+	                               textTitle,
+	                               usersCount,
+	                               texts,
+	                               lengths,
+	                               isLoading,
+	                               roomId
+                               }) => {
 
 	return isLoading && roomId ? <Ring className="main-spinner" /> : (
-		<form>
+		<Form className="create-room-page">
 			<Select
+				custom
 				name="length"
+				label="Длина текста"
 				value={length}
 				onChange={handleLengthChange}
 				options={lengths}
 			/>
 
 			<Select
+				custom
 				name="textTitle"
+				label="Название текста"
 				value={textTitle}
 				onChange={handleTextTitleChange}
 				options={texts}
 			/>
 
-			<div className="range-wrapper">
-				<input
-					className="range"
+			<Form.Group className="create-room-page__members-range">
+				<Form.Label>Максимальное количество участников: {usersCount} </Form.Label>
+				<Form.Control
+					custom
+					// bsPrefix="custom-range"
 					type="range"
 					id="test5"
 					min="1"
@@ -44,19 +50,18 @@ export const CreateRoomPage = props => {
 					value={usersCount}
 					onChange={handleUsersCountChange}
 				/>
-
-				{usersCount}
-			</div>
+			</Form.Group>
 
 
-			<button
+			<Button
+				variant="dark"
 				type="submit"
 				name="multiplayer"
 				className="btn waves-effect"
 				onClick={handleSubmit}
 			>
 				Начать
-			</button>
-		</form>
+			</Button>
+		</Form>
 	);
 }

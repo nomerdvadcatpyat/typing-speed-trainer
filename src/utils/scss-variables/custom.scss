@@ -1,0 +1,24 @@
+
+@import "../../../node_modules/bootstrap/scss/functions";
+@import "../../../node_modules/bootstrap/scss/_variables";
+
+// 45 процентов на глаз, потом поищу пофикшу обязательно
+
+// range
+$custom-range-track-box-shadow:              inset 0 .25rem .25rem $dark;
+$custom-range-thumb-bg:                      $dark;
+$custom-range-thumb-focus-box-shadow:        0 0 0 1px lighten($dark, 45%);
+$custom-range-thumb-active-bg:               lighten($dark, 20%);
+
+
+// input
+$custom-select-color:                   $dark;
+$input-focus-border-color:              lighten($dark, 45%);
+$input-focus-box-shadow:                0 0 0 $input-btn-focus-width lighten($dark, 45%);
+
+// select
+$custom-select-focus-border-color:  lighten($dark, 45%);
+$custom-select-focus-box-shadow:    0 0 0 $custom-select-focus-width lighten($dark, 45%);
+
+@import "~bootstrap/scss/bootstrap";
+

@@ -1,3 +1,13 @@
-.range {
-  width: 15rem;
+@import "src/utils/scss-variables/variables";
+
+.create-room-page {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+  min-height: $content-min-height;
+
+  &__members-range {
+    width: 20rem;
+  }
 }

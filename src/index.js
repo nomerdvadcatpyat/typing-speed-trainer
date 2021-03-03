@@ -5,6 +5,8 @@ import {Provider} from 'react-redux'
 import {store} from "./store/store";
 import AppContainer from "./components/App/AppContainer";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './utils/scss-variables/custom.scss';
+
 
 ReactDOM.render(
   <React.StrictMode>
