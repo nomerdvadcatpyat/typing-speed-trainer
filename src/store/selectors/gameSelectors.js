@@ -2,7 +2,15 @@
 
 export const getTypingState = state => state.game.typingState;
 
+export const getTextTitle = state => state.game.roomInfo.textTitle;
+
+export const getMaxMembersCount = state => state.game.roomInfo.maxMembersCount;
+
 export const getText = state => state.game.roomInfo.text;
+
+export const getTextLength = state => getText(state).length;
+
+export const getLanguage = state => state.game.roomInfo.language;
 
 export const getInputText = state => state.game.inputText;
 

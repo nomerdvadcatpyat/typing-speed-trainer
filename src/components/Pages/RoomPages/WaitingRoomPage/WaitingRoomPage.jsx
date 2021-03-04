@@ -1,17 +1,18 @@
 import {SearchOrWaitingRoomLayout} from "../SearchOrWaitingRoomLayout";
 import {RoomMemberCard} from "./RoomMemberCard/RoomMemberCard";
 import './WaitingRoomPage.scss'
+import {Button} from "react-bootstrap";
 
 export const WaitingRoomPage = props => {
 
     const getJSXRoomInfo = () => {
         return (
-          <>
-              <p>Room Info</p>
-              <p>{props.roomInfo.textTitle}</p>
-              <p>{props.roomInfo.length}</p>
-              <p>{props.roomInfo.maxMembersCount}</p>
-          </>
+          <div className="room-info">
+            <p> <span className="room-info__key"> Название текста: </span> {props.textTitle}</p>
+              <p> <span className="room-info__key"> Длина текста: </span> {props.textLength}</p>
+              <p> <span className="room-info__key"> Язык текста: </span> {props.language}</p>
+              <p> <span className="room-info__key"> Количество игроков: </span> {props.members.length}/{props.maxMembersCount}</p>
+          </div>
         );
     }
 
@@ -33,22 +34,27 @@ export const WaitingRoomPage = props => {
 
     return (
       <SearchOrWaitingRoomLayout
+        className="waiting-room"
         mainContent={(
-          <div className="waiting-room-page">
+          <div className="waiting-room__main">
             {getJSXUsersInfo()}
           </div>
         )}
         asideContent={(
-          <>
+          <div className="waiting-room__aside">
             { getJSXRoomInfo() }
             {
               props.isRoomOwner && (
-                <button onClick={props.startGameButtonClickHandler}>
+                <Button variant="dark"
+                        className="waiting-room__start-button"
+                        size="lg"
+                        onClick={props.startGameButtonClickHandler}
+                >
                   Начать
-                </button>
+                </Button>
               )
             }
-          </>
+          </div>
         )}
       />
     );

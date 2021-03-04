@@ -5,7 +5,14 @@ import {bindActionCreators, compose} from "redux";
 import {joinToRoom, startGame} from "../../../../store/actionCreators/gameActionCreators";
 import {connect} from "react-redux";
 import {getUser} from "../../../../store/selectors/userSelectors";
-import {getRoomId, getRoomMembers, isRoomOwner} from "../../../../store/selectors/gameSelectors";
+import {
+    getLanguage,
+    getMaxMembersCount,
+    getRoomId,
+    getRoomMembers, getTextLength,
+    getTextTitle,
+    isRoomOwner
+} from "../../../../store/selectors/gameSelectors";
 
 
 const WaitingRoomPageContainer = props => {
@@ -14,16 +21,9 @@ const WaitingRoomPageContainer = props => {
         props.startGame({userId: props.user.id, roomId: props.roomId});
     }
 
-    const roomInfo = {
-        textTitle: 'Lorem Ipsum',
-        length: '250',
-        userCount: '3/4'
-    }
-
     return (
         <WaitingRoomPage {...props}
                          startGameButtonClickHandler={startGameButtonClickHandler}
-                         roomInfo={roomInfo}
         />);
 }
 
@@ -39,6 +39,10 @@ const mapStateToProps = state => {
         user: getUser(state),
         roomId: getRoomId(state),
         members: getRoomMembers(state),
+        textTitle: getTextTitle(state),
+        maxMembersCount: getMaxMembersCount(state),
+        textLength: getTextLength(state),
+        language: getLanguage(state),
         isRoomOwner: isRoomOwner(state)
     }
 }

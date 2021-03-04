@@ -36,7 +36,7 @@ export const SearchRoomPage = props => {
 					) :
 					props.rooms ? (
 						<SearchOrWaitingRoomLayout
-							asideContent={<Button as={Link} to="createRoom" variant="dark">Create Room</Button>}
+							asideContent={<Button as={Link} to="createRoom" variant="dark" size="lg">Create Room</Button>}
 							mainContent={createJSXrooms()}
 						/>
 					) :

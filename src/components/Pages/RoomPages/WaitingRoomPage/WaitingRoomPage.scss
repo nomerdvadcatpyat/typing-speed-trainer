@@ -1,11 +1,29 @@
-.waiting-room-page {
-  position: relative;
+@import "~bootstrap/scss/bootstrap";
 
-  height: 100%;
-  width: 100%;
+.waiting-room {
+  &__main {
+    height: 100%;
+    width: 100%;
 
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  align-items: start;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: start;
+  }
+
+  &__aside {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    font-size: 1.5rem;
+
+    .room-info__key {
+      color: $gray-600;
+    }
+  }
 }
+
