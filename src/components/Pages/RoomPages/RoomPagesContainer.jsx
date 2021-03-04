@@ -2,7 +2,7 @@ import React, {useEffect} from "react";
 import {connect} from "react-redux";
 import {RoomPages} from "./RoomPages";
 import {getRoomError, getRoomId, getTypingState, isUserKicked} from "../../../store/selectors/gameSelectors";
-import {joinToRoom, leaveRoom, setIdleState, setRoomId} from "../../../store/actionCreators/gameActionCreators";
+import {joinToRoom, leaveRoom, setIdleState} from "../../../store/actionCreators/gameActionCreators";
 import {bindActionCreators} from "redux";
 import {getUser} from "../../../store/selectors/userSelectors";
 import {setRooms} from "../../../store/actionCreators/appActionCreators";
@@ -55,7 +55,6 @@ const mapDispatchToProps = dispatch => {
     return {
         leaveRoom: bindActionCreators(leaveRoom, dispatch),
         setIdleState: bindActionCreators(setIdleState, dispatch),
-        setRoomId: bindActionCreators(setRoomId, dispatch),
         joinToRoom: bindActionCreators(joinToRoom, dispatch)
     }
 }

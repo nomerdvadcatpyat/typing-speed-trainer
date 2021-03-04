@@ -2,8 +2,8 @@ import io from "socket.io-client";
 import {
 	setUserKicked,
 	setEndTime,
-	setGameData, setPrepareState, setRoomError, setRoomId,
-	setTypingState, updateRoomMembers, setRoomOwner
+	setRoomData, setPrepareState, setRoomError,
+	setTypingState, updateRoom, setRoomOwner
 } from "../actionCreators/gameActionCreators";
 import {
 	CREATE_ROOM,
@@ -45,9 +45,9 @@ export const socketMiddleware = store => next => action => {
 			store.dispatch(setRooms(rooms));
 		});
 
-		socket.on('update room members', members => {
-			console.log('update members', members);
-			store.dispatch(updateRoomMembers(members));
+		socket.on('update room', data => {
+			console.log('update room', data);
+			store.dispatch(updateRoom(data));
 		});
 
 		socket.on('set prepare state', () => {
@@ -76,7 +76,7 @@ export const socketMiddleware = store => next => action => {
 		});
 
 		socket.on('response members progress', members => {
-			store.dispatch(updateRoomMembers(members));
+			store.dispatch(updateRoom(members));
 		});
 
 		socket.on('disconnect', () => {
@@ -86,17 +86,15 @@ export const socketMiddleware = store => next => action => {
 
 
 	const initRoomCreator = () => {
-		socket.on('confirm create room', roomId => {
-			store.dispatch(setRoomId(roomId));
+		socket.on('confirm create room', data => {
 			store.dispatch(setRoomOwner(true));
+			store.dispatch(setRoomData(data));
 		});
 	}
 
 	const initRoomMember = () => {
-		socket.on('confirm join to room', ({roomId, text, keyboardLayout}) => {
-			console.log('confirm join to room', {roomId, text, keyboardLayout});
-			store.dispatch(setRoomId(roomId));
-			store.dispatch(setGameData({ text, keyboardLayout }));
+		socket.on('confirm join to room', data => {
+			store.dispatch(setRoomData(data));
 		});
 
 		socket.on('reject join to room', error => {

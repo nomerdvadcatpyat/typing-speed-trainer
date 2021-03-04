@@ -11,7 +11,7 @@ export const CreateRoomPage = ({
 	                               handleUsersCountChange,
 	                               length,
 	                               textTitle,
-	                               usersCount,
+	                               maxMembersCount,
 	                               texts,
 	                               lengths,
 	                               isLoading,
@@ -39,15 +39,14 @@ export const CreateRoomPage = ({
 			/>
 
 			<Form.Group className="create-room-page__members-range">
-				<Form.Label>Максимальное количество участников: {usersCount} </Form.Label>
+				<Form.Label>Максимальное количество участников: {maxMembersCount} </Form.Label>
 				<Form.Control
 					custom
-					// bsPrefix="custom-range"
 					type="range"
 					id="test5"
 					min="1"
 					max="6"
-					value={usersCount}
+					value={maxMembersCount}
 					onChange={handleUsersCountChange}
 				/>
 			</Form.Group>

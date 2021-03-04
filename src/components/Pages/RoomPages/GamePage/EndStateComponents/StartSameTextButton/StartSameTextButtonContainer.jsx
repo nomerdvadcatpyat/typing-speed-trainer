@@ -6,7 +6,6 @@ import {
 	setTypingState,
 } from "../../../../../../store/actionCreators/gameActionCreators";
 import {getKeyboardLayout, getText} from "../../../../../../store/selectors/gameSelectors";
-import {prepareToTyping} from "../../../../../../utils/api/roomApi";
 
 
 const StartSameTextButtonContainer = props => {

@@ -1,9 +1,10 @@
-import './SearchRoomPage.scss'
+import '../SearchOrWaitingRoomLayout.scss'
 import {Link} from "react-router-dom";
 import {Ring} from "react-spinners-css";
 import React from "react";
 import {RoomCard} from "./RoomCard/RoomCard";
 import {Button} from "react-bootstrap";
+import {SearchOrWaitingRoomLayout} from "../SearchOrWaitingRoomLayout";
 
 export const SearchRoomPage = props => {
 
@@ -34,15 +35,11 @@ export const SearchRoomPage = props => {
 						<div onClick={props.closeKickedMessage}> Вы были исключены </div>
 					) :
 					props.rooms ? (
-							<div className="search-room">
-								<aside className="search-room__create-own-room">
-										<Button as={Link} to="createRoom" variant="dark">Create Room</Button>
-								</aside>
-								<main className="search-room__rooms">
-									{createJSXrooms()}
-								</main>
-							</div>
-						) :
+						<SearchOrWaitingRoomLayout
+							asideContent={<Button as={Link} to="createRoom" variant="dark">Create Room</Button>}
+							mainContent={createJSXrooms()}
+						/>
+					) :
 						<Ring className="main-spinner"/>
 			}
 		</>

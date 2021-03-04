@@ -4,22 +4,22 @@ import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import {
 	createRoom,
-	setGameData,
+	setRoomData,
 	setPrepareState,
 	setTypingState,
 	startGame, startSingleGame
-} from "../../../store/actionCreators/gameActionCreators";
-import {getSelectedTextData, getSelectTextPageData} from "../../../utils/api/roomApi";
-import {getRoomId, getTypingState} from "../../../store/selectors/gameSelectors";
+} from "../../../../store/actionCreators/gameActionCreators";
+import {getSelectTextPageData} from "../../../../utils/api/roomApi";
+import {getRoomId, getTypingState} from "../../../../store/selectors/gameSelectors";
 import {useHistory} from "react-router-dom";
-import {getUser} from "../../../store/selectors/userSelectors";
+import {getUser} from "../../../../store/selectors/userSelectors";
 
 
 const CreateRoomPageContainer = props => {
 
 	const [values, setValues] = useState({ textTitles: null, lengths: null });
 	const [selectedValues, setSelectedValues] = useState({ textTitle: null, length: null });
-	const [usersCount, setUsersCount] = useState(1);
+	const [maxMembersCount, setMaxMembersCount] = useState(1);
 	const [isLoading, setIsLoading] = useState(true);
 
 	const history = useHistory();
@@ -42,19 +42,16 @@ const CreateRoomPageContainer = props => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		const data = await getSelectedTextData(selectedValues);
-		props.setGameData(data);
 
 		const parsedData = {
-			text: data.text,
-			textTitle: data.textTitle,
-			textLang: data.textLang,
-			usersCount: usersCount,
+			textTitle: selectedValues.textTitle,
+			maxMembersCount: maxMembersCount,
+			length: selectedValues.length,
 			userId: props.user.id
 		}
 
 		history.push(`/room`);
-		if(usersCount === 1) {
+		if(maxMembersCount === 1) {
 			props.startSingleGame(parsedData);
 		}
 		else {
@@ -68,11 +65,11 @@ const CreateRoomPageContainer = props => {
 		isLoading={isLoading}
 		texts={values.textTitles}
 		lengths={values.lengths}
-		usersCount={usersCount}
+		maxMembersCount={maxMembersCount}
 		handleSubmit={handleSubmit}
 		handleLengthChange={e => setSelectedValues(prev => ({...prev,  length: e.target.value }))}
 		handleTextTitleChange={e => setSelectedValues(prev => ({...prev,  textTitle: e.target.value }))}
-		handleUsersCountChange={e => setUsersCount(e.target.value)}
+		handleUsersCountChange={e => setMaxMembersCount(e.target.value)}
 		length={selectedValues.length}
 		textTitle={selectedValues.textTitle}
 	/>
@@ -83,7 +80,7 @@ const mapDispatchToProps = dispatch => {
 		createRoom: bindActionCreators(createRoom, dispatch),
 		setPrepareState: bindActionCreators(setPrepareState, dispatch),
 		setTypingState: bindActionCreators(setTypingState, dispatch),
-		setGameData: bindActionCreators(setGameData, dispatch),
+		setGameData: bindActionCreators(setRoomData, dispatch),
 		startGame: bindActionCreators(startGame, dispatch),
 		startSingleGame: bindActionCreators(startSingleGame, dispatch)
 	}

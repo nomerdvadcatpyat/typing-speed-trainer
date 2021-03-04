@@ -1,0 +1,36 @@
+@import "~bootstrap/scss/bootstrap";
+
+
+.room-member-card {
+  margin: 1rem;
+  width: 22rem;
+  height: 30rem;
+  font-size: 1.5rem;
+  color: $dark;
+
+  &__header {
+    text-align: center;
+  }
+
+  &__link-to-user {
+    color: $dark;
+    &:hover {
+      color: $dark;
+      text-decoration: none;
+    }
+  }
+
+  &__body {
+    text-align: center;
+  }
+
+  &_owner {
+    .room-member-card__header {
+      background-color: #fff172;
+    }
+
+    .room-member-card__body {
+      background-color: #fff6cf;
+    }
+  }
+}

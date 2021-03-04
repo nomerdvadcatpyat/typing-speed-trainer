@@ -6,7 +6,7 @@ export const LEAVE_ROOM = "GAME/LEAVE_ROOM";
 
 export const JOIN_TO_ROOM = "GAME/JOIN_TO_ROOM";
 
-export const SET_GAME_DATA = "GAME/SET_GAME_DATA";
+export const SET_ROOM_DATA = "GAME/SET_ROOM_DATA";
 
 export const START_GAME = "GAME/START_GAME";
 
@@ -30,10 +30,8 @@ export const SET_INPUT_TEXT = "GAME/SET_INPUT_TEXT";
 
 export const SET_USER_KICKED = "GAME/SET_USER_KICKED";
 
-export const SET_ROOM_ID = "GAME/SET_ROOM_ID";
-
 export const SET_ROOM_ERROR = "GAME/SET_ROOM_ERROR";
 
-export const UPDATE_ROOM_MEMBERS = "GAME/UPDATE_ROOM_MEMBERS";
+export const UPDATE_ROOM = "GAME/UPDATE_ROOM";
 
 export const SET_ROOM_OWNER = "GAME/SET_ROOM_OWNER";

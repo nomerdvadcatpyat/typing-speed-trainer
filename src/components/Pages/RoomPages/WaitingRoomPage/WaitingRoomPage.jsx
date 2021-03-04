@@ -1,4 +1,6 @@
-import './WaitingRoomPage.scss';
+import {SearchOrWaitingRoomLayout} from "../SearchOrWaitingRoomLayout";
+import {RoomMemberCard} from "./RoomMemberCard/RoomMemberCard";
+import './WaitingRoomPage.scss'
 
 export const WaitingRoomPage = props => {
 
@@ -8,7 +10,7 @@ export const WaitingRoomPage = props => {
               <p>Room Info</p>
               <p>{props.roomInfo.textTitle}</p>
               <p>{props.roomInfo.length}</p>
-              <p>{props.roomInfo.usersCount}</p>
+              <p>{props.roomInfo.maxMembersCount}</p>
           </>
         );
     }
@@ -16,26 +18,38 @@ export const WaitingRoomPage = props => {
     const getJSXUsersInfo = () => {
         console.log(props.members);
         return props.members.map((member, index) => {
-            return <div key={index} className="waiting-room__user"> {member.userName} </div>
+            return (
+              <RoomMemberCard
+                key={index}
+                userName={member.userName}
+                points={member.points}
+                isRoomOwner={member.isRoomOwner}
+                gamesCount={member.gamesCount}
+                averageSpeed={member.averageSpeed}
+              />
+            )
         });
     }
 
     return (
-      <div className="waiting-room">
-          <main className="waiting-room__users">
-              <p className="users-title">Users Info</p>
-              {getJSXUsersInfo()}
-          </main>
-          <aside className="waiting-room__info">
-              {getJSXRoomInfo()}
-              {
-                  props.isRoomOwner ? (
-                      <button onClick={props.startGameButtonClickHandler}>
-                          Начать
-                      </button>
-                  ) : null
-              }
-          </aside>
-      </div>
+      <SearchOrWaitingRoomLayout
+        mainContent={(
+          <div className="waiting-room-page">
+            {getJSXUsersInfo()}
+          </div>
+        )}
+        asideContent={(
+          <>
+            { getJSXRoomInfo() }
+            {
+              props.isRoomOwner && (
+                <button onClick={props.startGameButtonClickHandler}>
+                  Начать
+                </button>
+              )
+            }
+          </>
+        )}
+      />
     );
 }
