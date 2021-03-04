@@ -8,11 +8,11 @@ import {
 	setPrepareState,
 	setTypingState,
 	startGame, startSingleGame
-} from "../../../store/actionCreators/gameActionCreators";
-import {getSelectedTextData, getSelectTextPageData} from "../../../utils/api/roomApi";
-import {getRoomId, getTypingState} from "../../../store/selectors/gameSelectors";
+} from "../../../../store/actionCreators/gameActionCreators";
+import {getSelectedTextData, getSelectTextPageData} from "../../../../utils/api/roomApi";
+import {getRoomId, getTypingState} from "../../../../store/selectors/gameSelectors";
 import {useHistory} from "react-router-dom";
-import {getUser} from "../../../store/selectors/userSelectors";
+import {getUser} from "../../../../store/selectors/userSelectors";
 
 
 const CreateRoomPageContainer = props => {

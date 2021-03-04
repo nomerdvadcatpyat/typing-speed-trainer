@@ -1,4 +1,6 @@
 import './WaitingRoomPage.scss';
+import {SearchOrWaitingRoomLayout} from "../SearchOrWaitingRoomLayout";
+import {RoomMemberCard} from "./RoomMemberCard/RoomMemberCard";
 
 export const WaitingRoomPage = props => {
 
@@ -16,26 +18,39 @@ export const WaitingRoomPage = props => {
     const getJSXUsersInfo = () => {
         console.log(props.members);
         return props.members.map((member, index) => {
-            return <div key={index} className="waiting-room__user"> {member.userName} </div>
+            return (
+              <RoomMemberCard
+                key={index}
+                userName={member.userName}
+                points={member.points}
+                isRoomOwner={member.isRoomOwner}
+                gamesCount={member.gamesCount}
+                averageSpeed={member.averageSpeed}
+              />
+            )
         });
     }
 
     return (
-      <div className="waiting-room">
-          <main className="waiting-room__users">
-              <p className="users-title">Users Info</p>
-              {getJSXUsersInfo()}
-          </main>
-          <aside className="waiting-room__info">
-              {getJSXRoomInfo()}
-              {
-                  props.isRoomOwner ? (
-                      <button onClick={props.startGameButtonClickHandler}>
-                          Начать
-                      </button>
-                  ) : null
-              }
-          </aside>
-      </div>
+      <SearchOrWaitingRoomLayout
+        mainContent={(
+          <>
+            <p className="users-title">Users Info</p>
+            {getJSXUsersInfo()}
+          </>
+        )}
+        asideContent={(
+          <>
+            { getJSXRoomInfo() }
+            {
+              props.isRoomOwner && (
+                <button onClick={props.startGameButtonClickHandler}>
+                  Начать
+                </button>
+              )
+            }
+          </>
+        )}
+      />
     );
 }

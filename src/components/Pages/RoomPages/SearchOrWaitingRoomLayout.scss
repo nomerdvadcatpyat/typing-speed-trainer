@@ -1,15 +1,16 @@
-@import "./src/utils/scss-variables/variables";
-@import "~bootstrap/scss/bootstrap";
+@import "../../../utils/scss-variables/variables";
+@import "../../../../node_modules/bootstrap/scss/bootstrap";
 
-.search-room {
+.room-content {
   min-height: $content-min-height;
 
-  &__rooms {
+  &__main {
     padding: 0.5rem 0;
   }
 
-  &__create-own-room {
+  &__main, &__aside {
     display: flex;
+    flex-flow: column nowrap;
     align-items: center;
     justify-content: center;
   }
@@ -17,8 +18,8 @@
 
 
 @media screen and (max-width: map-get($grid-breakpoints, "sm")) {
-  .search-room {
-    &__create-own-room {
+  .room-content {
+    &__aside {
       width: 100% - 5;
       margin: auto;
       padding: 1rem 0;
@@ -28,14 +29,14 @@
 }
 
 @media screen and (min-width: map-get($grid-breakpoints, "sm")) {
-  .search-room {
+  .room-content {
     position: relative;
 
-    &__rooms {
+    &__main {
       width: 70%;
     }
 
-    &__create-own-room {
+    &__aside {
       height: $content-min-height - 5;
       border-left: 1px solid $dark;
       position: fixed;

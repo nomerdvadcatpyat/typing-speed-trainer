@@ -42,7 +42,6 @@ export const CreateRoomPage = ({
 				<Form.Label>Максимальное количество участников: {usersCount} </Form.Label>
 				<Form.Control
 					custom
-					// bsPrefix="custom-range"
 					type="range"
 					id="test5"
 					min="1"
