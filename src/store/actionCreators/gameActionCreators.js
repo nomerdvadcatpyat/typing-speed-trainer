@@ -4,7 +4,7 @@ import {
 	SET_USER_KICKED,
 	LEAVE_ROOM,
 	SET_END_STATE,
-	SET_END_TIME,
+	SET_END_DATA,
 	SET_ROOM_DATA,
 	SET_IDLE_STATE,
 	SET_INPUT_TEXT,
@@ -36,7 +36,7 @@ export const setTypingState = () => ({ type: SET_TYPING_STATE });
 
 export const setEndState = () => ({ type: SET_END_STATE });
 
-export const setEndTime = time => ({type: SET_END_TIME, payload: time});
+export const setEndData = payload => ({type: SET_END_DATA, payload });
 
 export const setInputText = inputText => ({ type: SET_INPUT_TEXT, payload: inputText });
 

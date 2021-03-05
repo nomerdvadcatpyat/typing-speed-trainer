@@ -1,6 +1,6 @@
 import {
 	SET_USER_KICKED,
-	SET_END_STATE, SET_END_TIME, SET_ERROR_TYPING, SET_ROOM_DATA, SET_IDLE_STATE,
+	SET_END_STATE, SET_END_DATA, SET_ERROR_TYPING, SET_ROOM_DATA, SET_IDLE_STATE,
 	SET_INPUT_TEXT,
 	SET_NO_ERROR_TYPING, SET_PREPARE_STATE, SET_ROOM_ERROR,
 	SET_TYPING_STATE, UPDATE_ROOM, SET_ROOM_OWNER
@@ -29,7 +29,10 @@ const initialState = {
 	isRoomOwner: null,
 	inputText: '',
 	typingState: initialTypingState,
-	endTime: null
+	endTime: null,
+	points: null,
+	place: null,
+	averageSpeed: null
 }
 
 export const gameReducer = (state = initialState, action) => {
@@ -76,10 +79,10 @@ export const gameReducer = (state = initialState, action) => {
 			}
 		}
 
-		case SET_END_TIME: {
+		case SET_END_DATA: {
 			return {
 				...state,
-				endTime: action.payload
+				...action.payload
 			}
 		}
 

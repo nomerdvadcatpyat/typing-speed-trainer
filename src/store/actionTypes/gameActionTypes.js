@@ -20,7 +20,7 @@ export const SET_TYPING_STATE = "GAME/SET_TYPING_STATE";
 
 export const SET_END_STATE = "GAME/SET_END_STATE";
 
-export const SET_END_TIME = "GAME/SET_END_TIME";
+export const SET_END_DATA = "GAME/SET_END_DATA";
 
 export const SET_ERROR_TYPING = "GAME/SET_ERROR_TYPING";
 

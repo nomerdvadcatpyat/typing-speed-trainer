@@ -29,3 +29,9 @@ export const getRoomMembers = state => state.game.members;
 export const isUserKicked = state => state.game.isUserKicked;
 
 export const isRoomOwner = state => state.game.isRoomOwner;
+
+export const getPoints = state => state.game.points;
+
+export const getPlace = state => state.game.place;
+
+export const getAverageSpeed = state => state.game.averageSpeed;

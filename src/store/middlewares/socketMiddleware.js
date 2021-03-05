@@ -1,7 +1,7 @@
 import io from "socket.io-client";
 import {
 	setUserKicked,
-	setEndTime,
+	setEndData,
 	setRoomData, setPrepareState, setRoomError,
 	setTypingState, updateRoom, setRoomOwner
 } from "../actionCreators/gameActionCreators";
@@ -71,8 +71,9 @@ export const socketMiddleware = store => next => action => {
 			store.dispatch(setUserKicked(true));
 		});
 
-		socket.on('set end time', time => {
-			store.dispatch(setEndTime(time/1000));
+		socket.on('set end data', data => {
+			console.log(data);
+			store.dispatch(setEndData(data));
 		});
 
 		socket.on('response members progress', members => {
