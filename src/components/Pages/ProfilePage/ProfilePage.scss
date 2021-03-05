@@ -1,37 +1,69 @@
-.user-profile-page {
-  display: grid;
-  grid-template:  'info' 40vh
-                  'graphic' 1fr
-                  / 1fr;
+@import "~bootstrap/scss/bootstrap";
+
+.user-profile {
+  max-width: 70%;
+  margin: auto;
 
   &__first-line {
-    margin: 3rem 0;
     display: flex;
-    flex-flow: row nowrap;
-    font-size: 1.5rem;
+    margin-top: 2rem;
+  }
 
-    .profile-pic {
-      width: 200px;
-    }
+  &__user-wins {
+    width: 7rem;
 
-    .user-profile-info {
-      margin-left: 5rem;
-    }
-
-    .user-profile-wins {
-      width: 10rem;
-      margin-right: 5rem;
-      margin-left: auto;
+    .place-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
   }
 
-  &__graphic-wrapper {
-    margin: auto;
-    width: 70%;
-    height: 20rem;
+  &__user-pic {
+    max-width: 200px;
+  }
+
+  &__user-info {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
   }
 
   &__y-axis-selector {
     margin: 1rem auto;
+  }
+
+  &__graphic-wrapper {
+    max-width: 100%;
+    margin: auto;
+    height: 20rem;
+  }
+}
+
+
+@media screen and (max-width: map-get($grid-breakpoints, "md")) {
+  .user-profile {
+    font-size: 1.2rem;
+
+    &__first-line {
+      flex-flow: column nowrap;
+      align-items: center;
+    }
+  }
+}
+
+@media screen and (min-width: map-get($grid-breakpoints, "md")) {
+  .user-profile {
+    &__first-line {
+      font-size: 1.5rem;
+      flex-flow: row nowrap;
+      width: max-content;
+      margin: 2rem auto 0 auto;
+    }
+
+    &__second-line {
+      margin-top: 3rem;
+    }
   }
 }

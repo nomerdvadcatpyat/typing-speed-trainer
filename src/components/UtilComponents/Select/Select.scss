@@ -4,6 +4,10 @@
   display: block;
   width: 20rem;
 
+  select {
+    text-align: center;
+  }
+
   &:hover {
     cursor: pointer;
   }

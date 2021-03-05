@@ -7,21 +7,20 @@ import {Select} from "../../UtilComponents/Select/Select";
 
 export const ProfilePage = props => {
     return props.isLoading ? <Ring className="main-spinner" /> : (
-      <div className="user-profile-page">
-          <div className="user-profile-page__first-line">
-              <img
-                  className="profile-pic"
-                  src={ props.userInfo.pic || `${process.env.REACT_APP_PICS_PATH}/default-profile-pic.svg`}
-                  alt="profile pic"
-              />
-
-              <div className="user-profile-info">
+      <div className="user-profile">
+          <div className="user-profile__first-line">
+              <div className="user-profile__user-info">
+                  <img
+                    className="user-profile__user-pic"
+                    src={ props.userInfo.pic || `${process.env.REACT_APP_PICS_PATH}/default-profile-pic.svg`}
+                    alt="profile pic"
+                  />
                   <p> {props.userInfo.login} </p>
                   <p> Points: {props.userInfo.points} </p>
                   <p> Average typing speed: {props.userInfo.averageSpeed} ch/min </p>
               </div>
 
-              <div className="user-profile-wins">
+              <div className="user-profile__user-wins">
                   <PlaceInfo
                       picPath={`${process.env.REACT_APP_PICS_PATH}/golden-kubok.png`}
                       picAlt="golden kubok"
@@ -40,12 +39,13 @@ export const ProfilePage = props => {
               </div>
           </div>
 
-          <div className="user-profile-page__second-line">
-              <Select className="user-profile-page__y-axis-selector"
+          <div className="user-profile__second-line">
+              <Select className="user-profile__y-axis-selector"
                       options={props.selectOptions}
                       onChange={props.setYAxisName}
+                      custom
               />
-              <div className="user-profile-page__graphic-wrapper">
+              <div className="user-profile__graphic-wrapper">
                   <Graphic data={props.graphicData} XAxisName="date" YAxisName={props.YAxisName} />
               </div>
           </div>
