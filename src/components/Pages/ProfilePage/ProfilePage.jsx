@@ -3,7 +3,7 @@ import {PlaceInfo} from "./PlaceInfo/PlaceInfo";
 import {Graphic} from "./Graphic/Graphic";
 import {Ring} from "react-spinners-css";
 import React from "react";
-import {Select} from "../RoomPages/CreateRoomPage/Select/Select";
+import {Select} from "../../UtilComponents/Select/Select";
 
 export const ProfilePage = props => {
     return props.isLoading ? <Ring className="main-spinner" /> : (

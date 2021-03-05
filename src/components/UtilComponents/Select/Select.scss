@@ -1,0 +1,10 @@
+@import "../../../../node_modules/bootstrap/scss/bootstrap";
+
+.select {
+  display: block;
+  width: 20rem;
+
+  &:hover {
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,21 @@
+.user-rating-card {
+  text-align: center;
+  max-width: 100%;
+
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+
+  &__place {
+    width: 5rem;
+    font-size: 1.5rem;
+  }
+
+  &__user-info {
+    width: 35rem;
+  }
+
+  &__body {
+    margin-top: 1rem;
+  }
+}

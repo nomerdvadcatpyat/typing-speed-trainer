@@ -1,0 +1,27 @@
+@import "../../../utils/scss-variables/variables";
+
+.rating-page {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: start;
+  align-items: center;
+  height: $content-min-height;
+  padding: 1.5rem 0 0 0;
+
+  &__content-wrapper {
+    width: 40rem;
+    max-width: 80%;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: start;
+  }
+
+  &__user-rating-card {
+    margin-bottom: 1rem;
+  }
+
+  &__select {
+    width: 100%;
+    text-align: center;
+  }
+}

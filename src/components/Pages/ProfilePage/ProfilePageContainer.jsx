@@ -7,11 +7,14 @@ import queryString from "querystring";
 
 const ProfilePageContainer = props => {
 
-    const selectOptions = ["averageSpeed", "points", "place"];
+    const selectOptions = [
+        {title: "averageSpeed", value: "averageSpeed"},
+        {title: "points", value: "points"}
+    ];
 
     const [isLoading, setLoading] = useState(true);
     const [profileData, setProfileData] = useState(null);
-    const [YAxisName, setYAxisName] = useState(selectOptions[0]);
+    const [YAxisName, setYAxisName] = useState(selectOptions[0].value);
 
     useEffect(() => {
         const query = queryString.parse(props.location.search.substr(1));

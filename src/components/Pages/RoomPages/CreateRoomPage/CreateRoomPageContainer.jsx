@@ -35,7 +35,7 @@ const CreateRoomPageContainer = props => {
 
 	useEffect(() => {
 		if(values.textTitles && values.lengths) {
-			setSelectedValues({ textTitle: values.textTitles[0], length: values.lengths[0] });
+			setSelectedValues({ textTitle: values.textTitles[0].value, length: values.lengths[0].value });
 		}
 	}, [values]);
 

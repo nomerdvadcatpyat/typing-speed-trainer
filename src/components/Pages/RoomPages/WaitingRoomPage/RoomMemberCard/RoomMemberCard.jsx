@@ -1,14 +1,14 @@
 import {Button, Card} from "react-bootstrap";
 import {Link} from "react-router-dom";
 import './RoomMemberCard.scss';
-import { LinkContainer } from 'react-router-bootstrap';
+import {LinkToUser} from "../../../../UtilComponents/LinkToUser/LinkToUser";
 
 export const RoomMemberCard = ({userName, points, isRoomOwner, gamesCount, averageSpeed}) => {
 	return (
 		<Card className={`room-member-card ${isRoomOwner && 'room-member-card_owner'}`}>
-			<Link className="room-member-card__link-to-user" to={`user/?user=${userName}`}>
+			<LinkToUser username={userName}>
 				<Card.Header className="room-member-card__header"> {userName} </Card.Header>
-			</Link>
+			</LinkToUser>
 
 			<Card.Body className="room-member-card__body">
 				<Card.Text >

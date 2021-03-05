@@ -1,5 +1,5 @@
 import './CreateRoomPage.scss';
-import {Select} from "./Select/Select";
+import {Select} from "../../../UtilComponents/Select/Select";
 import {Ring} from "react-spinners-css";
 import React from "react";
 import {Button, Form} from "react-bootstrap";
