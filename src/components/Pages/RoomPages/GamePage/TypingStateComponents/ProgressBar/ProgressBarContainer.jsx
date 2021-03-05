@@ -1,15 +1,18 @@
 import {connect} from "react-redux";
-import {getRoomMembers} from "../../../../../../store/selectors/gameSelectors";
-import {ProgressBar} from "./ProgressBar";
+import {getRoomMembers, getText} from "../../../../../../store/selectors/gameSelectors";
+import {GameProgressBar} from "./ProgressBar";
+import {getUser} from "../../../../../../store/selectors/userSelectors";
 
 
 const ProgressBarContainer = props => {
-    return <ProgressBar {...props} />
+    return <GameProgressBar {...props} />
 }
 
 const mapStateToProps = state => {
     return {
-        roomMembers: getRoomMembers(state)
+        roomMembers: getRoomMembers(state),
+        text: getText(state),
+        login: getUser(state).login
     }
 }
 

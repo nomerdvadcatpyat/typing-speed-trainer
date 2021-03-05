@@ -3,7 +3,7 @@ import './KeyboardComponent.scss'
 import PropTypes from "prop-types";
 
 
-export const KeyboardComponent = ({ keyboardLayout, nextChar, withShift, hasError }) => {
+export const KeyboardComponent = ({ keyboardLayout, nextChar, withShift, hasError, className }) => {
 
 	const resolveSpecialKey = (key) => {
 		const classes = ["keyboard__char-key"];
@@ -89,7 +89,7 @@ export const KeyboardComponent = ({ keyboardLayout, nextChar, withShift, hasErro
 	}
 
 	return (
-		<div className="keyboard">
+		<div className={`keyboard ${className && className}`}>
 			{generateKeyboardRows(keyboardLayout)}
 		</div>
 	);

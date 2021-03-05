@@ -2,7 +2,7 @@ import React from "react";
 import './TextComponent.scss';
 import PropTypes from "prop-types";
 
-export function TextComponent({ text, inputText, endState, firstErrorSymbolIndex }) {
+export function TextComponent({ text, inputText, endState, className, firstErrorSymbolIndex }) {
 
 	const renderText = (text) => {
 		return text.split('').map((char, index) => {
@@ -29,7 +29,7 @@ export function TextComponent({ text, inputText, endState, firstErrorSymbolIndex
 	}
 
 	return (
-		<div className="text-container">
+		<div className={`text-container ${className && className}`}>
 			{
 				endState ?
 					renderEndText(text) :

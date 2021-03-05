@@ -1,0 +1,16 @@
+.typing-state-container {
+
+  width: 90%;
+
+  &__text-container {
+    margin: 1rem 0;
+  }
+
+  &__input {
+    width: 100%;
+  }
+
+  &__keyboard {
+    margin: 2rem auto 0 auto;
+  }
+}

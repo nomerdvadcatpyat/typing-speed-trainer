@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {TimerComponent} from "../../../../../UtilComponents/Timer/TimerComponent";
 
 
-const CountDownTimerContainer = () => {
+const CountDownTimerContainer = props => {
 
 	const [countDown, setCountDown] = useState(5);
 
@@ -15,7 +15,7 @@ const CountDownTimerContainer = () => {
 		return () => clearInterval(timerId);
 	}, []);
 
-	return <TimerComponent minutes={0} seconds={countDown} />
+	return <TimerComponent minutes={0} seconds={countDown} {...props} />
 }
 
 export default CountDownTimerContainer;

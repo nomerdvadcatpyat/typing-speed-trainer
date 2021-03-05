@@ -2,40 +2,31 @@ import React from "react";
 import './GamePage.scss';
 import PropTypes from "prop-types";
 import CountDownTimerContainer from "./PrepareStateComponents/CountDownTimer/CountDownTimerContainer";
-import {TypingStatePageContainer} from "./TypingStateComponents/TypingStatePageContainer";
 import EndStatePageContainer from "./EndStateComponents/EndStatePageContainer";
 import ProgressBarContainer from "./TypingStateComponents/ProgressBar/ProgressBarContainer";
+import {TypingStatePage} from "./TypingStateComponents/TypingStatePage";
 
 
 export const GamePage = ({
-							 state,
-							 hasError
-							 }) => {
+	                         state,
+	                         hasError,
+                         }) => {
 
 	return (
-		<div className="training-page">
+		<div className="game-page">
 			{
 				state.PREPARE ?
-					<CountDownTimerContainer /> :
-				state.TYPING ?
-					<TypingStatePageContainer hasError={hasError} /> :
-				state.END ?
-					<EndStatePageContainer /> :
-				null
+					<CountDownTimerContainer className="game-page__countdown-timer"/> :
+					state.TYPING ?
+						<TypingStatePage className="game-page__typing-state-container" hasError={hasError}/> :
+						state.END ?
+							<EndStatePageContainer className="game-page__typing-state-container"/> :
+							null
 			}
-			<ProgressBarContainer />
+			{(state.TYPING || state.END) &&
+			<ProgressBarContainer className="game-page__progress-bar"/>}
+
 		</div>
 	);
 }
 
-
-GamePage.propTypes = {
-	text: PropTypes.string,
-	inputText: PropTypes.string,
-	setInputText: PropTypes.func,
-	endState: PropTypes.bool,
-	keyboardLayout: PropTypes.array,
-	hasError: PropTypes.bool,
-	forwardInputRef: PropTypes.object,
-	startSameTextButtonClickHandler: PropTypes.func
-}

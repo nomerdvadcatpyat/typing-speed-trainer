@@ -1,13 +1,12 @@
 import React from 'react';
-import './TimerComponent.scss';
 import {addLeadingZero} from "../../../utils/time/timeUtils";
 
 
 
-export const TimerComponent = ({minutes, seconds}) => {
+export const TimerComponent = ({minutes, seconds, className}) => {
 	return (
-		<div className="timer">
-				<p> {addLeadingZero(minutes)}:{addLeadingZero(seconds)} </p>
+		<div className={`${className && className}`}>
+				{addLeadingZero(minutes)}:{addLeadingZero(seconds)}
 		</div>
 	);
 }

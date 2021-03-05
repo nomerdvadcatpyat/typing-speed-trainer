@@ -24,6 +24,8 @@ const GamePageContainer = (props) => {
 		<GamePage
 			hasError={hasError}
 			state={props.state}
+			text={props.text}
+			inputText={props.inputText}
 		/>
 	);
 }

@@ -2,14 +2,12 @@ import React, {useState, useEffect} from 'react';
 import {TimerComponent} from "../../../../../UtilComponents/Timer/TimerComponent";
 import {connect} from "react-redux";
 import {getTypingState} from "../../../../../../store/selectors/gameSelectors";
+import './CountUpTimer.scss';
 
-
-const CountUpTimerContainer = ({ endState }) => {
+const CountUpTimerContainer = ({ endState, className, ...otherProps }) => {
 
 	const [timerId, setTimerId] = useState(-1);
 	const [timer, setTimer] = useState({ minutes: 0, seconds: 0 });
-
-	console.log('END STATE', endState, timerId)
 
 	function calculateUpdate(timer) {
 		if(timer.seconds === 59) {
@@ -43,6 +41,8 @@ const CountUpTimerContainer = ({ endState }) => {
 				<TimerComponent
 					seconds={timer.seconds}
 					minutes={timer.minutes}
+					className={`count-up-timer ${className}`}
+					{...otherProps}
 				/>
 			</>
 	)

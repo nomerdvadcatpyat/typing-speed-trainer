@@ -2,9 +2,9 @@ import React from 'react';
 import './InputComponent.scss'
 import PropTypes from "prop-types";
 
-export const InputComponent = ({ inputText, setInputText, hasError }) => {
+export const InputComponent = ({ inputText, className, setInputText, hasError }) => {
 	return (
-		<div className="input-wrap">
+		<div className={`input-wrap ${className}`}>
 			<input
 				autoFocus={true}
 				className={`text-input ${hasError ? 'error-input' : ''}`}

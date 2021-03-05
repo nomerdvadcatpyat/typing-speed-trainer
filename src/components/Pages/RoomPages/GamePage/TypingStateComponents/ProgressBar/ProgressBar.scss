@@ -1,0 +1,31 @@
+.game-progress-bar {
+  width: 80%;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.user-progress-container {
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+
+  &__progress-bar {
+    width: 97%;
+    margin-left: 3%;
+  }
+
+  &__username {
+    text-align: center;
+    margin: 0;
+    width: 5rem;
+    font-size: 1.3rem;
+  }
+
+  &_self {
+    order: -1;
+    .progress-bar {
+      background-color: red;
+    }
+  }
+}
