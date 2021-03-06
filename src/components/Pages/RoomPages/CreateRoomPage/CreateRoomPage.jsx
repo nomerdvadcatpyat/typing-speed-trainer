@@ -1,8 +1,8 @@
 import './CreateRoomPage.scss';
 import {Select} from "../../../UtilComponents/Select/Select";
-import {Ring} from "react-spinners-css";
 import React from "react";
 import {Button, Form} from "react-bootstrap";
+import {RingLoader} from "../../../UtilComponents/RingLoader/RingLoader";
 
 export const CreateRoomPage = ({
 	                               handleSubmit,
@@ -18,7 +18,7 @@ export const CreateRoomPage = ({
 	                               roomId
                                }) => {
 
-	return isLoading && roomId ? <Ring className="main-spinner" /> : (
+	return isLoading && roomId ? <RingLoader className="main-spinner" /> : (
 		<Form className="create-room-page">
 			<Select
 				custom

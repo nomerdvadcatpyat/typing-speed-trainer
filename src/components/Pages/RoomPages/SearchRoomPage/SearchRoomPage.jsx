@@ -1,11 +1,11 @@
 import '../SearchOrWaitingRoomLayout.scss'
 import {Link} from "react-router-dom";
-import {Ring} from "react-spinners-css";
 import React from "react";
 import {RoomCard} from "./RoomCard/RoomCard";
 import {Button} from "react-bootstrap";
 import {SearchOrWaitingRoomLayout} from "../SearchOrWaitingRoomLayout";
 import {ErrorAlert} from "./ErrorAlert/ErrorAlert";
+import {RingLoader} from "../../../UtilComponents/RingLoader/RingLoader";
 
 export const SearchRoomPage = props => {
 
@@ -45,7 +45,7 @@ export const SearchRoomPage = props => {
 							mainContent={createJSXrooms()}
 						/>
 					) :
-						<Ring className="main-spinner"/>
+						<RingLoader className="main-spinner"/>
 			}
 		</>
 	);

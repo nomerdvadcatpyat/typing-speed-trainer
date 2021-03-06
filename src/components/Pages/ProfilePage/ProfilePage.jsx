@@ -1,12 +1,12 @@
 import './ProfilePage.scss';
 import {PlaceInfo} from "./PlaceInfo/PlaceInfo";
 import {Graphic} from "./Graphic/Graphic";
-import {Ring} from "react-spinners-css";
 import React from "react";
 import {Select} from "../../UtilComponents/Select/Select";
+import {RingLoader} from "../../UtilComponents/RingLoader/RingLoader";
 
 export const ProfilePage = props => {
-    return props.isLoading ? <Ring className="main-spinner" /> : (
+    return props.isLoading ? <RingLoader className="main-spinner" /> : (
       <div className="user-profile">
           <div className="user-profile__first-line">
               <div className="user-profile__user-info">

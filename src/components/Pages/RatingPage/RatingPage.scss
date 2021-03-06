@@ -8,20 +8,29 @@
   height: $content-min-height;
   padding: 1.5rem 0 0 0;
 
-  &__content-wrapper {
+  .rating-content {
+    position: relative;
     width: 40rem;
+    height: 100%;
     max-width: 80%;
     display: flex;
     flex-flow: column nowrap;
     align-items: start;
-  }
 
-  &__user-rating-card {
-    margin-bottom: 1rem;
-  }
+    &__user-rating-card {
+      margin-bottom: 1rem;
+    }
 
-  &__select {
-    width: 100%;
-    text-align: center;
+    &__select {
+      width: 100%;
+      text-align: center;
+    }
+
+    &__spinner {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
   }
 }

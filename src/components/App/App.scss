@@ -1,4 +1,5 @@
 @import "./src/utils/scss-variables/variables";
+@import "~bootstrap/scss/bootstrap";
 
 * {
     box-sizing: border-box;
@@ -17,5 +18,6 @@ html, body, #root, .App {
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%);
+        border-color: $dark;
     }
 }

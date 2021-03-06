@@ -7,6 +7,8 @@ export const RatingPageContainer = props => {
 
     const [isLoading, setLoading] = useState(true);
 
+    const [isDataLoading, setDataLoading] = useState(false);
+
     const [usersRating, setUsersRating] = useState(null);
 
     const [options, setOptions] = useState(null);
@@ -14,9 +16,11 @@ export const RatingPageContainer = props => {
     const [ratingFilter, setRatingFilter] = useState(null);
 
     useEffect(() => {
-        console.log('mount')
         getRatingOptions()
-          .then(setOptions)
+          .then(options => {
+              setOptions(options);
+              setDataLoading(true);
+          })
           .catch(console.log)
           .finally(() => setLoading(false));
     }, []);
@@ -26,11 +30,10 @@ export const RatingPageContainer = props => {
             if(!ratingFilter) setRatingFilter(options[0].value);
             else {
                 console.log('rating filter', ratingFilter);
-                setLoading(true);
                 getRating(ratingFilter)
                   .then(rating => setUsersRating(rating))
                   .catch(console.log)
-                  .finally(() => setLoading(false));
+                  .finally(() => setDataLoading(false));
             }
         }
     }, [options, ratingFilter]);
@@ -38,6 +41,7 @@ export const RatingPageContainer = props => {
     return <RatingPage
       {...props}
       isLoading={isLoading}
+      isDataLoading={isDataLoading}
       usersRating={usersRating}
       options={options}
       value={ratingFilter}

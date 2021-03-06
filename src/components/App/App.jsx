@@ -3,18 +3,18 @@ import './App.scss'
 import {Route, Switch} from 'react-router-dom';
 import {AuthPage} from "../Pages/AuthPage/AuthPage";
 import HeaderContainer from "../Header/HeaderContainer";
-import {Ring} from "react-spinners-css";
 import SearchRoomPageContainer from "../Pages/RoomPages/SearchRoomPage/SearchRoomPageContainer";
 import CreateRoomPageContainer from "../Pages/RoomPages/CreateRoomPage/CreateRoomPageContainer";
 import RoomPagesContainer from "../Pages/RoomPages/RoomPagesContainer";
 import {RatingPageContainer} from "../Pages/RatingPage/RatingPageContainer";
 import ProfilePageContainer from "../Pages/ProfilePage/ProfilePageContainer";
+import {RingLoader} from "../UtilComponents/RingLoader/RingLoader";
 
 export function App({isLoading, isAuth}) {
 	return (
 		<div className="App">
 			{isLoading ?
-				<Ring className="main-spinner"/> :
+				<RingLoader className="main-spinner"/> :
 				<>
 					<HeaderContainer/>
 					<Switch>
