@@ -1,7 +1,6 @@
 import {
 	CREATE_ROOM,
 	JOIN_TO_ROOM,
-	SET_USER_KICKED,
 	LEAVE_ROOM,
 	SET_END_STATE,
 	SET_END_DATA,
@@ -39,8 +38,6 @@ export const setEndState = () => ({ type: SET_END_STATE });
 export const setEndData = payload => ({type: SET_END_DATA, payload });
 
 export const setInputText = inputText => ({ type: SET_INPUT_TEXT, payload: inputText });
-
-export const setUserKicked = payload => ({ type: SET_USER_KICKED, payload });
 
 export const setRoomError = payload => ({type: SET_ROOM_ERROR, payload });
 

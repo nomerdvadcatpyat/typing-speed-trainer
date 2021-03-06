@@ -3,12 +3,10 @@ import {GamePage} from "./GamePage";
 import {connect} from "react-redux";
 import {
 	getInputText,
-	getText, getTypingState, isUserKicked,
+	getText, getTypingState,
 } from "../../../../store/selectors/gameSelectors";
 import {bindActionCreators} from "redux";
-import {leaveRoom, setEndState, setIdleState, setPrepareState} from "../../../../store/actionCreators/gameActionCreators";
-import {getUser} from "../../../../store/selectors/userSelectors";
-
+import {setEndState, setPrepareState} from "../../../../store/actionCreators/gameActionCreators";
 
 const GamePageContainer = (props) => {
 

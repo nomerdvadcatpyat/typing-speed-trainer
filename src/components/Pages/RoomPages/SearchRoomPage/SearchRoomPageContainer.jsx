@@ -5,8 +5,8 @@ import {bindActionCreators} from "redux";
 import {getRooms} from "../../../../store/selectors/appSelectors";
 import {fetchRooms} from "../../../../store/actionCreators/appActionCreators";
 import {getIsAuth} from "../../../../store/selectors/userSelectors";
-import {getTypingState, isUserKicked} from "../../../../store/selectors/gameSelectors";
-import {setUserKicked} from "../../../../store/actionCreators/gameActionCreators";
+import {getRoomError} from "../../../../store/selectors/gameSelectors";
+import {setRoomError} from "../../../../store/actionCreators/gameActionCreators";
 
 
 
@@ -17,26 +17,30 @@ const SearchRoomPageContainer = props => {
             props.fetchRooms();
     }, []);
 
-    const closeKickedMessage = () => {
-        props.setUserKicked(false);
-    }
+    useEffect(() => {
+        return () => {
+            if(props.roomError) {
+                console.log(props.roomError)
+                props.setRoomError(null);
+            }
+        }
+    }, [props.roomError]);
 
-
-    return <SearchRoomPage {...props} rooms={props.rooms} closeKickedMessage={closeKickedMessage} />
+    return <SearchRoomPage {...props} rooms={props.rooms} />
 }
 
 const mapStateToProps = state => {
     return {
         rooms: getRooms(state),
         isAuth: getIsAuth(state),
-        isUserKicked: isUserKicked(state)
+        roomError: getRoomError(state)
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
         fetchRooms: bindActionCreators(fetchRooms, dispatch),
-        setUserKicked: bindActionCreators(setUserKicked, dispatch)
+        setRoomError: bindActionCreators(setRoomError, dispatch)
     }
 }
 

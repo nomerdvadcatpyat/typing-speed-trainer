@@ -1,9 +1,8 @@
 import io from "socket.io-client";
 import {
-	setUserKicked,
 	setEndData,
 	setRoomData, setPrepareState, setRoomError,
-	setTypingState, updateRoom, setRoomOwner
+	setTypingState, updateRoom, setRoomOwner, setIdleState
 } from "../actionCreators/gameActionCreators";
 import {
 	CREATE_ROOM,
@@ -55,6 +54,7 @@ export const socketMiddleware = store => next => action => {
 		});
 
 		socket.on('set typing state', () => {
+			console.log('set typing state');
 			store.dispatch(setTypingState());
 			intervalId = setInterval(() => {
 				const roomId = getRoomId(store.getState());
@@ -64,11 +64,6 @@ export const socketMiddleware = store => next => action => {
 				} else
 					clearInterval(intervalId);
 			}, 4000);
-		});
-
-		socket.on('kick user', () => {
-			clearInterval(intervalId);
-			store.dispatch(setUserKicked(true));
 		});
 
 		socket.on('set end data', data => {
@@ -82,29 +77,21 @@ export const socketMiddleware = store => next => action => {
 
 		socket.on('disconnect', () => {
 			console.log('disconnect')
-		})
-	}
+		});
 
-
-	const initRoomCreator = () => {
 		socket.on('confirm create room', data => {
+			console.log('create room confirm');
 			store.dispatch(setRoomOwner(true));
 			store.dispatch(setRoomData(data));
 		});
-	}
 
-	const initRoomMember = () => {
+		socket.on('set room error', error => {
+			clearInterval(intervalId);
+			store.dispatch(setRoomError(error));
+		});
+
 		socket.on('confirm join to room', data => {
 			store.dispatch(setRoomData(data));
-		});
-
-		socket.on('reject join to room', error => {
-			console.log('reject join to room');
-			store.dispatch(setRoomError(error));
-		});
-
-		socket.on('reject start game', error => {
-			store.dispatch(setRoomError(error));
 		});
 
 		socket.on('set room owner', () => {
@@ -127,7 +114,7 @@ export const socketMiddleware = store => next => action => {
 		}
 
 		case CREATE_ROOM: {
-			initRoomCreator();
+			console.log('create room');
 			socket.emit('create room', action.payload);
 			break;
 		}
@@ -139,7 +126,6 @@ export const socketMiddleware = store => next => action => {
 		}
 
 		case JOIN_TO_ROOM: {
-			initRoomMember();
 			socket.emit('join to room', action.payload);
 			break;
 		}
@@ -150,7 +136,6 @@ export const socketMiddleware = store => next => action => {
 		}
 
 		case START_SINGLE_GAME: {
-			initRoomCreator();
 			store.dispatch(setPrepareState());
 			socket.emit('start single game', action.payload);
 			break;

@@ -10,8 +10,8 @@ export const RoomPages = props => {
     return (
         <>
             {
-                props.isUserKicked ? <Redirect to="/searchRoom" /> :
-                props.roomError ? <div> {props.roomError} </div> :
+                // props.isUserKicked ? <Redirect to="/searchRoom" /> :
+                props.roomError ? <Redirect to="/searchRoom" error={props.roomError} /> :
                 !props.roomId ? <Ring className="main-spinner" /> :
                 props.typingState.IDLE ?
                     <WaitingRoomPageContainer /> :

@@ -6,7 +6,6 @@ import {
 	createRoom,
 	setRoomData,
 	setPrepareState,
-	setTypingState,
 	startGame, startSingleGame
 } from "../../../../store/actionCreators/gameActionCreators";
 import {getSelectTextPageData} from "../../../../utils/api/roomApi";
@@ -51,7 +50,7 @@ const CreateRoomPageContainer = props => {
 		}
 
 		history.push(`/room`);
-		if(maxMembersCount === 1) {
+		if(+maxMembersCount === 1) {
 			props.startSingleGame(parsedData);
 		}
 		else {
@@ -79,7 +78,6 @@ const mapDispatchToProps = dispatch => {
 	return {
 		createRoom: bindActionCreators(createRoom, dispatch),
 		setPrepareState: bindActionCreators(setPrepareState, dispatch),
-		setTypingState: bindActionCreators(setTypingState, dispatch),
 		setGameData: bindActionCreators(setRoomData, dispatch),
 		startGame: bindActionCreators(startGame, dispatch),
 		startSingleGame: bindActionCreators(startSingleGame, dispatch)

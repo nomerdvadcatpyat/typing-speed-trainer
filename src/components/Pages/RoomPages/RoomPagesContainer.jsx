@@ -1,7 +1,7 @@
 import React, {useEffect} from "react";
 import {connect} from "react-redux";
 import {RoomPages} from "./RoomPages";
-import {getRoomError, getRoomId, getTypingState, isUserKicked} from "../../../store/selectors/gameSelectors";
+import {getRoomError, getRoomId, getTypingState} from "../../../store/selectors/gameSelectors";
 import {joinToRoom, leaveRoom, setIdleState} from "../../../store/actionCreators/gameActionCreators";
 import {bindActionCreators} from "redux";
 import {getUser} from "../../../store/selectors/userSelectors";
@@ -18,10 +18,6 @@ const RoomPagesContainer = props => {
         if(query.game_id) {
             console.log(query.game_id);
             props.joinToRoom({roomId: query.game_id, userId: props.user.id});
-        }
-
-        return () => {
-            props.setIdleState();
         }
     }, []);
 
@@ -46,8 +42,7 @@ const mapStateToProps = state => {
         typingState: getTypingState(state),
         roomId: getRoomId(state),
         user: getUser(state),
-        roomError: getRoomError(state),
-        isUserKicked: isUserKicked(state)
+        roomError: getRoomError(state)
     }
 }
 

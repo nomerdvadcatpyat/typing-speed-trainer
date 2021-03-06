@@ -26,8 +26,6 @@ export const getRoomError = state => state.game.error;
 
 export const getRoomMembers = state => state.game.members;
 
-export const isUserKicked = state => state.game.isUserKicked;
-
 export const isRoomOwner = state => state.game.isRoomOwner;
 
 export const getPoints = state => state.game.points;

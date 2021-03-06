@@ -25,7 +25,6 @@ const initialRoomInfoState = {
 const initialState = {
 	roomInfo: initialRoomInfoState,
 	error: null,
-	isUserKicked: null,
 	isRoomOwner: null,
 	inputText: '',
 	typingState: initialTypingState,
@@ -41,7 +40,7 @@ export const gameReducer = (state = initialState, action) => {
 		case SET_IDLE_STATE: {
 			return {
 				...initialState,
-				isUserKicked: state.isUserKicked
+				error: state.error
 			}
 		}
 
@@ -104,13 +103,6 @@ export const gameReducer = (state = initialState, action) => {
 			return {
 				...state,
 				inputText: action.payload
-			}
-		}
-
-		case SET_USER_KICKED: {
-			return {
-				...initialState,
-				isUserKicked: action.payload
 			}
 		}
 

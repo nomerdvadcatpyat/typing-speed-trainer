@@ -1,0 +1,12 @@
+@import "../../../../../utils/scss-variables/variables";
+
+.error-alert-wrapper {
+  width: 100%;
+  z-index: 10;
+  position: absolute;
+  top: $header-height;
+
+  .error-alert {
+    margin: 0;
+  }
+}
