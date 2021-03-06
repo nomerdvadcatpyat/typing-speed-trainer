@@ -2,7 +2,7 @@ import io from "socket.io-client";
 import {
 	setEndData,
 	setRoomData, setPrepareState, setRoomError,
-	setTypingState, updateRoom, setRoomOwner, setIdleState
+	setTypingState, updateRoom, setRoomOwner,
 } from "../actionCreators/gameActionCreators";
 import {
 	CREATE_ROOM,
@@ -40,12 +40,10 @@ export const socketMiddleware = store => next => action => {
 		socket = io("ws://localhost:3001");
 
 		socket.on('send rooms', rooms => {
-			console.log('in send rooms')
 			store.dispatch(setRooms(rooms));
 		});
 
 		socket.on('update room', data => {
-			console.log('update room', data);
 			store.dispatch(updateRoom(data));
 		});
 
@@ -54,7 +52,6 @@ export const socketMiddleware = store => next => action => {
 		});
 
 		socket.on('set typing state', () => {
-			console.log('set typing state');
 			store.dispatch(setTypingState());
 			intervalId = setInterval(() => {
 				const roomId = getRoomId(store.getState());
@@ -67,7 +64,6 @@ export const socketMiddleware = store => next => action => {
 		});
 
 		socket.on('set end data', data => {
-			console.log(data);
 			store.dispatch(setEndData(data));
 		});
 
@@ -75,12 +71,7 @@ export const socketMiddleware = store => next => action => {
 			store.dispatch(updateRoom(members));
 		});
 
-		socket.on('disconnect', () => {
-			console.log('disconnect')
-		});
-
 		socket.on('confirm create room', data => {
-			console.log('create room confirm');
 			store.dispatch(setRoomOwner(true));
 			store.dispatch(setRoomData(data));
 		});
@@ -95,7 +86,6 @@ export const socketMiddleware = store => next => action => {
 		});
 
 		socket.on('set room owner', () => {
-			console.log('set room owner')
 			store.dispatch(setRoomOwner(true));
 		});
 	}
@@ -114,13 +104,11 @@ export const socketMiddleware = store => next => action => {
 		}
 
 		case CREATE_ROOM: {
-			console.log('create room');
 			socket.emit('create room', action.payload);
 			break;
 		}
 
 		case LEAVE_ROOM: {
-			console.log('leave room', action.payload, intervalId);
 			socket.emit('leave room', action.payload);
 			break;
 		}

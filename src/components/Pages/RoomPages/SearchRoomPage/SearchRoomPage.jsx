@@ -11,7 +11,6 @@ export const SearchRoomPage = props => {
 
 	const createJSXrooms = () => {
 		return props.rooms.map(room => {
-			console.log(room);
 			return (
 				<>
 					<RoomCard

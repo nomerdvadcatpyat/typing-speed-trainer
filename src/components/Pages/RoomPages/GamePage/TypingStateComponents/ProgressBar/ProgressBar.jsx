@@ -3,8 +3,6 @@ import {ProgressBar} from "react-bootstrap";
 
 export const GameProgressBar = ({roomMembers, className, text, login}) => {
 
-	console.log(roomMembers)
-
   const getProgress = inputText => {
 	  let rightInputTextLength = 0;
 	  for(let i = 0; i < inputText.length; i ++) {

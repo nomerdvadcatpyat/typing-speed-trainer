@@ -5,7 +5,6 @@ import {getRoomError, getRoomId, getTypingState} from "../../../store/selectors/
 import {joinToRoom, leaveRoom, setIdleState} from "../../../store/actionCreators/gameActionCreators";
 import {bindActionCreators} from "redux";
 import {getUser} from "../../../store/selectors/userSelectors";
-import {setRooms} from "../../../store/actionCreators/appActionCreators";
 import {useHistory} from "react-router-dom";
 import queryString from "querystring";
 
@@ -16,7 +15,6 @@ const RoomPagesContainer = props => {
     useEffect(() => {
         const query = queryString.parse(props.location.search.substr(1));
         if(query.game_id) {
-            console.log(query.game_id);
             props.joinToRoom({roomId: query.game_id, userId: props.user.id});
         }
     }, []);

@@ -1,6 +1,5 @@
 import React from 'react';
 import {TextComponent} from './TextComponent';
-import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {getInputText, getText, getTypingState} from "../../../../../../store/selectors/gameSelectors";
 
@@ -35,11 +34,3 @@ const mapStateToProps = state => {
 }
 
 export default connect(mapStateToProps)(TextComponentContainer)
-
-
-TextComponentContainer.propTypes = {
-	text: PropTypes.string,
-	inputText: PropTypes.string,
-	hasError: PropTypes.bool,
-	otherProps: PropTypes.array
-}

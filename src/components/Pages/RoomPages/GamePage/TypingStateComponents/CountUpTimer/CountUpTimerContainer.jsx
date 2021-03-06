@@ -23,7 +23,6 @@ const CountUpTimerContainer = ({ endState, className, ...otherProps }) => {
 		let timerID;
 		if(!endState) {
 			timerID = setInterval(() => setTimer(calculateUpdate(timer)), 1000);
-			console.log(timerID);
 			setTimerId(timerID);
 		}
 		else clearInterval(timerId);

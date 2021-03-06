@@ -1,6 +1,5 @@
 import React from "react";
 import './GamePage.scss';
-import PropTypes from "prop-types";
 import CountDownTimerContainer from "./PrepareStateComponents/CountDownTimer/CountDownTimerContainer";
 import EndStatePageContainer from "./EndStateComponents/EndStatePageContainer";
 import ProgressBarContainer from "./TypingStateComponents/ProgressBar/ProgressBarContainer";

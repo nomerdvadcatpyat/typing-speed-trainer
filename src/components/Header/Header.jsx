@@ -1,5 +1,4 @@
 import React from 'react';
-import {Link} from "react-router-dom";
 import './Header.scss';
 import {Nav, Navbar} from "react-bootstrap";
 import {HeaderLink} from "./HeaderLink/HeaderLink";

@@ -14,11 +14,10 @@ export const CreateRoomPage = ({
 	                               maxMembersCount,
 	                               texts,
 	                               lengths,
-	                               isLoading,
-	                               roomId
+	                               isLoading
                                }) => {
 
-	return isLoading && roomId ? <RingLoader className="main-spinner" /> : (
+	return isLoading ? <RingLoader className="main-spinner" /> : (
 		<Form className="create-room-page">
 			<Select
 				custom

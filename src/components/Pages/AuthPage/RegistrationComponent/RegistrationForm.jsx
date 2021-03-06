@@ -1,7 +1,6 @@
 import React from 'react';
 import '../AuthForm.scss'
 import {AuthInput} from "../AuthInput/AuthInput";
-import PropTypes from "prop-types";
 import {Button} from "react-bootstrap";
 
 

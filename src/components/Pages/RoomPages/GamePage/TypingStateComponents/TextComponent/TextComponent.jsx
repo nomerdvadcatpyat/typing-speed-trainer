@@ -1,6 +1,6 @@
 import React from "react";
 import './TextComponent.scss';
-import PropTypes from "prop-types";
+
 
 export function TextComponent({ text, inputText, endState, className, firstErrorSymbolIndex }) {
 
@@ -37,12 +37,4 @@ export function TextComponent({ text, inputText, endState, className, firstError
 			}
 		</div>
 	);
-}
-
-
-TextComponent.propTypes = {
-	text: PropTypes.string,
-	inputText: PropTypes.string,
-	endState: PropTypes.bool,
-	firstErrorSymbolIndex: PropTypes.number
 }

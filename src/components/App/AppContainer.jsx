@@ -1,48 +1,39 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {connect} from 'react-redux';
 import {App} from "./App.jsx";
 import {bindActionCreators} from "redux";
 import {getIsAuth} from "../../store/selectors/userSelectors";
-import {getIsLoading} from "../../store/selectors/appSelectors";
-import {setUserActionCreator} from "../../store/actionCreators/userActionCreators";
-import {initSocket, setLoadedState, setLoadingState} from "../../store/actionCreators/appActionCreators";
+import {setUser} from "../../store/actionCreators/userActionCreators";
 import {auth} from "../../utils/api/authApi";
-import PropTypes from "prop-types";
-import {getRoomId} from "../../store/selectors/gameSelectors";
-
 
 const AppContainer = (props) => {
-		useEffect(() => {
-			props.setLoadingState();
-			auth()
-				.then(json => {
-					if(json.ok)
-						props.setUser(json.user)
-				})
-				.catch(console.log)
-				.finally(props.setLoadedState)
-		}, []);
+	const [isLoading, setLoading] = useState(true);
 
-		return (
-			<App {...props} />
-		);
+	useEffect(() => {
+		auth()
+			.then(json => {
+				if (json.ok)
+					props.setUser(json.user)
+			})
+			.catch(console.log)
+			.finally(() => setLoading(false))
+	}, []);
+
+	return (
+		<App {...props} isLoading={isLoading} />
+	);
 }
 
 
 const mapStateToProps = (state) => {
 	return {
-		isAuth: getIsAuth(state),
-		isLoading: getIsLoading(state),
-		roomId: getRoomId(state)
+		isAuth: getIsAuth(state)
 	};
 }
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		setLoadingState: bindActionCreators(setLoadingState, dispatch),
-		setUser: bindActionCreators(setUserActionCreator, dispatch),
-		setLoadedState: bindActionCreators(setLoadedState, dispatch),
-		initSocket: bindActionCreators(initSocket, dispatch)
+		setUser: bindActionCreators(setUser, dispatch)
 	}
 }
 
@@ -51,12 +42,3 @@ export default connect(
 	mapStateToProps,
 	mapDispatchToProps
 )(AppContainer);
-
-
-AppContainer.propTypes = {
-	isAuth: PropTypes.bool,
-	isLoading: PropTypes.bool,
-	setLoadingState: PropTypes.func,
-	setUser: PropTypes.func,
-	setLoadedState: PropTypes.func
-}

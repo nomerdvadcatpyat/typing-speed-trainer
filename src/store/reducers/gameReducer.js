@@ -1,8 +1,6 @@
 import {
-	SET_USER_KICKED,
-	SET_END_STATE, SET_END_DATA, SET_ERROR_TYPING, SET_ROOM_DATA, SET_IDLE_STATE,
-	SET_INPUT_TEXT,
-	SET_NO_ERROR_TYPING, SET_PREPARE_STATE, SET_ROOM_ERROR,
+	SET_END_STATE, SET_END_DATA, SET_ROOM_DATA, SET_IDLE_STATE,
+	SET_INPUT_TEXT, SET_PREPARE_STATE, SET_ROOM_ERROR,
 	SET_TYPING_STATE, UPDATE_ROOM, SET_ROOM_OWNER
 } from "../actionTypes/gameActionTypes";
 
@@ -82,20 +80,6 @@ export const gameReducer = (state = initialState, action) => {
 			return {
 				...state,
 				...action.payload
-			}
-		}
-
-		case SET_ERROR_TYPING: {
-			return {
-				...state,
-				isErrorTyping: true
-			}
-		}
-
-		case SET_NO_ERROR_TYPING: {
-			return {
-				...state,
-				isErrorTyping: false
 			}
 		}
 

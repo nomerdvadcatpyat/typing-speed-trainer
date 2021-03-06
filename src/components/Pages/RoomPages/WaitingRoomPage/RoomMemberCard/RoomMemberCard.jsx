@@ -1,5 +1,4 @@
-import {Button, Card} from "react-bootstrap";
-import {Link} from "react-router-dom";
+import {Card} from "react-bootstrap";
 import './RoomMemberCard.scss';
 import {LinkToUser} from "../../../../UtilComponents/LinkToUser/LinkToUser";
 

@@ -1,6 +1,5 @@
 import React from "react";
 import {KeyboardComponent} from "./KeyboardComponent";
-import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {getInputText, getKeyboardLayout, getText} from "../../../../../../store/selectors/gameSelectors";
 
@@ -35,11 +34,3 @@ const mapStateToProps = state => {
 }
 
 export default connect(mapStateToProps)(KeyboardComponentContainer)
-
-
-KeyboardComponentContainer.propTypes = {
-	keyboardLayout: PropTypes.array,
-	text: PropTypes.string,
-	inputText: PropTypes.string,
-	otherProps: PropTypes.array
-}

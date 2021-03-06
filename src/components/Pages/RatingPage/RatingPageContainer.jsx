@@ -29,7 +29,6 @@ export const RatingPageContainer = props => {
         if(options) {
             if(!ratingFilter) setRatingFilter(options[0].value);
             else {
-                console.log('rating filter', ratingFilter);
                 getRating(ratingFilter)
                   .then(rating => setUsersRating(rating))
                   .catch(console.log)

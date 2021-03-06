@@ -17,7 +17,6 @@ export const WaitingRoomPage = props => {
     }
 
     const getJSXUsersInfo = () => {
-        console.log(props.members);
         return props.members.map((member, index) => {
             return (
               <RoomMemberCard

@@ -3,9 +3,8 @@ import {connect} from 'react-redux';
 import {Header} from "./Header";
 import {bindActionCreators} from "redux";
 import {getIsAuth, getUser} from "../../store/selectors/userSelectors";
-import {logoutActionCreator} from "../../store/actionCreators/userActionCreators";
+import {logout} from "../../store/actionCreators/userActionCreators";
 import {logout as logoutApi} from "../../utils/api/authApi";
-import PropTypes from "prop-types";
 
 const HeaderContainer = (props) => {
 	const logout = async () => {
@@ -27,7 +26,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
 	return {
-		logoutActionCreate: bindActionCreators(logoutActionCreator, dispatch)
+		logoutActionCreate: bindActionCreators(logout, dispatch)
 	};
 }
 
@@ -35,9 +34,3 @@ export default connect(
 	mapStateToProps,
 	mapDispatchToProps
 )(HeaderContainer);
-
-
-HeaderContainer.propTypes = {
-	isAuth: PropTypes.bool,
-	logoutActionCreate: PropTypes.func
-}

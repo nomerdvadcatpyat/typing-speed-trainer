@@ -20,7 +20,6 @@ const SearchRoomPageContainer = props => {
     useEffect(() => {
         return () => {
             if(props.roomError) {
-                console.log(props.roomError)
                 props.setRoomError(null);
             }
         }

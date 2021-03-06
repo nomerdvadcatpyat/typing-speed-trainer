@@ -1,6 +1,5 @@
 import {createStore, compose, applyMiddleware} from "redux";
 import {rootReducer} from "./reducers/rootReducer";
-import {loggerMiddleware} from "./middlewares/loggerMiddleware";
 import {socketMiddleware} from "./middlewares/socketMiddleware";
 
 

@@ -1,6 +1,5 @@
 import React from 'react';
 import './InputComponent.scss'
-import PropTypes from "prop-types";
 
 export const InputComponent = ({ inputText, className, setInputText, hasError }) => {
 	return (
@@ -10,16 +9,8 @@ export const InputComponent = ({ inputText, className, setInputText, hasError })
 				className={`text-input ${hasError ? 'error-input' : ''}`}
 				value={inputText}
 				onChange={e => setInputText(e.target.value)}
-				// onPaste={e => e.preventDefault()}
+				onPaste={e => e.preventDefault()}
 			/>
 		</div>
 	);
-}
-
-
-InputComponent.propTypes = {
-	hasErrors: PropTypes.bool,
-	setInputText: PropTypes.func,
-	inputText: PropTypes.string,
-	forwardRef: PropTypes.object
 }

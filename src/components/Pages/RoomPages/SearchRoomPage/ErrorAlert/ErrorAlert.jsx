@@ -1,4 +1,4 @@
-import {Alert, Button} from "react-bootstrap";
+import {Alert} from "react-bootstrap";
 import {useState} from "react";
 import "./ErrorAlert.scss";
 

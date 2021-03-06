@@ -2,8 +2,7 @@ import React from 'react';
 import {Route, Switch} from "react-router-dom";
 import LoginContainer from "./LoginComponent/LoginContainer";
 import RegistrationContainer from "./RegistrationComponent/RegistrationContainer";
-import './AuthPage.scss'
-import PropTypes from "prop-types";
+import './AuthPage.scss';
 
 export const AuthPage = ({match})  => {
 	return (
@@ -15,9 +14,3 @@ export const AuthPage = ({match})  => {
 		</div>
 	);
 }
-
-
-AuthPage.propTypes = {
-	match: PropTypes.object
-}
-
