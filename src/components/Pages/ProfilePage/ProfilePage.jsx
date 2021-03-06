@@ -10,11 +10,6 @@ export const ProfilePage = props => {
       <div className="user-profile">
           <div className="user-profile__first-line">
               <div className="user-profile__user-info">
-                  <img
-                    className="user-profile__user-pic"
-                    src={ props.userInfo.pic || `${process.env.REACT_APP_PICS_PATH}/default-profile-pic.svg`}
-                    alt="profile pic"
-                  />
                   <p> {props.userInfo.login} </p>
                   <p> Points: {props.userInfo.points} </p>
                   <p> Average typing speed: {props.userInfo.averageSpeed} ch/min </p>

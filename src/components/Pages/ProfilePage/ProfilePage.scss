@@ -19,10 +19,6 @@
     }
   }
 
-  &__user-pic {
-    max-width: 200px;
-  }
-
   &__user-info {
     display: flex;
     flex-flow: column nowrap;
@@ -58,7 +54,7 @@
     &__first-line {
       font-size: 1.5rem;
       flex-flow: row nowrap;
-      width: max-content;
+      justify-content: space-around;
       margin: 2rem auto 0 auto;
     }
 
