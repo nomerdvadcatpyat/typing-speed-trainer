@@ -37,7 +37,9 @@ export const socketMiddleware = store => next => action => {
 	}
 
 	const initSocket = () => {
-		socket = io("ws://localhost:3001");
+		socket = io(process.env.REACT_APP_BACKEND_SERVER_WEBSOCKET, {
+			withCredentials: true
+		});
 
 		socket.on('send rooms', rooms => {
 			store.dispatch(setRooms(rooms));
