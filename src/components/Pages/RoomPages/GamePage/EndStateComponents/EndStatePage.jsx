@@ -2,6 +2,7 @@ import React from "react";
 import './EndStatePage.scss';
 import {Link} from "react-router-dom";
 import {Button} from "react-bootstrap";
+import {StyledButton} from "../../../../UtilComponents/StyledButton/StyledButton";
 
 export const EndStatePage = props => {
 	return (
@@ -14,7 +15,10 @@ export const EndStatePage = props => {
 				</>
 			)}
 			<p> Средняя скорость печати: {props.averageSpeed} знаков в минуту</p>
-      <Button variant="dark" as={Link} to="/searchRoom"> К списку серверов </Button>
+			<Link to="/searchRoom">
+				<StyledButton > К списку серверов </StyledButton>
+			</Link>
+
 		</div>
 
 	);

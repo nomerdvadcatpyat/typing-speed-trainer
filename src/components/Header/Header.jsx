@@ -2,6 +2,7 @@ import React from 'react';
 import './Header.scss';
 import {Nav, Navbar} from "react-bootstrap";
 import {HeaderLink} from "./HeaderLink/HeaderLink";
+import {Link} from "react-router-dom";
 
 export function Header({isAuth, user, onLogout}) {
 	return (
@@ -9,7 +10,9 @@ export function Header({isAuth, user, onLogout}) {
 			<div className="header-buffer" />
 			<header className="header-wrapper">
 				<Navbar className="header" collapseOnSelect expand="sm" bg="dark" variant="dark">
-					<Navbar.Brand> SomeApp </Navbar.Brand>
+					<Link to="/">
+						<Navbar.Brand> SomeApp </Navbar.Brand>
+					</Link>
 					<Navbar.Toggle aria-controls="responsive-navbar-nav"/>
 
 					<Navbar.Collapse id="responsive-navbar-nav">

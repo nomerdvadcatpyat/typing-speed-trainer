@@ -3,6 +3,7 @@ import {Select} from "../../../UtilComponents/Select/Select";
 import React from "react";
 import {Button, Form} from "react-bootstrap";
 import {RingLoader} from "../../../UtilComponents/RingLoader/RingLoader";
+import {StyledButton} from "../../../UtilComponents/StyledButton/StyledButton";
 
 export const CreateRoomPage = ({
 	                               handleSubmit,
@@ -51,15 +52,14 @@ export const CreateRoomPage = ({
 			</Form.Group>
 
 
-			<Button
-				variant="dark"
-				type="submit"
+			<StyledButton
 				name="multiplayer"
-				className="btn waves-effect"
+				className="create-room-page__start-button"
+				preventDefault={true}
 				onClick={handleSubmit}
 			>
 				Начать
-			</Button>
+			</StyledButton>
 		</Form>
 	);
 }

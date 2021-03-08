@@ -9,6 +9,7 @@ import RoomPagesContainer from "../Pages/RoomPages/RoomPagesContainer";
 import {RatingPageContainer} from "../Pages/RatingPage/RatingPageContainer";
 import ProfilePageContainer from "../Pages/ProfilePage/ProfilePageContainer";
 import {RingLoader} from "../UtilComponents/RingLoader/RingLoader";
+import RootPageContainer from "../Pages/RootPage/RootPageContainer";
 
 export function App({isLoading, isAuth}) {
 	return (
@@ -20,6 +21,7 @@ export function App({isLoading, isAuth}) {
 					<Switch>
 						<Route path="/auth" component={AuthPage}/>
 						<Switch>
+							<Route path={"/"} exact component={RootPageContainer}/>
 							<Route path="/rating" component={RatingPageContainer}/>
 							<Route path="/user" component={ProfilePageContainer}/>
 							{

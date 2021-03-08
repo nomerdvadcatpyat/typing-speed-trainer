@@ -1,7 +1,7 @@
 import React from 'react';
 import '../AuthForm.scss'
 import {AuthInput} from "../AuthInput/AuthInput";
-import {Button} from "react-bootstrap";
+import {StyledButton} from "../../../UtilComponents/StyledButton/StyledButton";
 
 
 export const RegistrationForm = (props) => {
@@ -57,9 +57,8 @@ export const RegistrationForm = (props) => {
 					) : null
 				}
 
-				<Button
+				<StyledButton
 					className="auth-form__submit"
-					variant="dark"
 					disabled={
 						values.login.length === 0 ||
 						values.password.length === 0 ||
@@ -67,10 +66,9 @@ export const RegistrationForm = (props) => {
 						(status && !status.success) ||
 						isSubmitting
 					}
-					type="submit"
 				>
 					Submit
-				</Button>
+				</StyledButton>
 			</form>
 	);
 }
