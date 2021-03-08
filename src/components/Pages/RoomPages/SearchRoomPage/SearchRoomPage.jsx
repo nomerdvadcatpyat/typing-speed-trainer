@@ -6,6 +6,7 @@ import {Button} from "react-bootstrap";
 import {SearchOrWaitingRoomLayout} from "../SearchOrWaitingRoomLayout";
 import {ErrorAlert} from "./ErrorAlert/ErrorAlert";
 import {RingLoader} from "../../../UtilComponents/RingLoader/RingLoader";
+import {StyledButton} from "../../../UtilComponents/StyledButton/StyledButton";
 
 export const SearchRoomPage = props => {
 
@@ -40,7 +41,13 @@ export const SearchRoomPage = props => {
 			{
 					props.rooms ? (
 						<SearchOrWaitingRoomLayout
-							asideContent={<Button as={Link} to="createRoom" variant="dark" size="lg">Create Room</Button>}
+							asideContent={
+								<Link to="/createRoom">
+									<StyledButton className="room-content__aside-button">
+										Create Room
+									</StyledButton>
+								</Link>
+							}
 							mainContent={createJSXrooms()}
 						/>
 					) :

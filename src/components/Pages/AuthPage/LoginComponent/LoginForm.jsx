@@ -2,7 +2,8 @@ import React from 'react';
 import {Link} from "react-router-dom";
 import '../AuthForm.scss'
 import {AuthInput} from "../AuthInput/AuthInput";
-import {Button, Form} from "react-bootstrap";
+import {Form} from "react-bootstrap";
+import {StyledButton} from "../../../UtilComponents/StyledButton/StyledButton";
 
 
 export function LoginForm(props) {
@@ -47,10 +48,9 @@ export function LoginForm(props) {
 					) : null
 				}
 
-				<Button
+				<StyledButton
 					className="auth-form__submit"
 					type="submit"
-					variant="dark"
 					disabled={
 						values.login.length === 0 ||
 						values.password.length === 0 ||
@@ -58,7 +58,7 @@ export function LoginForm(props) {
 						isSubmitting
 					}>
 					Submit
-				</Button>
+				</StyledButton>
 
 				<Link to="/auth/registration" className="auth-form__link-to-register"> Нет аккаунта? Зарегистрироваться </Link>
 			</Form>

@@ -1,0 +1,73 @@
+.room-info-text {
+  text-align: center;
+  position: relative;
+
+  min-height: 6rem;
+
+
+  &_typing {
+    &::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      top: 0;
+      display: block;
+      height: 100%;
+      width: 1px;
+      animation: 0.5s typing infinite;
+    }
+  }
+}
+
+
+@keyframes typing {
+  0% {
+    border-right: 2px solid black;
+  }
+
+  100% {
+    border-right: none;
+  }
+}
+
+
+@media screen and (max-width: 790px){
+  .room-info-text {
+    font-size: 1.3rem;
+    &_typing {
+      &::after {
+        content: none;
+      }
+    }
+  }
+}
+
+
+@media screen and (min-width: 790px){
+  .room-info-text {
+    width: max-content;
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 1015px){
+  .room-info-text {
+    font-size: 2rem;
+  }
+}
+
+@media screen and (min-width: 1250px){
+  .room-info-text {
+    font-size: 2.5rem;
+  }
+}
+
+
+@media screen and (min-width: 1510px){
+  .room-info-text {
+    font-size: 3rem;
+  }
+}
+
+
+

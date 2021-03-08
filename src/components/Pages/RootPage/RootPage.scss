@@ -1,0 +1,13 @@
+@import "./../../../utils/scss-variables/variables";
+
+.root-page {
+  height: $content-min-height;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+
+  &__info {
+    margin-bottom: 4rem;
+  }
+}

@@ -41,13 +41,14 @@ const CreateRoomPageContainer = props => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-
 		const parsedData = {
 			textTitle: selectedValues.textTitle,
 			maxMembersCount: maxMembersCount,
 			length: selectedValues.length,
 			userId: props.user.id
 		}
+
+		console.log('create room page handler')
 
 		history.push(`/room`);
 		if(+maxMembersCount === 1) {
