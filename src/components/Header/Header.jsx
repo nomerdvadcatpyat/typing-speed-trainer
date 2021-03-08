@@ -18,7 +18,7 @@ export function Header({isAuth, user, onLogout}) {
 							<div className="header__left-side">
 								<HeaderLink to="/rating" text="Рейтинг"/>
 
-								{isAuth && <HeaderLink to="/searchRoom" text="Играть"/>}
+								{isAuth && <HeaderLink to="/searchRoom" text="Комнаты"/>}
 							</div>
 
 							<div className="header__right-side">
