@@ -17,17 +17,17 @@ export const ProfilePage = props => {
 
               <div className="user-profile__user-wins">
                   <PlaceInfo
-                      picPath={`${process.env.REACT_APP_PICS_PATH}/golden-kubok.png`}
-                      picAlt="golden kubok"
+                      picPath={`${process.env.REACT_APP_PICS_PATH}/gold-medal.svg`}
+                      picAlt="gold medal"
                       count={props.userInfo.firstPlacesCount}
                   />
                   <PlaceInfo
-                      picPath={`${process.env.REACT_APP_PICS_PATH}/silver-medal.png`}
+                      picPath={`${process.env.REACT_APP_PICS_PATH}/silver-medal.svg`}
                       picAlt="silver-medal"
                       count={props.userInfo.secondPlacesCount}
                   />
                   <PlaceInfo
-                      picPath={`${process.env.REACT_APP_PICS_PATH}/bronze-medal.png`}
+                      picPath={`${process.env.REACT_APP_PICS_PATH}/bronze-medal.svg`}
                       picAlt="bronze-medal"
                       count={props.userInfo.thirdPlacesCount}
                   />
