@@ -1,6 +1,8 @@
 @import "./../../../../utils/scss-variables/variables";
+@import "../../../../../node_modules/bootstrap/scss/bootstrap";
 
 .zero-rooms-content {
+  padding: 0 0.5rem;
   height: $content-min-height;
   display: flex;
   flex-flow: column nowrap;
@@ -8,9 +10,14 @@
   align-items: center;
   font-size: 2rem;
   text-align: center;
+}
 
-  &__create-button {
-    height: 5rem;
-    width: 20rem;
+@media screen and (min-width: map-get($grid-breakpoints, "md")) {
+  .zero-rooms-content {
+    &__create-button {
+      height: 5rem;
+      width: 20rem;
+      margin: auto;
+    }
   }
 }

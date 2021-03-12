@@ -1,13 +1,15 @@
 @import "../../../../utils/scss-variables/variables";
+@import "../../../../../node_modules/bootstrap/scss/bootstrap";
 
 .game-page {
+  padding: 0 0.5rem;
+  max-width: 100%;
   height: $content-min-height;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
 
   &__countdown-timer {
-    font-size: 10rem;
     height: 100%;
     width: 100%;
     display: flex;
@@ -21,5 +23,21 @@
 
   &__progress-bar {
     margin-top: 1rem;
+  }
+}
+
+@media screen and (max-width: map-get($grid-breakpoints, "md")) {
+  .game-page {
+    &__countdown-timer {
+      font-size: 5rem;
+    }
+  }
+}
+
+@media screen and (min-width: map-get($grid-breakpoints, "md")) {
+  .game-page {
+    &__countdown-timer {
+      font-size: 10rem;
+    }
   }
 }

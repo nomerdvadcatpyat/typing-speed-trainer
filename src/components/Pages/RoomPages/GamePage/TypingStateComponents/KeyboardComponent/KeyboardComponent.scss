@@ -1,9 +1,12 @@
+@import "../../../../../../utils/scss-variables/variables";
+
 .keyboard {
   display: flex;
   flex-flow: column nowrap;
   border: 1px solid black;
   width: max-content;
   max-width: 100%;
+  border-radius: 10px;
 
   &__char-row {
     display: flex;
@@ -23,6 +26,7 @@
   }
 
   &__char-key {
+    border-radius: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -31,7 +35,7 @@
   }
 
   &__next-char {
-    background-color: aquamarine;
+    background-color: $green;
   }
 
   &__last-char_error {

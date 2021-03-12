@@ -1,8 +1,14 @@
 .input-wrap {
 
   .text-input {
+    border-radius: 10px;
     width: 100%;
     font-size: 2rem;
+    padding: 0 0.5rem;
+
+    &:focus {
+      outline: 0;
+    }
   }
 
   .error-input {

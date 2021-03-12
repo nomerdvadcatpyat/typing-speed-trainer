@@ -1,7 +1,7 @@
 import React from 'react';
 import {TextComponent} from './TextComponent';
 import {connect} from "react-redux";
-import {getInputText, getText, getTypingState} from "../../../../../../store/selectors/gameSelectors";
+import {getInputText, getText} from "../../../../../../store/selectors/gameSelectors";
 
 
 export const TextComponentContainer = ({inputText, text, hasError, ...otherProps}) => {
@@ -28,8 +28,7 @@ export const TextComponentContainer = ({inputText, text, hasError, ...otherProps
 const mapStateToProps = state => {
 	return {
 		text: getText(state),
-		inputText: getInputText(state),
-		endState: getTypingState(state).END
+		inputText: getInputText(state)
 	}
 }
 

@@ -2,7 +2,7 @@ import React from "react";
 import './TextComponent.scss';
 
 
-export function TextComponent({ text, inputText, endState, className, firstErrorSymbolIndex }) {
+export function TextComponent({ text, inputText, className, firstErrorSymbolIndex }) {
 
 	const renderText = (text) => {
 		return text.split('').map((char, index) => {
@@ -20,21 +20,9 @@ export function TextComponent({ text, inputText, endState, className, firstError
 		});
 	}
 
-	const renderEndText = (text) => {
-		return text.split('').map((char, index) => {
-			return(
-				<span className="end-symbol" key={index} id={index}>{char}</span>
-			);
-		});
-	}
-
 	return (
 		<div className={`text-container ${className && className}`}>
-			{
-				endState ?
-					renderEndText(text) :
-					renderText(text)
-			}
+			{renderText(text)}
 		</div>
 	);
 }

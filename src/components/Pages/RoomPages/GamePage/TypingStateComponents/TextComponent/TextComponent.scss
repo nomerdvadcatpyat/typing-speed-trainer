@@ -1,23 +1,21 @@
+@import "../../../../../../utils/scss-variables/variables";
+
 .text-container {
   border: 1px solid black;
+  border-radius: 10px;
   width: 100%;
   font-size: 1.4rem;
-  padding: 0.3rem;
+  padding: 0 0.5rem;
 
   .current-symbol {
-    background-color: aquamarine;
+    background-color: $green;
   }
 
   .passed-symbol {
-    background-color: gray;
+    background-color: $gray;
   }
 
   .error-symbol {
     background-color: red;
-  }
-
-  .end-symbol {
-    background-color: pink;
-    color: white;
   }
 }
