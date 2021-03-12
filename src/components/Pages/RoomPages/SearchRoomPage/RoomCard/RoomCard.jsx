@@ -1,7 +1,8 @@
-import {Button, Card} from "react-bootstrap";
+import {Card} from "react-bootstrap";
 import {Link} from "react-router-dom";
 import './RoomCard.scss';
 import {LinkToUser} from "../../../../UtilComponents/LinkToUser/LinkToUser";
+import {StyledButton} from "../../../../UtilComponents/StyledButton/StyledButton";
 
 export const RoomCard = ({textTitle, textLength, language, owner, personsCount, maxPersonsCount, linkTo}) => {
 	return (
@@ -15,7 +16,11 @@ export const RoomCard = ({textTitle, textLength, language, owner, personsCount, 
 					<p> {personsCount} из {maxPersonsCount} игроков подключились к комнате </p>
 					<p> Язык текста: {language}</p>
 				</Card.Text>
-				<Button as={Link} to={linkTo} variant="dark">Enter room</Button>
+				<Link to={linkTo}>
+					<StyledButton  className="room-card__enter-room">
+						Присоедениться
+					</StyledButton>
+				</Link>
 			</Card.Body>
 		</Card>
 	);

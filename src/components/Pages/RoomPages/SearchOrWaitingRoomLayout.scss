@@ -14,10 +14,6 @@
     align-items: center;
     justify-content: center;
   }
-
-  &__aside-button {
-    font-size: 2rem;
-  }
 }
 
 
@@ -28,6 +24,10 @@
       margin: auto;
       padding: 1rem 0;
       border-bottom: 1px solid $dark;
+    }
+
+    &__aside-button {
+      font-size: 1.4rem;
     }
   }
 }
@@ -47,6 +47,24 @@
       right: 0;
       top: $header-height + 2.5;
       width: 30%;
+    }
+
+    &__aside-button {
+      font-size: 1.6rem;
+    }
+  }
+}
+
+@media screen and (min-width: map-get($grid-breakpoints, "md")) {
+  &__aside-button {
+    font-size: 1.8rem;
+  }
+}
+
+@media screen and (min-width: map-get($grid-breakpoints, "lg")) {
+  .room-content {
+    &__aside-button {
+      font-size: 2rem;
     }
   }
 }

@@ -1,7 +1,7 @@
 import './CreateRoomPage.scss';
 import {Select} from "../../../UtilComponents/Select/Select";
 import React from "react";
-import {Button, Form} from "react-bootstrap";
+import {Form} from "react-bootstrap";
 import {RingLoader} from "../../../UtilComponents/RingLoader/RingLoader";
 import {StyledButton} from "../../../UtilComponents/StyledButton/StyledButton";
 

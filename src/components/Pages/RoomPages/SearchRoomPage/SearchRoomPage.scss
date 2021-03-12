@@ -1,0 +1,16 @@
+@import "./../../../../utils/scss-variables/variables";
+
+.zero-rooms-content {
+  height: $content-min-height;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 2rem;
+  text-align: center;
+
+  &__create-button {
+    height: 5rem;
+    width: 20rem;
+  }
+}
