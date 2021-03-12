@@ -14,6 +14,8 @@ html, body, #root, .App {
 }
 
 .App {
+    position: relative;
+
     .main-spinner {
         position: absolute;
         left: 50%;
@@ -21,4 +23,18 @@ html, body, #root, .App {
         transform: translate(-50%, -50%);
         border-color: $dark;
     }
+
+    &__auth-button {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+
+
+.auth-button {
+    font-size: 2rem;
+    width: 20rem;
+    height: 6rem;
 }

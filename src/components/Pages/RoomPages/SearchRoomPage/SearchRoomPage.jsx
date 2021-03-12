@@ -1,8 +1,7 @@
-import '../SearchOrWaitingRoomLayout.scss'
+import '../SearchOrWaitingRoomLayout.scss';
 import {Link} from "react-router-dom";
 import React from "react";
 import {RoomCard} from "./RoomCard/RoomCard";
-import {Button} from "react-bootstrap";
 import {SearchOrWaitingRoomLayout} from "../SearchOrWaitingRoomLayout";
 import {ErrorAlert} from "./ErrorAlert/ErrorAlert";
 import {RingLoader} from "../../../UtilComponents/RingLoader/RingLoader";
@@ -39,7 +38,7 @@ export const SearchRoomPage = props => {
 				)
 			}
 			{
-					props.rooms ? (
+				props.rooms ? (
 						<SearchOrWaitingRoomLayout
 							asideContent={
 								<Link to="/createRoom">
@@ -51,7 +50,7 @@ export const SearchRoomPage = props => {
 							mainContent={createJSXrooms()}
 						/>
 					) :
-						<RingLoader className="main-spinner"/>
+					<RingLoader className="main-spinner"/>
 			}
 		</>
 	);
