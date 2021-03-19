@@ -1,4 +1,3 @@
-@import "~bootstrap/scss/bootstrap";
 @import "src/utils/scss-variables/variables";
 
 
@@ -6,41 +5,112 @@
   height: $header-height
 }
 
-.header-wrapper {
+.header {
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 100;
 
-  .header {
-    display: flex;
-    text-align: center;
-    min-height: $header-height;
-    font-size: 1.5rem;
+  display: flex;
+  min-height: $header-height;
+  font-size: 1.5rem;
+
+  background-color: $primary;
+
+  &__logo {
+    position: absolute;
+    left: 1rem;
+  }
+}
+
+.header-link {
+  color: $text-color;
+  opacity: .5;
+  transition: opacity .2s;
+
+  &:hover {
+    color: $text-color;
+    opacity: 1;
+    text-decoration: none;
   }
 }
 
 @media screen and (max-width: map-get($grid-breakpoints, 'sm')) {
-  .header__left-side, .header__right-side {
+  .header {
+    padding-top: 1.5rem;
     flex-flow: column nowrap;
+
+    &__nav {
+      margin-top: 3.5rem;
+      overflow: hidden;
+      display: flex;
+      flex-flow: column nowrap;
+      text-align: center;
+      height: 0;
+
+
+      &_collapsed {
+        animation: close-menu .2s linear forwards;
+      }
+
+      &_opened {
+        animation: open-menu .2s linear forwards;
+      }
+    }
+  }
+
+  @keyframes open-menu {
+    from {
+      opacity: 0;
+      height: 0;
+    }
+    1% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 1;
+      height: 7rem;
+    }
+    to {
+      opacity: 1;
+      height: 14rem;
+    }
+  }
+
+  @keyframes close-menu {
+    from {
+      height: 14rem;
+      opacity: 1;
+    }
+    50% {
+      opacity: 1;
+      height: 7rem;
+    }
+    99% {
+      opacity: 1;
+    }
+    to {
+      height: 0;
+      opacity: 0;
+    }
+  }
+
+  .header-link {
+    margin-bottom: 1rem;
   }
 }
 
 @media screen and (min-width: map-get($grid-breakpoints, 'sm')) {
   .header {
     flex-flow: row nowrap;
+    align-items: center;
+    justify-content: flex-end;
 
-    &__left-side, &__right-side {
+    &__nav {
+      width: 30rem;
       display: flex;
       flex-flow: row nowrap;
-    }
-
-    &__left-side {
-      margin-left: 1rem;
-    }
-
-    &__right-side {
-      margin-left: auto;
+      justify-content: space-around;
     }
   }
 }

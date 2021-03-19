@@ -10,7 +10,7 @@ html, body, #root, .App {
     padding: 0;
     margin: 0;
     font-family: 'Roboto', sans-serif;
-    color: $dark;
+    color: $primary;
 }
 
 .App {
@@ -21,7 +21,7 @@ html, body, #root, .App {
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%);
-        border-color: $dark;
+        border-color: $primary;
     }
 
     &__auth-button {

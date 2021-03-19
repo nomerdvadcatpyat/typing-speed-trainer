@@ -6,7 +6,7 @@ $content-min-height: 100vh - $header-height;
 
 // colors
 
-$dark: #343a40;
+$primary: #343a40;
 
 $secondary: #6c757d;
 
@@ -17,3 +17,16 @@ $green: #00e676;
 $transparent-secondary: rgba($secondary, 0.5);
 
 $text-color: white;
+
+
+
+// breakpoints
+
+$grid-breakpoints: (
+        xs: 0,
+        sm: 580px,
+        md: 768px,
+        lg: 992px,
+        xl: 1200px,
+        xxl: 1400px
+);

@@ -23,7 +23,7 @@
       width: 100% - 5;
       margin: auto;
       padding: 1rem 0;
-      border-bottom: 1px solid $dark;
+      border-bottom: 1px solid $primary;
     }
 
     &__aside-button {
@@ -42,7 +42,7 @@
 
     &__aside {
       height: $content-min-height - 5;
-      border-left: 1px solid $dark;
+      border-left: 1px solid $primary;
       position: fixed;
       right: 0;
       top: $header-height + 2.5;
