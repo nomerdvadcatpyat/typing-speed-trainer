@@ -5,15 +5,9 @@ import {withRouter} from "react-router-dom";
 import queryString from "querystring";
 
 const ProfilePageContainer = props => {
-
-    const selectOptions = [
-        {title: "averageSpeed", value: "averageSpeed"},
-        {title: "points", value: "points"}
-    ];
-
     const [isLoading, setLoading] = useState(true);
     const [profileData, setProfileData] = useState(null);
-    const [YAxisName, setYAxisName] = useState(selectOptions[0].value);
+    const [YAxisName, setYAxisName] = useState("averageSpeed");
 
     useEffect(() => {
         const query = queryString.parse(props.location.search.substr(1));
@@ -33,7 +27,6 @@ const ProfilePageContainer = props => {
                         userInfo={profileData && profileData.userInfo}
                         graphicData={profileData && profileData.graphicData}
                         isLoading={isLoading}
-                        selectOptions={selectOptions}
                         YAxisName={YAxisName}
                         setYAxisName={selectHandler}
     />

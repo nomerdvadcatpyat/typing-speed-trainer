@@ -2,7 +2,6 @@ import './ProfilePage.scss';
 import {PlaceInfo} from "./PlaceInfo/PlaceInfo";
 import {Graphic} from "./Graphic/Graphic";
 import React from "react";
-import {Select} from "../../UtilComponents/Select/Select";
 import {RingLoader} from "../../UtilComponents/RingLoader/RingLoader";
 
 export const ProfilePage = props => {
@@ -35,11 +34,6 @@ export const ProfilePage = props => {
           </div>
 
           <div className="user-profile__second-line">
-              <Select className="user-profile__y-axis-selector"
-                      options={props.selectOptions}
-                      onChange={props.setYAxisName}
-                      custom
-              />
               <div className="user-profile__graphic-wrapper">
                   <Graphic data={props.graphicData} XAxisName="date" YAxisName={props.YAxisName} />
               </div>
