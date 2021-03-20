@@ -21,11 +21,11 @@ export const GameProgressBar = ({roomMembers, className, text, login}) => {
   }
 
 	const generateJSXProgress = () => {
-		return roomMembers.map(member => {
+		return roomMembers.map((member, index) => {
 			const progress = member.inputText && getProgress(member.inputText);
 			const self = member.userName === login;
 			return (
-				<div className={getContainerClassNames(member)}>
+				<div className={getContainerClassNames(member)} key={index}>
 					<p className="user-progress-container__username"> {member.userName} </p>
 					<ProgressBar
 						variant={self || member.isLeave ? '' : 'dark'}

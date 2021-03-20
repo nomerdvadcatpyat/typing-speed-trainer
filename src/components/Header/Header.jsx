@@ -40,13 +40,20 @@ export function Header({isAuth, user, onLogout}) {
 					{isAuth ? (
 						<>
 							<HeaderLink to={`/user?user=${user.login}`}> {user.login} </HeaderLink>
-							<HeaderLink href="#"> <span onClick={onLogout}> Выход </span> </HeaderLink>
+							<span
+								onClick={() => {
+									onLogout()
+									setCollapsed(true);
+								}}
+					      className="header-link link"
+							>
+								Выход
+							</span>
 						</>
 					) : (
 						<HeaderLink to="/auth/login"> Вход </HeaderLink>
 					)}
 				</nav>
-
 			</header>
 		</>
 	);

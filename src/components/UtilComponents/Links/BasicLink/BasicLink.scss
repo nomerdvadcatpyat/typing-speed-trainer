@@ -6,6 +6,7 @@
   transition: opacity .2s;
 
   &:hover {
+    cursor: pointer;
     color: $text-color;
     opacity: 1;
     text-decoration: none;

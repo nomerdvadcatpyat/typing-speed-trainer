@@ -15,7 +15,6 @@ import {getUser} from "../../../../store/selectors/userSelectors";
 
 
 const CreateRoomPageContainer = props => {
-
 	const [values, setValues] = useState({ textTitles: null, lengths: null });
 	const [selectedValues, setSelectedValues] = useState({ textTitle: null, length: null });
 	const [maxMembersCount, setMaxMembersCount] = useState(1);
@@ -47,8 +46,6 @@ const CreateRoomPageContainer = props => {
 			length: selectedValues.length,
 			userId: props.user.id
 		}
-
-		console.log('create room page handler')
 
 		history.push(`/room`);
 		if(+maxMembersCount === 1) {

@@ -7,7 +7,6 @@ export const UserRatingCard = props => {
 	return (
 		<div className={`user-rating-card-wrapper ${props.className}`}>
 			<p className="user-rating-card-wrapper__place"> {props.place} </p>
-
 			<UserCard username={props.username} className="user-rating-card">
 				<>
 					<p> Points: {props.userInfo.points} </p>
@@ -15,7 +14,6 @@ export const UserRatingCard = props => {
 					<p> Games Count: {props.userInfo.gamesCount} </p>
 				</>
 			</UserCard>
-
 		</div>
 	)
 }
