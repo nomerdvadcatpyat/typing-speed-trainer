@@ -1,15 +1,52 @@
-@import "../../../../node_modules/bootstrap/scss/bootstrap";
+@import "./../../../utils/scss-variables/variables";
 
 .select {
   display: block;
   width: 20rem;
   max-width: 80%;
+  margin-bottom: 1.5rem;
+  position: relative;
 
   select {
+    z-index: 10;
+    width: 100%;
+    appearance: none;
     text-align: center;
+    border: 1px solid $primary;
+    border-radius: 5px;
+    padding: .3rem;
+    font-size: 1.2rem;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 
-  &:hover {
-    cursor: pointer;
+  &:before {
+    border-radius: 10px;
+    content: "";
+    display: block;
+    height: 16px;
+    width: 2px;
+
+    position: absolute;
+    right: 11px;
+    bottom: 12px;
+    background-color: $primary;
+    transform: rotate(45deg);
+  }
+
+  &:after {
+    border-radius: 10px;
+    content: "";
+    display: block;
+    height: 16px;
+    width: 2px;
+
+    position: absolute;
+    right: 21px;
+    bottom: 12px;
+    background-color: $primary;
+    transform: rotate(-45deg);
   }
 }

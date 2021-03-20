@@ -45,7 +45,7 @@ export const KeyboardComponent = ({ keyboardLayout, nextChar, withShift, hasErro
 			}
 
 			let resChar;
-			if(char.withShift.match(/[a-z]/i)) {
+			if(char.withShift.match(/\p{L}/iu)) {
 				resChar = char.withoutShift;
 			}
 			else {

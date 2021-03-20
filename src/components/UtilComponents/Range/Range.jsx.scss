@@ -1,0 +1,57 @@
+@import "./../../../utils/scss-variables/variables";
+
+.range-wrapper {
+  max-width: 25rem;
+  margin-bottom: 1.5rem;
+
+  &__label {
+
+  }
+
+  &__range {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    width: 80%;
+    cursor: pointer;
+
+    &::-moz-range-thumb {
+      background: $primary;
+      border: 0;
+      transition: .3s;
+    }
+
+    &::-moz-range-track {
+      background: $transparent-secondary;
+    }
+
+    &::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      background: $primary;
+      height: 20px;
+      width: 20px;
+      border-radius: 100px;
+      position: relative;
+      bottom: 7px;
+      transition: .3s;
+    }
+
+    &::-webkit-slider-runnable-track {
+      -webkit-appearance: none;
+      background: $transparent-secondary;
+      height: 4px;
+    }
+
+    &:focus {
+      outline: none;
+      &::-moz-range-thumb  {
+        transform: scale(1.2);
+      }
+      &::-webkit-slider-thumb {
+        transform: scale(1.2);
+      }
+    }
+
+  }
+}
+
