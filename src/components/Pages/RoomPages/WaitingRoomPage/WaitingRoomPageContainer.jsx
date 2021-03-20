@@ -1,6 +1,5 @@
-import {useEffect} from 'react';
 import {WaitingRoomPage} from "./WaitingRoomPage";
-import {useHistory, withRouter} from "react-router-dom";
+import {withRouter} from "react-router-dom";
 import {bindActionCreators, compose} from "redux";
 import {joinToRoom, startGame} from "../../../../store/actionCreators/gameActionCreators";
 import {connect} from "react-redux";
@@ -15,8 +14,8 @@ import {
 } from "../../../../store/selectors/gameSelectors";
 
 
-const WaitingRoomPageContainer = props => {
 
+const WaitingRoomPageContainer = props => {
     const startGameButtonClickHandler = () => {
         props.startGame({userId: props.user.id, roomId: props.roomId});
     }

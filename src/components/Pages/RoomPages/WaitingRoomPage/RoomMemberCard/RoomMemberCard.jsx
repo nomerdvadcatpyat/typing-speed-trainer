@@ -1,21 +1,20 @@
 import {Card} from "react-bootstrap";
 import './RoomMemberCard.scss';
-import {LinkToUser} from "../../../../UtilComponents/LinkToUser/LinkToUser";
+import {LinkToUser} from "../../../../UtilComponents/Links/LinkToUser/LinkToUser";
+import {UserCard} from "../../../../UtilComponents/UserCard/UserCard";
 
 export const RoomMemberCard = ({userName, points, isRoomOwner, gamesCount, averageSpeed}) => {
 	return (
-		<Card className={`room-member-card ${isRoomOwner && 'room-member-card_owner'}`}>
-			<LinkToUser username={userName}>
-				<Card.Header className="room-member-card__header"> {userName} </Card.Header>
-			</LinkToUser>
-
-			<Card.Body className="room-member-card__body">
-				<Card.Text >
+		<div className="room-member-card-wrapper">
+			{isRoomOwner && <img className="gold-star" src={`${process.env.REACT_APP_PICS_PATH}/star.svg`} alt="gold star"/>}
+			<UserCard username={userName} className={`room-member-card`}>
+				<>
 					<p> Всего очков: {points} </p>
 					<p> Всего игр: {gamesCount} </p>
 					<p> Средняя скорость: {averageSpeed} </p>
-				</Card.Text>
-			</Card.Body>
-		</Card>
+				</>
+			</UserCard>
+		</div>
+
 	);
 }

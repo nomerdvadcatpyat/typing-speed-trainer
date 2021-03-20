@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react';
 import {RatingPage} from "./RatingPage";
-import {getRating, getRatingOptions} from "../../../utils/api/ratingApi";
+import {getRating} from "../../../utils/api/ratingApi";
 
 
 export const RatingPageContainer = props => {

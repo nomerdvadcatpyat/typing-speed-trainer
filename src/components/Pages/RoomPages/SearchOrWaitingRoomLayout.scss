@@ -1,7 +1,7 @@
 @import "../../../utils/scss-variables/variables";
 @import "../../../../node_modules/bootstrap/scss/bootstrap";
 
-.room-content {
+.page-content {
   min-height: $content-min-height;
 
   &__main {
@@ -14,11 +14,15 @@
     align-items: center;
     justify-content: center;
   }
+
+  &__room-card {
+    margin-top: 2rem;
+  }
 }
 
 
 @media screen and (max-width: map-get($grid-breakpoints, "sm")) {
-  .room-content {
+  .page-content {
     &__aside {
       width: 100% - 5;
       margin: auto;
@@ -33,7 +37,7 @@
 }
 
 @media screen and (min-width: map-get($grid-breakpoints, "sm")) {
-  .room-content {
+  .page-content {
     position: relative;
 
     &__main {
@@ -62,7 +66,7 @@
 }
 
 @media screen and (min-width: map-get($grid-breakpoints, "lg")) {
-  .room-content {
+  .page-content {
     &__aside-button {
       font-size: 2rem;
     }

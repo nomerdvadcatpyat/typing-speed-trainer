@@ -1,28 +1,27 @@
 @import "~bootstrap/scss/bootstrap";
 
-
-.room-member-card {
+.room-member-card-wrapper {
   margin: 1rem;
   width: 22rem;
   height: 30rem;
+  position: relative;
+}
+
+.gold-star {
+  width: 40px;
+  position: absolute;
+  top: .7rem;
+  left: .7rem;
+}
+
+.room-member-card {
+  width: 100%;
+  height: 100%;
   font-size: 1.5rem;
   color: $dark;
 
-  &__header {
-    text-align: center;
-  }
-
-  &__body {
-    text-align: center;
-  }
-
-  &_owner {
-    .room-member-card__header {
-      background-color: #fff172;
-    }
-
-    .room-member-card__body {
-      background-color: #fff6cf;
-    }
+  .user-card__header {
+    padding: .5rem 0;
+    font-size: 2rem;
   }
 }

@@ -1,11 +1,10 @@
 import {SearchOrWaitingRoomLayout} from "../SearchOrWaitingRoomLayout";
 import {RoomMemberCard} from "./RoomMemberCard/RoomMemberCard";
 import './WaitingRoomPage.scss'
-import {Button} from "react-bootstrap";
 import {StyledButton} from "../../../UtilComponents/StyledButton/StyledButton";
 
-export const WaitingRoomPage = props => {
 
+export const WaitingRoomPage = props => {
 	const getJSXRoomInfo = () => {
 		return (
 			<div className="room-info">
@@ -47,7 +46,7 @@ export const WaitingRoomPage = props => {
 					{
 						props.isRoomOwner && (
 							<StyledButton
-								className="waiting-room__start-button room-content__aside-button"
+								className="waiting-room__start-button page-content__aside-button"
 								onClick={props.startGameButtonClickHandler}
 							>
 								Начать

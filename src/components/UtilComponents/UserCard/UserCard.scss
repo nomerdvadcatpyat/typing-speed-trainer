@@ -1,18 +1,14 @@
-@import "./../../../../../utils/scss-variables/variables";
+@import "./../../../utils/scss-variables/variables";
 
-.room-card {
-  max-width: 90%;
+.user-card {
   border: 1px solid $primary;
   border-radius: 10px;
   overflow: hidden;
   text-align: center;
   display: flex;
   flex-flow: column nowrap;
-  padding-bottom: 1rem;
 
   &__header {
-    padding: 1rem;
-    color: $text-color;
     display: block;
     font-size: 1.6rem;
     background-color: $primary;
@@ -26,9 +22,5 @@
     flex-flow: column nowrap;
     align-items: center;
     justify-content: center;
-  }
-
-  &__enter-room {
-    font-size: 1.2rem;
   }
 }

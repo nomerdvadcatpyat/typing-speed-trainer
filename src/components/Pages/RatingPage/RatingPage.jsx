@@ -22,11 +22,7 @@ export const RatingPage = props => {
 	return props.isLoading ? <RingLoader className="main-spinner"/> : (
 		<div className="rating-page">
 			<div className="rating-content">
-				{
-					<div className="rating-content__users">
-						{props.usersRating && getJSXRating(props.usersRating)}
-					</div>
-				}
+					{props.usersRating && getJSXRating(props.usersRating)}
 			</div>
 		</div>
 	);

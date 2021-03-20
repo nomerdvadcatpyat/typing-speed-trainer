@@ -1,13 +1,13 @@
 import React from "react";
 
 
-export const SearchOrWaitingRoomLayout = ({asideContent, mainContent}) => {
+export const SearchOrWaitingRoomLayout = ({asideContent, mainContent, className}) => {
 	return (
-		<div className="room-content">
-			<aside className="room-content__aside">
+		<div className={`page-content ${className}`}>
+			<aside className="page-content__aside">
 				{asideContent}
 			</aside>
-			<main className="room-content__main">
+			<main className="page-content__main">
 				{mainContent}
 			</main>
 		</div>

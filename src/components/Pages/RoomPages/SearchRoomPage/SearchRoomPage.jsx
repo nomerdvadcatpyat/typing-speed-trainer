@@ -26,6 +26,7 @@ export const SearchRoomPage = props => {
 			return (
 				<>
 					<RoomCard
+						className="page-content__room-card"
 						key={room.id}
 						textTitle={room.textTitle}
 						textLength={room.text.length}
@@ -33,6 +34,7 @@ export const SearchRoomPage = props => {
 						owner={room.members.find(member => member.isRoomOwner).userName}
 						personsCount={room.members.length}
 						maxPersonsCount={room.maxMembers}
+						setRoomError={props.setRoomError}
 						linkTo={`/room?game_id=${room.id}`}
 					/>
 				</>
@@ -58,7 +60,7 @@ export const SearchRoomPage = props => {
 						</main>
 						) :
 						<SearchOrWaitingRoomLayout
-							asideContent={<CreateRoomButton className={"room-content__aside-button"} />}
+							asideContent={<CreateRoomButton className={"page-content__aside-button"} />}
 							mainContent={createJSXrooms()}
 						/>
 					) :

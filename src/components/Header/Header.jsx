@@ -1,8 +1,8 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import './Header.scss';
-import {Link} from "react-router-dom";
 import {Hamburger} from "./Hamburger/Hamburger";
 import {useMediaQuery} from "react-responsive/src";
+import {BasicLink} from "../UtilComponents/Links/BasicLink/BasicLink";
 
 
 export function Header({isAuth, user, onLogout}) {
@@ -11,9 +11,9 @@ export function Header({isAuth, user, onLogout}) {
 
 	const HeaderLink = ({to, children, className}) => {
 		return (
-			<Link onClick={() => setCollapsed(true)} className={`header-link ${className && className}`} to={to}>
+			<BasicLink onClick={() => setCollapsed(true)} className={`header-link ${className && className}`} to={to}>
 				{children}
-			</Link>
+			</BasicLink>
 		)
 	}
 
