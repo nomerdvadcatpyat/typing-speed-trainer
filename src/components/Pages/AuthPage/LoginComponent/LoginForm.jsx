@@ -43,7 +43,7 @@ export function LoginForm(props) {
 
 				{
 					errors.all ? (
-						<span className="auth-form__error-message"> {errors.all} </span>
+						<span className="auth-form__error-message auth-form__error-message_login"> {errors.all} </span>
 					) : null
 				}
 

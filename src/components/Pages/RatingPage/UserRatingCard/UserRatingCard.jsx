@@ -1,5 +1,4 @@
 import './UserRatingCard.scss'
-import {LinkToUser} from "../../../UtilComponents/Links/LinkToUser/LinkToUser";
 import {UserCard} from "../../../UtilComponents/UserCard/UserCard";
 
 export const UserRatingCard = props => {

@@ -53,7 +53,7 @@ export const RegistrationForm = (props) => {
 
 				{
 					errors.all ? (
-						<span className="auth-form__error-message"> {errors.all} </span>
+						<span className="auth-form__error-message auth-form__error-message_register"> {errors.all} </span>
 					) : null
 				}
 

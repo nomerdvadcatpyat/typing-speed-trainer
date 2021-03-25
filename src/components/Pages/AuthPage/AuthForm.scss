@@ -1,3 +1,24 @@
+@import "./../../../utils/scss/variables";
+
+@media screen and (max-width: map-get($grid-breakpoints, "sm")){
+  .auth-form {
+    &__submit {
+      font-size: 1rem;
+      width: 11rem;
+    }
+  }
+}
+
+@media screen and (min-width: map-get($grid-breakpoints, "sm")){
+  .auth-form {
+    &__submit {
+      font-size: 1.4rem;
+      min-width: 10rem;
+      max-width: 80%;
+    }
+  }
+}
+
 .auth-form {
   position: relative;
   display: flex;
@@ -6,15 +27,20 @@
   width: 80%;
 
   &__link-to-register {
+    text-align: center;
     display: block;
     margin: 1rem auto 0;
+    text-decoration: none;
+    color: $primary;
+    transition: color .2s;
 
+    &:hover, &outline {
+      text-decoration: none;
+    }
   }
 
   &__submit {
     margin: 0 auto;
-    font-size: 1.4rem;
-    min-width: 10rem;
   }
 
   &__error-message {
@@ -24,10 +50,14 @@
     color: #F44336;
     display: block;
     width: max-content;
-  }
 
-  &__error-message {
-    bottom: 5.8rem;
+    &_login {
+      bottom: 5.5rem;
+    }
+
+    &_register {
+      bottom: 3rem;
+    }
   }
 
   .auth-input__error-message {
