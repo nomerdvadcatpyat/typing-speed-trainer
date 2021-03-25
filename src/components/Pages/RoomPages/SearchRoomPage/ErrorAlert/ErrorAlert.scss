@@ -1,12 +1,37 @@
 @import "../../../../../utils/scss-variables/variables";
 
-.error-alert-wrapper {
-  width: 100%;
+.error-alert {
   z-index: 10;
   position: absolute;
+  width: 100%;
+  padding: 1rem;
   top: $header-height;
+  color: $danger-text;
+  background-color: $danger-background;
+}
 
-  .error-alert {
-    margin: 0;
+
+.cross {
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &__line {
+    background-color: $primary;
+    position: absolute;
+    width: 5px;
+    height: 25px;
+    border-radius: 10px;
+  }
+
+  &__first-line {
+    right: 25px;
+    transform: rotate(45deg);
+  }
+
+  &__second-line {
+    right: 25px;
+    transform: rotate(-45deg);
   }
 }
