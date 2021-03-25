@@ -1,5 +1,5 @@
 import React from "react";
-import './Range.jsx.scss';
+import './Range.scss';
 
 export const Range = ({id, label, min, max, className, value, onChange}) => {
 	return (

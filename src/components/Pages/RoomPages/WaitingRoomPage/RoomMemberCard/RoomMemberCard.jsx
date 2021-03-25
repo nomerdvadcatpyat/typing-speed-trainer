@@ -1,6 +1,4 @@
-import {Card} from "react-bootstrap";
 import './RoomMemberCard.scss';
-import {LinkToUser} from "../../../../UtilComponents/Links/LinkToUser/LinkToUser";
 import {UserCard} from "../../../../UtilComponents/UserCard/UserCard";
 
 export const RoomMemberCard = ({userName, points, isRoomOwner, gamesCount, averageSpeed}) => {

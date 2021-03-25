@@ -1,5 +1,4 @@
 import './ProgressBar.scss';
-import {ProgressBar} from "react-bootstrap";
 
 export const GameProgressBar = ({roomMembers, className, text, login}) => {
 
@@ -13,7 +12,7 @@ export const GameProgressBar = ({roomMembers, className, text, login}) => {
   }
 
   const getContainerClassNames = member => {
-		let classes = "game-progress-bar__user-progress-container user-progress-container";
+		let classes = "user-progress-container";
 		if(member.userName === login) classes += " user-progress-container_self";
 		if(member.isLeave) classes += " user-progress-container_leave";
 
@@ -23,15 +22,14 @@ export const GameProgressBar = ({roomMembers, className, text, login}) => {
 	const generateJSXProgress = () => {
 		return roomMembers.map((member, index) => {
 			const progress = member.inputText && getProgress(member.inputText);
-			const self = member.userName === login;
+			// const self = member.userName === login;
 			return (
 				<div className={getContainerClassNames(member)} key={index}>
 					<p className="user-progress-container__username"> {member.userName} </p>
-					<ProgressBar
-						variant={self || member.isLeave ? '' : 'dark'}
-						now={progress}
-						className="user-progress-container__progress-bar"
-					/>
+					<div className="progress-bar-wrapper">
+						<div style={{left: `${progress - 100}%`}} className="progress-bar">
+						</div>
+					</div>
 				</div>
 			);
 		});

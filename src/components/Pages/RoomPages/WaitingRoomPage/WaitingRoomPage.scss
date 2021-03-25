@@ -1,4 +1,4 @@
-@import "~bootstrap/scss/bootstrap";
+@import "./../../../../utils/scss/variables";
 
 .waiting-room {
   &__main {
@@ -22,7 +22,7 @@
     font-size: 1.5rem;
 
     .room-info__key {
-      color: $gray-600;
+      color: $gray;
     }
   }
 }

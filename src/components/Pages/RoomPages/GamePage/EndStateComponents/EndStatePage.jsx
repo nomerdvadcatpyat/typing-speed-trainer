@@ -1,8 +1,7 @@
 import React from "react";
 import './EndStatePage.scss';
-import {Link} from "react-router-dom";
-import {Button} from "react-bootstrap";
 import {StyledButton} from "../../../../UtilComponents/StyledButton/StyledButton";
+import {BasicLink} from "../../../../UtilComponents/Links/BasicLink/BasicLink";
 
 export const EndStatePage = props => {
 	return (
@@ -17,11 +16,9 @@ export const EndStatePage = props => {
 				<p> Получено очков за одиночную игру: {props.points} </p>
 			)}
 			<p> Средняя скорость печати: {props.averageSpeed} знаков в минуту</p>
-			<Link to="/searchRoom">
-				<StyledButton > К списку серверов </StyledButton>
-			</Link>
-
+			<BasicLink tabIndex={-1} to="/searchRoom">
+				<StyledButton> К списку серверов </StyledButton>
+			</BasicLink>
 		</div>
-
 	);
 }

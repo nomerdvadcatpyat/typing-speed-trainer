@@ -19,21 +19,21 @@ export const RegistrationForm = (props) => {
 	return (
 			<form className="auth-form registration" onSubmit={handleSubmit}>
 				<AuthInput
-					className={`auth-form__input ${touched.login && errors.login ? 'invalid' : ''}`}
+					touched={touched.login}
+					errors={touched.login && errors.login}
 					name="login"
 					type="text"
 					placeholder="Login"
-					errors={touched.login && errors.login}
 					onChange={handleChange}
 					onBlur={handleBlur}
 					value={values.login}
 				/>
 
 				<AuthInput
-					className={`auth-form__input ${touched.password && errors.password ? 'invalid' : ''}`}
 					name="password"
 					type="password"
 					placeholder="Password"
+					touched={touched.password}
 					errors={touched.password && errors.password}
 					onChange={handleChange}
 					onBlur={handleBlur}
@@ -41,10 +41,10 @@ export const RegistrationForm = (props) => {
 				/>
 
 				<AuthInput
-					className={`auth-form__input ${touched.rePassword && errors.rePassword ? 'invalid' : ''}`}
 					name="rePassword"
 					type="password"
 					placeholder="Confirm password"
+					touched={touched.rePassword}
 					errors={touched.rePassword && errors.rePassword}
 					onChange={handleChange}
 					onBlur={handleBlur}
@@ -53,7 +53,7 @@ export const RegistrationForm = (props) => {
 
 				{
 					errors.all ? (
-						<span className="auth-form__error-message"> {errors.all} </span>
+						<span className="auth-form__error-message auth-form__error-message_register"> {errors.all} </span>
 					) : null
 				}
 
@@ -67,7 +67,7 @@ export const RegistrationForm = (props) => {
 						isSubmitting
 					}
 				>
-					Submit
+					Зарегистрироваться
 				</StyledButton>
 			</form>
 	);

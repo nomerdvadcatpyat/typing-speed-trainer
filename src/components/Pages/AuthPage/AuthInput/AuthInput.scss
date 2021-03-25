@@ -1,0 +1,33 @@
+@import "../../../../utils/scss/variables";
+@import "../../../../utils/scss/mixins";
+
+.auth-input-wrapper {
+  position: relative;
+  height: 4rem;
+}
+
+
+.auth-input {
+  @include focus-outline;
+
+  font-size: 1.3rem;
+  width: 100%;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+
+  border: 1px solid $primary;
+  border-radius: 10px;
+  padding: .4rem .5rem;
+
+
+  &__error-message {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    color: #F44336;
+    display: block;
+    width: max-content;
+  }
+}

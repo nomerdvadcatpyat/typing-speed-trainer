@@ -1,19 +1,20 @@
-import {Alert} from "react-bootstrap";
 import {useState} from "react";
 import "./ErrorAlert.scss";
 
-export const ErrorAlert = ({title, children, onClose, ...otherProps}) => {
+export const ErrorAlert = ({title, children, onClose }) => {
 	const [show, setShow] = useState(true);
 
 	return show && (
-		<div className="error-alert-wrapper">
-			<Alert className="error-alert" variant="danger" {...otherProps} onClose={() => {
+		<section className="error-alert">
+			<div className="cross" onClick={() => {
 				setShow(false);
 				onClose();
-			}} dismissible>
-				<Alert.Heading>{title}</Alert.Heading>
-				{children}
-			</Alert>
-		</div>
+			}}>
+				<div className="cross__line cross__first-line"> </div>
+				<div className="cross__line cross__second-line"> </div>
+			</div>
+			<h3>{title}</h3>
+			{children}
+		</section>
 	);
 }

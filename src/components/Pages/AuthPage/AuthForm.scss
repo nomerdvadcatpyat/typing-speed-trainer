@@ -1,33 +1,63 @@
+@import "./../../../utils/scss/variables";
+
+@media screen and (max-width: map-get($grid-breakpoints, "sm")){
+  .auth-form {
+    &__submit {
+      font-size: 1rem;
+      width: 11rem;
+    }
+  }
+}
+
+@media screen and (min-width: map-get($grid-breakpoints, "sm")){
+  .auth-form {
+    &__submit {
+      font-size: 1.4rem;
+      min-width: 10rem;
+      max-width: 80%;
+    }
+  }
+}
+
 .auth-form {
   position: relative;
   display: flex;
   flex-flow: column nowrap;
-  max-width: 600px;
+  max-width: 500px;
   width: 80%;
 
   &__link-to-register {
+    text-align: center;
     display: block;
     margin: 1rem auto 0;
+    text-decoration: none;
+    color: $primary;
+    transition: color .2s;
 
+    &:hover, &outline {
+      text-decoration: none;
+    }
   }
 
   &__submit {
-    margin: 3rem auto 0;
-    font-size: 2rem;
-    width: 40%;
+    margin: 0 auto;
   }
 
-  &__error-message, .auth-input__error-message {
+  &__error-message {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
     color: #F44336;
     display: block;
     width: max-content;
-  }
 
-  &__error-message {
-    bottom: 7rem;
+    &_login {
+      bottom: 5.5rem;
+    }
+
+    &_register {
+      bottom: 3rem;
+    }
   }
 
   .auth-input__error-message {
@@ -35,7 +65,7 @@
   }
 
   &__input {
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
   }
 }
 

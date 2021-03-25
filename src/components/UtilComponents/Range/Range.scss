@@ -1,12 +1,8 @@
-@import "./../../../utils/scss-variables/variables";
+@import "../../../utils/scss/variables";
 
 .range-wrapper {
   max-width: 25rem;
   margin-bottom: 1.5rem;
-
-  &__label {
-
-  }
 
   &__range {
     -moz-appearance: none;

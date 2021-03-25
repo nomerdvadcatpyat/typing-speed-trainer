@@ -7,15 +7,16 @@ import {SearchOrWaitingRoomLayout} from "../SearchOrWaitingRoomLayout";
 import {ErrorAlert} from "./ErrorAlert/ErrorAlert";
 import {RingLoader} from "../../../UtilComponents/RingLoader/RingLoader";
 import {StyledButton} from "../../../UtilComponents/StyledButton/StyledButton";
+import {BasicLink} from "../../../UtilComponents/Links/BasicLink/BasicLink";
 
 
 const CreateRoomButton = ({className}) => {
 	return (
-		<Link to="/createRoom">
+		<BasicLink tabIndex={-1} to="/createRoom">
 			<StyledButton className={className}>
 				Создать комнату
 			</StyledButton>
-		</Link>
+		</BasicLink>
 	);
 }
 

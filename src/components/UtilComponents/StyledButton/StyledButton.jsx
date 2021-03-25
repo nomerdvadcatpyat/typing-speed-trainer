@@ -1,7 +1,7 @@
 import './StyledButton.scss';
 
-export const StyledButton = ({children, className, disabled, preventDefault, onClick, otherProps}) => {
 
+export const StyledButton = ({children, className, disabled, preventDefault, onClick, otherProps}) => {
 	const clickHandler = e => {
 		if(disabled || preventDefault) {
 			e.preventDefault();
