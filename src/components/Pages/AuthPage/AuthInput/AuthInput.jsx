@@ -1,17 +1,17 @@
 import {Field} from "formik";
 import React from "react";
-import {Form} from "react-bootstrap";
+import './AuthInput.scss';
 
 
-export const AuthInput = ({errors, icon, name, labelText, infoText, ...fieldProps}) => {
+export const AuthInput = ({touched, errors, name, ...otherProps}) => {
 	return (
-		<Form.Group style={{ position: 'relative' }}>
-			<Form.Control as={Field} name={name} {...fieldProps} />
+		<div className="auth-input-wrapper auth-form__input ">
+			<Field name={name} className={`auth-input ${touched && errors ? 'invalid' : ''}`} {...otherProps} />
 			{
 				errors ? (
 					<span className="auth-input__error-message"> {errors} </span>
 				) : null
 			}
-		</Form.Group>
+		</div>
 	);
 }

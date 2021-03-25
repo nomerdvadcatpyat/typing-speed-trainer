@@ -1,0 +1,9 @@
+@import "variables";
+
+@mixin focus-outline() {
+  transition: box-shadow .2s;
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 7px 4px $secondary;
+  }
+}

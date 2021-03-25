@@ -2,13 +2,18 @@
 
 .link {
   color: $text-color;
-  opacity: .5;
   transition: opacity .2s;
 
-  &:hover {
+  &:hover, &:focus {
     cursor: pointer;
     color: $text-color;
-    opacity: 1;
     text-decoration: none;
+  }
+
+  &_transition-opacity {
+    opacity: .5;
+    &:hover, &:focus {
+      opacity: 1;
+    }
   }
 }

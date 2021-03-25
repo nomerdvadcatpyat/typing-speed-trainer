@@ -2,7 +2,6 @@ import React from 'react';
 import {Link} from "react-router-dom";
 import '../AuthForm.scss'
 import {AuthInput} from "../AuthInput/AuthInput";
-import {Form} from "react-bootstrap";
 import {StyledButton} from "../../../UtilComponents/StyledButton/StyledButton";
 
 
@@ -19,12 +18,12 @@ export function LoginForm(props) {
 	} = props;
 
 	return (
-			<Form className="auth-form login" onSubmit={handleSubmit}>
+			<form className="auth-form login" onSubmit={handleSubmit}>
 				<AuthInput
-					className={`auth-form__input ${touched.login && errors.login ? 'invalid' : ''}`}
 					name="login"
 					type="text"
 					placeholder="Login"
+					touched={touched.login}
 					errors={touched.login && errors.login}
 					onChange={handleChange}
 					onBlur={handleBlur}
@@ -32,10 +31,10 @@ export function LoginForm(props) {
 				/>
 
 				<AuthInput
-					className={`auth-form__input ${touched.password && errors.password ? 'invalid' : ''}`}
 					name="password"
 					type="password"
 					placeholder="Password"
+					touched={touched.login}
 					errors={touched.password && errors.password}
 					onChange={handleChange}
 					onBlur={handleBlur}
@@ -57,10 +56,10 @@ export function LoginForm(props) {
 						(status && !status.success) ||
 						isSubmitting
 					}>
-					Submit
+					Войти
 				</StyledButton>
 
 				<Link to="/auth/registration" className="auth-form__link-to-register"> Нет аккаунта? Зарегистрироваться </Link>
-			</Form>
+			</form>
 	);
 }
