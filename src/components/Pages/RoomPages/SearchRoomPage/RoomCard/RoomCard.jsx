@@ -1,7 +1,7 @@
-import {Link} from "react-router-dom";
 import './RoomCard.scss';
 import {LinkToUser} from "../../../../UtilComponents/Links/LinkToUser/LinkToUser";
 import {StyledButton} from "../../../../UtilComponents/StyledButton/StyledButton";
+import {BasicLink} from "../../../../UtilComponents/Links/BasicLink/BasicLink";
 
 
 export const RoomCard = ({
@@ -22,11 +22,11 @@ export const RoomCard = ({
 			<div className="room-card__body">
 				<p> {personsCount} из {maxPersonsCount} игроков подключились к комнате </p>
 				<p> Язык текста: {language}</p>
-				<Link to={linkTo}>
+				<BasicLink tabIndex={-1} to={linkTo}>
 					<StyledButton className="room-card__enter-room" onClick={() => setRoomError(null)}>
 						Присоедениться
 					</StyledButton>
-				</Link>
+				</BasicLink>
 			</div>
 		</section>
 	);

@@ -9,10 +9,13 @@
   flex-flow: column nowrap;
 
   &__header {
-    display: block;
     font-size: 1.6rem;
     background-color: $primary;
     border-bottom: 1px solid $primary;
+    height: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   &__body {

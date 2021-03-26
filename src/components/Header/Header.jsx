@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './Header.scss';
 import {Hamburger} from "./Hamburger/Hamburger";
 import {useMediaQuery} from "react-responsive/src";

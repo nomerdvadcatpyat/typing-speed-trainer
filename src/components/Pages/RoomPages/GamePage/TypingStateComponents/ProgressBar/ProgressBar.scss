@@ -1,6 +1,6 @@
 @import "../../../../../../utils/scss/variables";
 
-.game-progress-bar {
+.users-progress {
   width: 80%;
   display: flex;
   flex-flow: column nowrap;
@@ -15,6 +15,7 @@
   position: relative;
 
   .progress-bar {
+    transition: left .5s;
     background-color: $primary;
     position: absolute;
     width: 100%;

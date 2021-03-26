@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect} from "react";
 import {SearchRoomPage} from "./SearchRoomPage";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";

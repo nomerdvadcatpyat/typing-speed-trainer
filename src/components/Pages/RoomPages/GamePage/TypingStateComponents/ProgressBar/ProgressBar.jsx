@@ -1,7 +1,7 @@
 import './ProgressBar.scss';
 
-export const GameProgressBar = ({roomMembers, className, text, login}) => {
 
+export const GameProgressBar = ({roomMembers, className, text, login}) => {
   const getProgress = inputText => {
 	  let rightInputTextLength = 0;
 	  for(let i = 0; i < inputText.length; i ++) {
@@ -21,8 +21,7 @@ export const GameProgressBar = ({roomMembers, className, text, login}) => {
 
 	const generateJSXProgress = () => {
 		return roomMembers.map((member, index) => {
-			const progress = member.inputText && getProgress(member.inputText);
-			// const self = member.userName === login;
+			const progress = (member.inputText && getProgress(member.inputText)) || 0;
 			return (
 				<div className={getContainerClassNames(member)} key={index}>
 					<p className="user-progress-container__username"> {member.userName} </p>
@@ -36,7 +35,7 @@ export const GameProgressBar = ({roomMembers, className, text, login}) => {
 	}
 
 	return (
-		<div className={`game-progress-bar ${className && className}`}>
+		<div className={`users-progress ${className && className}`}>
 			{generateJSXProgress()}
 		</div>
 	);

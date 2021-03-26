@@ -9,6 +9,7 @@ export const RatingPage = props => {
 			const {username, ...userInfo} = user;
 			return (
 					<UserRatingCard
+						key={index}
 						className="rating-content__user-rating-card"
 						userInfo={userInfo}
 						username={username}

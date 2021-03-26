@@ -3,7 +3,7 @@
 .rating-page {
   display: flex;
   flex-flow: column nowrap;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: center;
   height: $content-min-height;
 }
@@ -15,7 +15,7 @@
   max-width: 80%;
   display: flex;
   flex-flow: column nowrap;
-  align-items: start;
+  align-items: flex-start;
 
   &__user-rating-card {
     margin-top: 1.5rem;

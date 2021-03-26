@@ -11,6 +11,8 @@
   padding-bottom: 1rem;
 
   &__header {
+    margin: 0;
+    font-weight: normal;
     padding: 1rem;
     color: $text-color;
     display: block;
@@ -20,12 +22,17 @@
   }
 
   &__body {
-    padding-top: 1.5rem;
+    padding-top: .5rem;
     flex-grow: 1;
+    font-size: 1.3rem;
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
     justify-content: center;
+
+    p {
+      margin: 1rem;
+    }
   }
 
   &__enter-room {

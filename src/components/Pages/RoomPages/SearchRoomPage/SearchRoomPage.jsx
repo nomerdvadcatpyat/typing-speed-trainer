@@ -1,6 +1,5 @@
 import '../SearchOrWaitingRoomLayout.scss';
 import './SearchRoomPage.scss';
-import {Link} from "react-router-dom";
 import React from "react";
 import {RoomCard} from "./RoomCard/RoomCard";
 import {SearchOrWaitingRoomLayout} from "../SearchOrWaitingRoomLayout";
@@ -25,20 +24,18 @@ export const SearchRoomPage = props => {
 	const createJSXrooms = () => {
 		return props.rooms.map(room => {
 			return (
-				<>
-					<RoomCard
-						className="page-content__room-card"
-						key={room.id}
-						textTitle={room.textTitle}
-						textLength={room.text.length}
-						language={room.textLang}
-						owner={room.members.find(member => member.isRoomOwner).userName}
-						personsCount={room.members.length}
-						maxPersonsCount={room.maxMembers}
-						setRoomError={props.setRoomError}
-						linkTo={`/room?game_id=${room.id}`}
-					/>
-				</>
+				<RoomCard
+					className="page-content__room-card"
+					key={room.id}
+					textTitle={room.textTitle}
+					textLength={room.text.length}
+					language={room.textLang}
+					owner={room.members.find(member => member.isRoomOwner).userName}
+					personsCount={room.members.length}
+					maxPersonsCount={room.maxMembers}
+					setRoomError={props.setRoomError}
+					linkTo={`/room?game_id=${room.id}`}
+				/>
 			);
 		});
 	}
